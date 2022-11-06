@@ -35,7 +35,11 @@ return require('packer').startup(function(use)
   use {
     "nvim-lualine/lualine.nvim",
     config = function()
-      require('lualine').setup()
+      require('lualine').setup({
+        options = {
+          disabled_filetypes = { 'packer', 'NvimTree', "dashboard", "TelescopePrompt" }
+        }
+      })
     end,
     event = "BufRead",
   }
