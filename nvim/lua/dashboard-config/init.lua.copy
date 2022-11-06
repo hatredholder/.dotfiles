@@ -1,0 +1,78 @@
+-- Load hotkeys just incase they dont get loaded
+require('hotkeys')
+
+local status, db = pcall(require, "dashboard")
+
+db.default_banner = {
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+  '   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆         ',
+  '    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
+  '          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷⠄⠄⠄⠄⠻⠿⢿⣿⣧⣄     ',
+  '           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
+  '          ⢠⣿⣿⣿⠈  ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
+  '   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘⠄ ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
+  '  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
+  ' ⣠⣿⠿⠛⠄⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
+  ' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇⠄⠛⠻⢷⣄ ',
+  '      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
+  '       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
+	"", }
+db.preview_file_height = 20
+db.preview_file_width = 70
+db.custom_center = {
+	{
+		-- icon = " ",
+		icon = " ",
+		desc = "Find Files            ",
+		action = "Telescope find_files",
+    shortcut = "SPC d r",
+	},
+	{
+		-- icon = " ",
+		icon = " ",
+		desc = "Search Text           ",
+		action = "Telescope live_grep",
+    shortcut = "SPC d f",
+	},
+	{
+		-- icon = "羽",
+		icon = " ",
+		desc = "Recent Files          ",
+		action = "Telescope oldfiles",
+    shortcut = "SPC d l",
+	},
+  {
+    -- icon = "ﭢ ",
+		icon = " ",
+    desc = "Load Session          ",
+    action = "SessionManager! load_last_session",
+    shortcut = "SPC d s",
+  },
+	{
+		-- icon = " ",
+		icon = " ",
+		desc = "Open Config           ",
+		action = "edit ~/.config/nvim/init.lua",
+    shortcut = "SPC d c",
+	},
+	{
+		-- icon = " ",
+		icon = " ",
+		desc = "Quit Neovim           ",
+		action = "quitall",
+    shortcut = "SPC d q",
+	}
+}
+db.custom_footer = {""}
+
+-- Set dashboard colors to gray
+vim.cmd('highlight! DashboardHeader guifg=#989898')
+vim.cmd('highlight! DashboardCenter guifg=#989898')
+vim.cmd('highlight! DashboardShortcut guifg=#989898')
+
+
