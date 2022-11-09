@@ -9,6 +9,7 @@
   ███        ███▌    ▄ ███    ███   ███    ███ ███  ███   ███    ▄█    ███    ███▌    ▄ ███    ███   ███    ███ 
  ▄████▀      █████▄▄██ ████████▀    ████████▀  █▀    ▀█   █▀   ▄████████▀     █████▄▄██ ████████▀    ███    █▀  
   ▀           ▀            ▀▀          ▀              ▀          ▀         ▀     ▀           ▀▀       ▀
+
 --]]
 
 return require('packer').startup(function(use)
@@ -31,6 +32,12 @@ return require('packer').startup(function(use)
     config = "require('treesitter-config')"
   }
 
+  -- Treesitter-autotag - auto  tags for  HTML 
+  use {
+    'windwp/nvim-ts-autotag',
+    after = "nvim-treesitter",
+  }
+
   -- Lualine - simple  statusline written in  Lua
   use {
     "nvim-lualine/lualine.nvim",
@@ -38,7 +45,7 @@ return require('packer').startup(function(use)
       require('lualine').setup({
         options = {
           disabled_filetypes = {
-            'packer', 'NvimTree', "dashboard", "TelescopePrompt",
+            'packer', 'NvimTree', "dashboard", "TelescopePrompt", "DiffviewFilePanel"
           },
         },
       })
@@ -133,6 +140,10 @@ return require('packer').startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = "require('gitsigns-config')",
+  }
+
+  use {
+    'sindrets/diffview.nvim',
   }
 
   -- Dashboard-nvim - fancy  Neovim startscreen

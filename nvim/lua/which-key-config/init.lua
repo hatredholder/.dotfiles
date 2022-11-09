@@ -9,7 +9,9 @@ end
 
 local toggle_lazygit = function()
   local lazygit = Terminal:new({ cmd = 'lazygit', direction = "float" })
-  return lazygit:toggle() end
+  return lazygit:toggle()
+end
+
 local mappings = {
 
   f = {"<cmd>Telescope live_grep<CR>", "Live Grep (Global Search)"},
@@ -52,6 +54,7 @@ local mappings = {
 
     f = {'<cmd>!black %<CR>', "Format Python File"},
   },
+
   y = {
     name = "Debug",
     R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
@@ -87,6 +90,12 @@ local mappings = {
     S = { ":PackerStatus<cr>", "Packer Status" },
     u = { ":PackerUpdate<cr>", "Update Plugins" }
   },
+
+  h = {
+    name = "Diffview",
+    h = { "<cmd>DiffviewOpen<CR>", "Open Diffview"},
+    c = { "<cmd>DiffviewClose<CR>", "Close Diffview"},
+  }
 }
 
 local opts = {prefix = "<leader>"}

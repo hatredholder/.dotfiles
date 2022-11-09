@@ -9,6 +9,7 @@
  ███    ███  ███    ███     ███      ███ ▀███▄ ███    ███ ███   ███   ▄█    ███    ███▌    ▄ ███    ███   ███    ███ 
   ▀█    █▀    ▀██████▀     ▄████▀    ███   ▀█▀ ██████████  ▀█████▀  ▄████████▀     █████▄▄██ ████████▀    ███    █▀  
    ▀             ▀▀           ▀       ▀            ▀▀         ▀                 ▀     ▀           ▀▀       ▀                     
+
 --]]
 -- Set Mapleader to Space --
 vim.g.mapleader = ' '
@@ -27,19 +28,19 @@ vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>w!<cr>', {noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>lua require("codewindow").toggle_minimap()<CR><bar><cmd>q!<cr>', {noremap = true, silent = true})
 --| Force quit
 
-vim.api.nvim_set_keymap('n', '<C-Left>',
+vim.api.nvim_set_keymap('n', '<C-S-h>',
 '<cmd> lua require("smart-splits").move_cursor_left()<CR>', {noremap = true, silent = true}) ---| Window Left
-vim.api.nvim_set_keymap('n', '<C-Right>',
+vim.api.nvim_set_keymap('n', '<C-S-l>',
 '<cmd> lua require("smart-splits").move_cursor_right()<CR>', {noremap = true, silent = true}) --| Window Right
-vim.api.nvim_set_keymap('n', '<C-Up>',
+vim.api.nvim_set_keymap('n', '<C-S-k>',
 '<cmd> lua require("smart-splits").move_cursor_up()<CR>', {noremap = true, silent = true}) -----| Window Up
-vim.api.nvim_set_keymap('n', '<C-Down>',
+vim.api.nvim_set_keymap('n', '<C-S-j>',
 '<cmd> lua require("smart-splits").move_cursor_down()<CR>', {noremap = true, silent = true}) ---| Window Down
 
 -- Bufferline hotkeys --
 vim.api.nvim_set_keymap('n', '<C-l>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true}) --| Go to next buffer
 vim.api.nvim_set_keymap('n', '<C-h>', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true}) --| Go to previous buffer
-vim.api.nvim_set_keymap('n', '<C-w>', ':Bdelete<CR>', {noremap = true, silent = true}) --------------| Close buffer
+vim.api.nvim_set_keymap('n', '<C-w>', ':Bdelete!<CR>', {noremap = true, silent = true}) --------------| Close buffer
 
 vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer rigtht
 vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) ---| Move buffer left

@@ -3,8 +3,8 @@ vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { ctermbg=0, fg="#8CA072"})
 
 require("nvim-tree").setup({
   filters = {
-    custom = {'*.tmp', '.git'},
     dotfiles = false,
+    custom = { "^.git$", "__pycache__" },
   },
   disable_netrw = true,
   hijack_netrw = true,
@@ -26,9 +26,19 @@ require("nvim-tree").setup({
     mappings = {custom_only = false, list = {}}
   },
   renderer = {
-    indent_markers = {enable = true, inline_arrows = false, icons = { corner = "└", edge = "│", item = "│", bottom = "─", none = "", }, },
+    indent_markers = {
+      enable = true,
+      inline_arrows = false,
+      icons = {
+        corner = "└",
+        edge = "│",
+        item = "│",
+        bottom = "─",
+        none = "",
+      },
+    },
     icons = {
-      git_placement = "after",
+      git_placement = "before",
       show = {
         folder_arrow = false,
       },
@@ -67,5 +77,11 @@ require("nvim-tree").setup({
       error = "",
     },
   },
+  git = {
+      enable = true,
+      ignore = false,
+      show_on_dirs = true,
+      timeout = 400,
+    },
 })
 
