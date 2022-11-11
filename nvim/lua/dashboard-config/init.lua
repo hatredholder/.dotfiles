@@ -1,6 +1,3 @@
--- Load hotkeys just incase they dont get loaded
-require('hotkeys')
-
 local db = require("dashboard")
 
 db.default_banner = {
@@ -80,6 +77,7 @@ db.custom_center = {
     shortcut = "SPC d q",
 	}
 }
+
 local plugins_count = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
 db.custom_footer = {"", "[ Loaded " .. plugins_count .. " plugins successfully!   ]"}
 

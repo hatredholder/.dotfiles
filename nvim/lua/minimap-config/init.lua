@@ -1,6 +1,6 @@
 require('codewindow').setup{
   active_in_terminals = false, -- Should the minimap activate for terminal buffers
-  auto_enable = true, -- Automatically open the minimap when entering a (non-excluded) buffer (accepts a table of filetypes)
+  auto_enable = false, -- Automatically open the minimap when entering a (non-excluded) buffer (accepts a table of filetypes)
   exclude_filetypes = {
     'NvimTree', 'Trouble', 'dashboard', 'dapui_scopes', 'dapui_breakpoints', 'dapui_stacks', 'dapui_watches',
     'dapui_console', 'dap-repl', 'dap-float',

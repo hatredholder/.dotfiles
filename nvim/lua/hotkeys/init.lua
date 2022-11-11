@@ -16,16 +16,20 @@ vim.g.mapleader = ' '
 
 -- Vanilla Vim hotkeys --
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true, silent = true}) --|
-vim.api.nvim_set_keymap('n', 'D', '"_D', {noremap = true, silent = true}) --| Delete without copying in Normal
+vim.api.nvim_set_keymap('n', 'D', '"_D', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', 'c', '"_c', {noremap = true, silent = true}) --| Delete without copying in Normal
+vim.api.nvim_set_keymap('n', 'C', '"_C', {noremap = true, silent = true}) --|
 vim.api.nvim_set_keymap('n', 'x', '"_x', {noremap = true, silent = true}) --| 
 
 vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true, silent = true}) --|
-vim.api.nvim_set_keymap('v', 'D', '"_D', {noremap = true, silent = true}) --| Delete without copying in Visual
+vim.api.nvim_set_keymap('v', 'D', '"_D', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('v', 'c', '"_c', {noremap = true, silent = true}) --| Delete without copying in Visual
+vim.api.nvim_set_keymap('v', 'C', '"_C', {noremap = true, silent = true}) --| 
 vim.api.nvim_set_keymap('v', 'x', '"_x', {noremap = true, silent = true}) --| 
 
 vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>w!<cr>', {noremap = true, silent = true})
 --| Force save
-vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>lua require("codewindow").toggle_minimap()<CR><bar><cmd>q!<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>q!<cr>', {noremap = true, silent = true})
 --| Force quit
 
 vim.api.nvim_set_keymap('n', '<C-S-h>',

@@ -142,6 +142,7 @@ return require('packer').startup(function(use)
     config = "require('gitsigns-config')",
   }
 
+  -- Diffview.nvim - interface for 屢cycling through diffs for all  modified files 
   use {
     'sindrets/diffview.nvim',
   }
