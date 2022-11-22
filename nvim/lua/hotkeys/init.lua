@@ -49,8 +49,8 @@ vim.api.nvim_set_keymap('n', '<C-w>', ':Bdelete!<CR>', {noremap = true, silent =
 vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer rigtht
 vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) ---| Move buffer left
 
--- Nvim-Tree hotkeys --
-vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true, silent = true}) --| Toggle NvimTree
+-- Neo-Tree hotkeys --
+vim.api.nvim_set_keymap('n', '<C-n>', ':Neotree toggle<CR>', {noremap = true, silent = true}) --| Toggle Neo-Tree
 
 -- Comment Hotkey -- 
 vim.api.nvim_set_keymap('n', '<c-_>', ':CommentToggle<CR>', {noremap = true, silent = true}) --| Comment in Normal

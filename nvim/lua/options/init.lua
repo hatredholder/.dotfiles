@@ -38,7 +38,6 @@ vim.o.mouse = "a"
 vim.o.softtabstop = 2
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
-vim.o.autoindent = true
 vim.o.expandtab = true
 vim.o.ch = 0 -- Hide command line
 vim.o.clipboard = "unnamedplus" -- System level clipboard
@@ -47,10 +46,12 @@ vim.o.pumblend = 25 -- Pseudo-transparency for popup windows
 vim.bo.tabstop = 2
 vim.bo.softtabstop = 2
 vim.bo.shiftwidth = 2
-vim.bo.autoindent = true
+vim.bo.autoindent = false
 vim.bo.expandtab = true
 
 vim.opt.termguicolors = true -- Enable all terminal colors
+
+vim.opt.fillchars:append { eob = " " } -- Disable ~ symbol
 
 vim.wo.number = true -- Enable line numbers
 
@@ -67,3 +68,5 @@ au('TextYankPost', {
   end,
 })
 
+vim.cmd('map <S-k> <Nop>')
+vim.cmd('set noswapfile')

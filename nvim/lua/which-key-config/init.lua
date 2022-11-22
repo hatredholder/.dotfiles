@@ -33,11 +33,6 @@ local mappings = {
     g = {toggle_lazygit, "Lazygit Terminal"}
   },
 
-  m = {
-    name = "Minimap",
-    m = {function()require('codewindow').toggle_minimap() end, "Toggle Minimap"},
-  },
-
   l = {
     name = "LSP",
     i = {"<cmd>LspInfo<cr>", "Connected Language Servers"},
@@ -90,12 +85,6 @@ local mappings = {
     S = { ":PackerStatus<cr>", "Packer Status" },
     u = { ":PackerUpdate<cr>", "Update Plugins" }
   },
-
-  h = {
-    name = "Diffview",
-    h = { "<cmd>DiffviewOpen<CR>", "Open Diffview"},
-    c = { "<cmd>DiffviewClose<CR>", "Close Diffview"},
-  }
 }
 
 local opts = {prefix = "<leader>"}

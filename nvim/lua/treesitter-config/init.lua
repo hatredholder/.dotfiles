@@ -1,7 +1,7 @@
 local import_parsers, parsers = pcall(require, 'nvim-treesitter.parsers')
 if import_parsers then
 	local parsername = parsers.filetype_to_parsername
-	parsername.htmldjango = 'html' 
+	parsername.htmldjango = 'html'
 end
 
 
@@ -17,6 +17,10 @@ autotag.setup({
 })
 
 require'nvim-treesitter.configs'.setup {
+  indent = {
+    enable = true,
+    disable = {"python"}
+  },
   autotag = {
     enable = true,
   },
