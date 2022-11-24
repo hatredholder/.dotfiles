@@ -109,7 +109,7 @@ _G.packer_plugins = {
     url = "https://github.com/glepnir/dashboard-nvim"
   },
   ["drop.nvim"] = {
-    config = { "\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\bmax\3\25\16screensaver\1\ntheme\vleaves\nsetup\tdrop\frequire\0" },
+    config = { "\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\16screensaver\1\ntheme\vleaves\bmax\3\25\nsetup\tdrop\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -128,7 +128,7 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["impatient.nvim"] = {
-    config = { "require('impatient-config')" },
+    config = { "require('impatient')" },
     loaded = true,
     path = "/home/hatredholder/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
@@ -235,7 +235,7 @@ _G.packer_plugins = {
   },
   ["nvim-comment"] = {
     commands = { "CommentToggle" },
-    config = { "require('comment-config')" },
+    config = { "require('nvim_comment').setup({comment_empty=false})" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -361,22 +361,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: impatient.nvim
+time([[Config for impatient.nvim]], true)
+require('impatient')
+time([[Config for impatient.nvim]], false)
 -- Config for: nvim-notify
 time([[Config for nvim-notify]], true)
 require('notify-config')
 time([[Config for nvim-notify]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\nf\0\0\3\0\4\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0 scrollbar.handlers.gitsigns\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
 -- Config for: nvim-scrollbar
 time([[Config for nvim-scrollbar]], true)
 require('scrollbar-config')
 time([[Config for nvim-scrollbar]], false)
--- Config for: impatient.nvim
-time([[Config for impatient.nvim]], true)
-require('impatient-config')
-time([[Config for impatient.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require('lsp')
+time([[Config for nvim-cmp]], false)
 -- Config for: leap.nvim
 time([[Config for leap.nvim]], true)
 require('leap').add_default_mappings()
@@ -389,46 +389,46 @@ time([[Config for null-ls.nvim]], false)
 time([[Config for lspsaga.nvim]], true)
 require('lspsaga-config')
 time([[Config for lspsaga.nvim]], false)
--- Config for: presence.nvim
-time([[Config for presence.nvim]], true)
-require('presence-config')
-time([[Config for presence.nvim]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 require'colorizer'.setup()
 time([[Config for nvim-colorizer.lua]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-require('dap-config')
-time([[Config for nvim-dap]], false)
--- Config for: smart-splits.nvim
-time([[Config for smart-splits.nvim]], true)
-require('smartsplits-config')
-time([[Config for smart-splits.nvim]], false)
 -- Config for: dashboard-nvim
 time([[Config for dashboard-nvim]], true)
 require('dashboard-config')
 time([[Config for dashboard-nvim]], false)
--- Config for: nvim-web-devicons
-time([[Config for nvim-web-devicons]], true)
-require('nvim-web-devicons-config')
-time([[Config for nvim-web-devicons]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require('lsp')
-time([[Config for nvim-cmp]], false)
--- Config for: neovim-session-manager
-time([[Config for neovim-session-manager]], true)
-require('session-manager-config')
-time([[Config for neovim-session-manager]], false)
+-- Config for: presence.nvim
+time([[Config for presence.nvim]], true)
+require('presence-config')
+time([[Config for presence.nvim]], false)
 -- Config for: mason.nvim
 time([[Config for mason.nvim]], true)
 try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17mason-config\frequire\0", "config", "mason.nvim")
 time([[Config for mason.nvim]], false)
+-- Config for: smart-splits.nvim
+time([[Config for smart-splits.nvim]], true)
+require('smartsplits-config')
+time([[Config for smart-splits.nvim]], false)
+-- Config for: nvim-web-devicons
+time([[Config for nvim-web-devicons]], true)
+require('nvim-web-devicons-config')
+time([[Config for nvim-web-devicons]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\nf\0\0\3\0\4\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0 scrollbar.handlers.gitsigns\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 require('toggleterm-config')
 time([[Config for toggleterm.nvim]], false)
+-- Config for: neovim-session-manager
+time([[Config for neovim-session-manager]], true)
+require('session-manager-config')
+time([[Config for neovim-session-manager]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require('dap-config')
+time([[Config for nvim-dap]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-autopairs ]]
@@ -453,7 +453,7 @@ vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-python-pep8
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'vim-bbye', 'which-key.nvim', 'nvim-treesitter', 'bufferline.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'bufferline.nvim', 'nvim-treesitter', 'vim-bbye', 'which-key.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim', 'lualine.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'drop.nvim', 'noice.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)

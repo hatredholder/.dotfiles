@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
   -- Impatient - faster  Neovim startup 祥time
   use {
     'lewis6991/impatient.nvim',
-    config="require('impatient-config')",
+    config="require('impatient')",
   }
 
   use {'sainnhe/everforest'} --  Everforest colorscheme
@@ -174,7 +174,7 @@ return require('packer').startup(function(use)
   use {
     'terrortylor/nvim-comment',
     cmd = "CommentToggle",
-    config = "require('comment-config')",
+    config = "require('nvim_comment').setup({comment_empty=false})",
   }
 
   -- Session-manager - manage sessions like  folders
