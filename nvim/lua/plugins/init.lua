@@ -48,6 +48,14 @@ return require('packer').startup(function(use)
             'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel"
           },
         },
+          sections = {
+            lualine_a = {'mode'},
+            lualine_b = {'branch', 'diff', 'diagnostics'},
+            lualine_c = {},
+            lualine_x = {'filetype'},
+            lualine_y = {'progress'},
+            lualine_z = {'location'}
+          },
       })
     end,
     event = "BufRead",
@@ -251,8 +259,33 @@ return require('packer').startup(function(use)
     config = "require('leap').add_default_mappings()",
   }
 
+  -- Python-pep8-indent - indent fix for  Python
   use {
     'Vimjas/vim-python-pep8-indent',
     ft = "python",
-  } -- indent fix for  Python
+  }
+
+  -- Cellular-automaton -  useless but  fancy animations for﬘ buffer text
+  use {
+    'Eandrju/cellular-automaton.nvim',
+    after = "nvim-treesitter",
+  }
+
+  -- Image -  image viewer as  ASCII  art
+  use {
+    'samodostal/image.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'm00qek/baleia.nvim',
+    },
+    config = function()
+      require('image').setup({
+        render = {
+          foreground_color = true,
+          background_color = true,
+        },
+      })
+    end,
+  }
+
 end)

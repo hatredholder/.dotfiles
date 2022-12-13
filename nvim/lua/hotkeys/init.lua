@@ -32,25 +32,28 @@ vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>w!<cr>', {noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>q!<cr>', {noremap = true, silent = true})
 --| Force quit
 
-vim.api.nvim_set_keymap('n', '<C-S-h>',
+vim.api.nvim_set_keymap('n', '<Leader>o', 'o<Esc>0"_D', {noremap = true, silent = true}) -- | Newline in normal mode on next line
+vim.api.nvim_set_keymap('n', '<Leader>O', 'O<Esc>0"_D', {noremap = true, silent = true}) -- | Newline in normal mode on current line
+
+vim.api.nvim_set_keymap('n', '<C-h>',
 '<cmd> lua require("smart-splits").move_cursor_left()<CR>', {noremap = true, silent = true}) ---| Window Left
-vim.api.nvim_set_keymap('n', '<C-S-l>',
+vim.api.nvim_set_keymap('n', '<C-l>',
 '<cmd> lua require("smart-splits").move_cursor_right()<CR>', {noremap = true, silent = true}) --| Window Right
-vim.api.nvim_set_keymap('n', '<C-S-k>',
+vim.api.nvim_set_keymap('n', '<C-k>',
 '<cmd> lua require("smart-splits").move_cursor_up()<CR>', {noremap = true, silent = true}) -----| Window Up
-vim.api.nvim_set_keymap('n', '<C-S-j>',
+vim.api.nvim_set_keymap('n', '<C-j>',
 '<cmd> lua require("smart-splits").move_cursor_down()<CR>', {noremap = true, silent = true}) ---| Window Down
 
 -- Bufferline hotkeys --
-vim.api.nvim_set_keymap('n', '<C-l>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true}) --| Go to next buffer
-vim.api.nvim_set_keymap('n', '<C-h>', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true}) --| Go to previous buffer
+vim.api.nvim_set_keymap('n', '<C-m>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true}) --| Go to next buffer
+vim.api.nvim_set_keymap('n', '<C-n>', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true}) --| Go to previous buffer
 vim.api.nvim_set_keymap('n', '<C-w>', ':Bdelete!<CR>', {noremap = true, silent = true}) --------------| Close buffer
 
 vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer rigtht
 vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) ---| Move buffer left
 
 -- Neo-Tree hotkeys --
-vim.api.nvim_set_keymap('n', '<C-n>', ':Neotree toggle<CR>', {noremap = true, silent = true}) --| Toggle Neo-Tree
+vim.api.nvim_set_keymap('n', '<Leader>n', ':Neotree toggle<CR>', {noremap = true, silent = true}) --| Toggle Neo-Tree
 
 -- Comment Hotkey -- 
 vim.api.nvim_set_keymap('n', '<c-_>', ':CommentToggle<CR>', {noremap = true, silent = true}) --| Comment in Normal

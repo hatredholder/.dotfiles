@@ -1,3 +1,6 @@
+vim.cmd([[
+highlight! TSAttribute guifg=#E69875
+]])
 local import_parsers, parsers = pcall(require, 'nvim-treesitter.parsers')
 if import_parsers then
 	local parsername = parsers.filetype_to_parsername

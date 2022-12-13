@@ -2,7 +2,7 @@ require('scrollbar').setup({
   handlers = {
         cursor = false,
         diagnostic = true,
-        gitsigns = false, -- Requires gitsigns
+        gitsigns = true, -- Requires gitsigns
         handle = true,
         search = false, -- Requires hlslens
     },

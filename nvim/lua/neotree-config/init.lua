@@ -20,7 +20,7 @@ require("neo-tree").setup({
           content_layout = "center",
           tab_labels = {
             filesystem = " File",
-            buffers = "﬘ Bufs",
+            buffers = "פּ Bufs",
             git_status = " Git",
           },
         },
@@ -88,6 +88,9 @@ require("neo-tree").setup({
         window = {
           position = "left",
           width = 30,
+          mappings = {
+            ["<space>"] = "none",
+          },
           mapping_options = {
             noremap = true,
             nowait = true,

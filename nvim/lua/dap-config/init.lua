@@ -5,15 +5,32 @@ dap.adapters.python = {
   args = { '-m', 'debugpy.adapter' };
 }
 
+-- Pastebin-clone dap config
 dap.configurations.python = dap.configurations.python or {}
     table.insert(dap.configurations.python, {
+    name = 'Flask - Pybin',
     type = 'python',
     request = 'launch',
-    name = 'Django',
-    python = "/home/hatredholder/Programming/Python/Django/social_network/bin/python",
-    program = vim.fn.getcwd() .. '/manage.py',  -- NOTE: Adapt path to manage.py as needed
-    args = {'runserver', '--noreload'},
+    module = 'flask',
+    python = "/home/hatredholder/Programming/Python/Flask/pastebin-clone/bin/python",
+    env = {
+      FLASK_APP = "app.py",
+    },
+    jinja = true,
+    args = {'run', '--no-debugger'},
   })
+
+-- -- Social Network dap config
+-- dap.configurations.python = dap.configurations.python or {}
+--     table.insert(dap.configurations.python, {
+--     name = 'Django - Social Network',
+--     type = 'python',
+--     request = 'launch',
+--     python = "/home/hatredholder/Programming/Python/Django/social_network/bin/python",
+--     program = vim.fn.getcwd() .. '/manage.py',  -- NOTE: Adapt path to manage.py as needed
+--     args = {'runserver', '--noreload'},
+--   })
+
 require("nvim-dap-virtual-text").setup {
     commented = true,
 }

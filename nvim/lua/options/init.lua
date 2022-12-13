@@ -50,7 +50,7 @@ vim.bo.autoindent = false
 vim.bo.expandtab = true
 
 vim.opt.termguicolors = true -- Enable all terminal colors
-
+vim.opt.undofile = true -- Enable unlimited undos between shutdowns
 vim.opt.fillchars:append { eob = " " } -- Disable ~ symbol
 
 vim.wo.number = true -- Enable line numbers
