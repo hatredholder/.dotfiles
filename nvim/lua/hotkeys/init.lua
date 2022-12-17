@@ -16,10 +16,10 @@ vim.g.mapleader = ' '
 
 -- Vanilla Vim hotkeys --
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true, silent = true}) --|
-vim.api.nvim_set_keymap('n', 'D', '"_D', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', 'D', '"_D', {noremap = true, silent = true}) --|
 vim.api.nvim_set_keymap('n', 'c', '"_c', {noremap = true, silent = true}) --| Delete without copying in Normal
 vim.api.nvim_set_keymap('n', 'C', '"_C', {noremap = true, silent = true}) --|
-vim.api.nvim_set_keymap('n', 'x', '"_x', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', 'x', '"_x', {noremap = true, silent = true}) --|
 
 vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true, silent = true}) --|
 vim.api.nvim_set_keymap('v', 'D', '"_D', {noremap = true, silent = true}) --| 
@@ -43,6 +43,18 @@ vim.api.nvim_set_keymap('n', '<C-k>',
 '<cmd> lua require("smart-splits").move_cursor_up()<CR>', {noremap = true, silent = true}) -----| Window Up
 vim.api.nvim_set_keymap('n', '<C-j>',
 '<cmd> lua require("smart-splits").move_cursor_down()<CR>', {noremap = true, silent = true}) ---| Window Down
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Move selected code in virtual down
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Move selected code in virtual up
+
+vim.keymap.set("n", "J", "mzJ`z") -- Append to current line with space without moving cursor
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Jump half page down without moving cursor
+vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Jump half page up without moving cursor
+
+vim.keymap.set("n", "n", "nzzzv") -- |
+--                                -- | Search terms in middle cursor
+vim.keymap.set("n", "N", "Nzzzv") -- |
 
 -- Bufferline hotkeys --
 vim.api.nvim_set_keymap('n', '<C-m>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true}) --| Go to next buffer
