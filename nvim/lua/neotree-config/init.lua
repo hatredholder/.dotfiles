@@ -90,6 +90,7 @@ require("neo-tree").setup({
           width = 30,
           mappings = {
             ["<space>"] = "none",
+            ["/"] = "none",
           },
           mapping_options = {
             noremap = true,
