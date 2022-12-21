@@ -1,3 +1,3 @@
 # .dotfiles
 
-Personal dotfiles collection - Neovim, TMUX, BSPWM, Picom,etc.
+Personal dotfiles collection - Alacritty, Neovim, TMUX, BSPWM, Picom.
