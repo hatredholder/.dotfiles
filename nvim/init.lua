@@ -22,4 +22,3 @@ vim.cmd('colorscheme everforest')
 
 -- Set crosshair cursor
 vim.cmd(':set cursorline! cursorcolumn!')
-

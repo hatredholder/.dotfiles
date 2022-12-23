@@ -14,7 +14,7 @@ _G._packer.inside_compile = true
 
 local time
 local profile_info
-local should_profile = false
+local should_profile = true
 if should_profile then
   local hrtime = vim.loop.hrtime
   profile_info = {}
@@ -123,7 +123,7 @@ _G.packer_plugins = {
     url = "https://github.com/glepnir/dashboard-nvim"
   },
   ["drop.nvim"] = {
-    config = { "\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\ntheme\vleaves\16screensaver\1\bmax\3\25\nsetup\tdrop\frequire\0" },
+    config = { "\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\16screensaver\1\ntheme\vleaves\bmax\3\25\nsetup\tdrop\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -142,7 +142,7 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["image.nvim"] = {
-    config = { "\27LJ\2\np\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\vrender\1\0\0\1\0\2\21background_color\2\21foreground_color\2\nsetup\nimage\frequire\0" },
+    config = { "\27LJ\2\np\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\vrender\1\0\0\1\0\2\21foreground_color\2\21background_color\2\nsetup\nimage\frequire\0" },
     loaded = true,
     path = "/home/hatredholder/.local/share/nvim/site/pack/packer/start/image.nvim",
     url = "https://github.com/samodostal/image.nvim"
@@ -196,6 +196,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/hatredholder/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["mini.animate"] = {
+    config = { "\27LJ\2\n[\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\vscroll\1\0\0\1\0\1\venable\1\nsetup\17mini.animate\frequire\0" },
+    loaded = true,
+    path = "/home/hatredholder/.local/share/nvim/site/pack/packer/start/mini.animate",
+    url = "https://github.com/echasnovski/mini.animate"
   },
   ["neo-tree.nvim"] = {
     commands = { "Neotree" },
@@ -341,6 +347,11 @@ _G.packer_plugins = {
     path = "/home/hatredholder/.local/share/nvim/site/pack/packer/start/smart-splits.nvim",
     url = "https://github.com/mrjones2014/smart-splits.nvim"
   },
+  ["telescope-undo.nvim"] = {
+    loaded = true,
+    path = "/home/hatredholder/.local/share/nvim/site/pack/packer/start/telescope-undo.nvim",
+    url = "https://github.com/debugloop/telescope-undo.nvim"
+  },
   ["telescope.nvim"] = {
     commands = { "Telescope" },
     config = { "require('telescope-config')" },
@@ -349,6 +360,12 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/hatredholder/.local/share/nvim/site/pack/packer/opt/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["todo-comments.nvim"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18todo-comments\frequire\0" },
+    loaded = true,
+    path = "/home/hatredholder/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
+    url = "https://github.com/folke/todo-comments.nvim"
   },
   ["toggleterm.nvim"] = {
     config = { "require('toggleterm-config')" },
@@ -381,6 +398,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: image.nvim
+time([[Config for image.nvim]], true)
+try_loadstring("\27LJ\2\np\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\vrender\1\0\0\1\0\2\21foreground_color\2\21background_color\2\nsetup\nimage\frequire\0", "config", "image.nvim")
+time([[Config for image.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require('lsp')
+time([[Config for nvim-cmp]], false)
 -- Config for: impatient.nvim
 time([[Config for impatient.nvim]], true)
 require('impatient')
@@ -389,66 +414,66 @@ time([[Config for impatient.nvim]], false)
 time([[Config for nvim-notify]], true)
 require('notify-config')
 time([[Config for nvim-notify]], false)
--- Config for: nvim-scrollbar
-time([[Config for nvim-scrollbar]], true)
-require('scrollbar-config')
-time([[Config for nvim-scrollbar]], false)
 -- Config for: leap.nvim
 time([[Config for leap.nvim]], true)
 require('leap').add_default_mappings()
 time([[Config for leap.nvim]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-require('lspsaga-config')
-time([[Config for lspsaga.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require('toggleterm-config')
-time([[Config for toggleterm.nvim]], false)
--- Config for: dashboard-nvim
-time([[Config for dashboard-nvim]], true)
-require('dashboard-config')
-time([[Config for dashboard-nvim]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-require'colorizer'.setup()
-time([[Config for nvim-colorizer.lua]], false)
--- Config for: presence.nvim
-time([[Config for presence.nvim]], true)
-require('presence-config')
-time([[Config for presence.nvim]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-require('dap-config')
-time([[Config for nvim-dap]], false)
--- Config for: nvim-web-devicons
-time([[Config for nvim-web-devicons]], true)
-require('nvim-web-devicons-config')
-time([[Config for nvim-web-devicons]], false)
--- Config for: smart-splits.nvim
-time([[Config for smart-splits.nvim]], true)
-require('smartsplits-config')
-time([[Config for smart-splits.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\nf\0\0\3\0\4\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0 scrollbar.handlers.gitsigns\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-scrollbar
+time([[Config for nvim-scrollbar]], true)
+require('scrollbar-config')
+time([[Config for nvim-scrollbar]], false)
 -- Config for: null-ls.nvim
 time([[Config for null-ls.nvim]], true)
 require('null-ls-config')
 time([[Config for null-ls.nvim]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+require('lspsaga-config')
+time([[Config for lspsaga.nvim]], false)
+-- Config for: smart-splits.nvim
+time([[Config for smart-splits.nvim]], true)
+require('smartsplits-config')
+time([[Config for smart-splits.nvim]], false)
+-- Config for: dashboard-nvim
+time([[Config for dashboard-nvim]], true)
+require('dashboard-config')
+time([[Config for dashboard-nvim]], false)
+-- Config for: nvim-web-devicons
+time([[Config for nvim-web-devicons]], true)
+require('nvim-web-devicons-config')
+time([[Config for nvim-web-devicons]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+require'colorizer'.setup()
+time([[Config for nvim-colorizer.lua]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require('dap-config')
+time([[Config for nvim-dap]], false)
 -- Config for: mason.nvim
 time([[Config for mason.nvim]], true)
 try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17mason-config\frequire\0", "config", "mason.nvim")
 time([[Config for mason.nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require('lsp')
-time([[Config for nvim-cmp]], false)
--- Config for: image.nvim
-time([[Config for image.nvim]], true)
-try_loadstring("\27LJ\2\np\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\vrender\1\0\0\1\0\2\21background_color\2\21foreground_color\2\nsetup\nimage\frequire\0", "config", "image.nvim")
-time([[Config for image.nvim]], false)
+-- Config for: todo-comments.nvim
+time([[Config for todo-comments.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
+time([[Config for todo-comments.nvim]], false)
+-- Config for: presence.nvim
+time([[Config for presence.nvim]], true)
+require('presence-config')
+time([[Config for presence.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\nf\0\0\3\0\4\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0 scrollbar.handlers.gitsigns\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: mini.animate
+time([[Config for mini.animate]], true)
+try_loadstring("\27LJ\2\n[\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\vscroll\1\0\0\1\0\1\venable\1\nsetup\17mini.animate\frequire\0", "config", "mini.animate")
+time([[Config for mini.animate]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require('toggleterm-config')
+time([[Config for toggleterm.nvim]], false)
 -- Config for: neovim-session-manager
 time([[Config for neovim-session-manager]], true)
 require('session-manager-config')
@@ -464,19 +489,19 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'Neotree', function(cmdargs)
-          require('packer.load')({'neo-tree.nvim'}, { cmd = 'Neotree', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'neo-tree.nvim'}, { cmd = 'Neotree' }, _G.packer_plugins)
-          return vim.fn.getcompletion('Neotree ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'CommentToggle', function(cmdargs)
           require('packer.load')({'nvim-comment'}, { cmd = 'CommentToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'nvim-comment'}, { cmd = 'CommentToggle' }, _G.packer_plugins)
           return vim.fn.getcompletion('CommentToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Neotree', function(cmdargs)
+          require('packer.load')({'neo-tree.nvim'}, { cmd = 'Neotree', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'neo-tree.nvim'}, { cmd = 'Neotree' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Neotree ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'Telescope', function(cmdargs)
           require('packer.load')({'telescope.nvim'}, { cmd = 'Telescope', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -495,9 +520,9 @@ vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-python-pep8
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'nvim-treesitter', 'vim-bbye', 'which-key.nvim', 'bufferline.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'vim-bbye', 'which-key.nvim', 'bufferline.nvim', 'nvim-treesitter'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'lualine.nvim', 'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'noice.nvim', 'drop.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim', 'lualine.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

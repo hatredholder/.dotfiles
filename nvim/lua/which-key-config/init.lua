@@ -16,6 +16,8 @@ local mappings = {
 
   f = {"<cmd>Telescope live_grep<CR>", "Live Grep (Global Search)"},
   r = {"<cmd>Telescope find_files<CR>", "Find Files"},
+  u = {"<cmd>Telescope undo<cr>", "Undo History"},
+  s = {"<cmd>TodoTelescope<cr>", "See Todo's"},
 
   d = {
     name = "Dashboard",

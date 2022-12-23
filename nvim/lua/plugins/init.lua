@@ -14,7 +14,7 @@
 
 return require('packer').startup(function(use)
 
-  use {'wbthomason/packer.nvim'} -- Packer
+  use {'wbthomason/packer.nvim'} -- Packer - needs no introduction ¯\_(ツ)_/¯
 
   -- Impatient - faster  Neovim startup 祥time
   use {
@@ -27,9 +27,9 @@ return require('packer').startup(function(use)
   -- Treesitter - basic syntax ﯧ highlighting
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ":TSUpdate",
+    config = "require('treesitter-config')",
     event = "BufWinEnter",
-    config = "require('treesitter-config')"
+    run = ":TSUpdate",
   }
 
   -- Treesitter-autotag - auto  tags for  HTML 
@@ -47,7 +47,8 @@ return require('packer').startup(function(use)
 
   -- Web-devicons -  icons for some plugins
   use {
-    'kyazdani42/nvim-web-devicons', config = "require('nvim-web-devicons-config')",
+    'kyazdani42/nvim-web-devicons',
+    config = "require('nvim-web-devicons-config')",
   }
 
   -- Bbye - better buffer  close command
@@ -59,17 +60,17 @@ return require('packer').startup(function(use)
   -- Bufferline - a  snazzy buffer line with tabpage integration
   use {
     'akinsho/bufferline.nvim',
-    tag = "v2.*",
-    event = "BufWinEnter",
     config = "require('bufferline-config')",
+    event = "BufWinEnter",
+    -- tag = "v2.*",
   }
 
   -- Neo-tree - file explorer 侮tree for  Neovim
   use {
     'nvim-neo-tree/neo-tree.nvim',
+    config = "require('neotree-config')",
     cmd = {'Neotree'},
     branch = "v2.x",
-    config = "require('neotree-config')",
     requires = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
@@ -80,24 +81,30 @@ return require('packer').startup(function(use)
   -- Autopairs - a powerful  autopair plugin for  Neovim
   use {
     "windwp/nvim-autopairs",
-    after = "nvim-cmp",
     config = "require('autopairs-config')",
+    after = "nvim-cmp",
   }
 
   -- Which-key - plugin that  displays a popup with available  key bindings
   use {
     "folke/which-key.nvim",
-    event = "BufWinEnter",
     config = "require('which-key-config')",
+    event = "BufWinEnter",
   }
 
   -- Telescope -  highly extendable fuzzy finder over  lists
   use {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
-    cmd = "Telescope",
-    requires = {'nvim-lua/plenary.nvim'},
     config = "require('telescope-config')",
+    cmd = "Telescope",
+    tag = '0.1.0',
+    requires = {'nvim-lua/plenary.nvim'},
+  }
+
+  -- Telescope-undo -  Telescope extension to view  and search  your undo tree 
+  use {
+    'debugloop/telescope-undo.nvim',
+    requires = {'nvim-telescope/telescope.nvim'},
   }
 
   use {"williamboman/mason-lspconfig.nvim"} --  Mason LSPConfig (required for Mason)
@@ -152,8 +159,8 @@ return require('packer').startup(function(use)
   -- Indent-blankline - adds  indentation guides to all lines
   use {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
     config = "require('blankline-config')",
+    event = "BufRead",
   }
 
   -- Toggleterm - persist and toggle multiple  terminals
@@ -165,8 +172,8 @@ return require('packer').startup(function(use)
   -- Comment - toggle  comments in any language
   use {
     'terrortylor/nvim-comment',
-    cmd = "CommentToggle",
     config = "require('nvim_comment').setup({comment_empty=false})",
+    cmd = "CommentToggle",
   }
 
   -- Session-manager - manage sessions like  folders
@@ -184,8 +191,8 @@ return require('packer').startup(function(use)
   -- Noice - completely replaces the  UI for messages,  cmdline and the  popupmenu
   use({
     "folke/noice.nvim",
-    event = "VimEnter",
     config = "require('noice-config')",
+    event = "VimEnter",
     requires = {
       "MunifTanjim/nui.nvim",
     },
@@ -221,7 +228,6 @@ return require('packer').startup(function(use)
   -- Drop -  pretty particles for Dashboard
   use({
     "folke/drop.nvim",
-    event = "VimEnter",
     config = function()
       require("drop").setup({
         theme = "leaves",
@@ -229,6 +235,7 @@ return require('packer').startup(function(use)
         screensaver = false,
       })
     end,
+    event = "VimEnter",
   })
 
   -- Scrollbar - extensible  Neovim scrollbar that shows  Git changes
@@ -258,15 +265,36 @@ return require('packer').startup(function(use)
   -- Image -  image viewer as  ASCII  art
   use {
     'samodostal/image.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'm00qek/baleia.nvim',
-    },
     config = function()
       require('image').setup({
         render = {
           foreground_color = true,
           background_color = true,
+        },
+      })
+    end,
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'm00qek/baleia.nvim',
+    },
+  }
+
+  -- Todo-comments - ﯦ highlight,  list and  search todo comments in your projects
+  use {
+    "folke/todo-comments.nvim",
+    config = function()
+      require("todo-comments").setup()
+    end,
+    requires = "nvim-lua/plenary.nvim",
+  }
+
+  -- Mini.animate - 𧻓animations for cursor, scroll, windows
+  use {
+    'echasnovski/mini.animate',
+    config = function()
+      require('mini.animate').setup({
+        scroll = {
+          enable = false,
         },
       })
     end,

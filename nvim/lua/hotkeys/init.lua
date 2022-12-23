@@ -36,13 +36,13 @@ vim.api.nvim_set_keymap('n', '<Leader>o', 'o<Esc>0"_D', {noremap = true, silent 
 vim.api.nvim_set_keymap('n', '<Leader>O', 'O<Esc>0"_D', {noremap = true, silent = true}) -- | Newline in normal mode on current line
 
 vim.api.nvim_set_keymap('n', '<C-h>',
-'<cmd> lua require("smart-splits").move_cursor_left()<CR>', {noremap = true, silent = true}) ---| Window Left
+'<cmd> lua require("smart-splits").move_cursor_left()<CR>', {noremap = true, silent = true})  --| Window Left
 vim.api.nvim_set_keymap('n', '<C-l>',
 '<cmd> lua require("smart-splits").move_cursor_right()<CR>', {noremap = true, silent = true}) --| Window Right
 vim.api.nvim_set_keymap('n', '<C-k>',
-'<cmd> lua require("smart-splits").move_cursor_up()<CR>', {noremap = true, silent = true}) -----| Window Up
+'<cmd> lua require("smart-splits").move_cursor_up()<CR>', {noremap = true, silent = true})    --| Window Up
 vim.api.nvim_set_keymap('n', '<C-j>',
-'<cmd> lua require("smart-splits").move_cursor_down()<CR>', {noremap = true, silent = true}) ---| Window Down
+'<cmd> lua require("smart-splits").move_cursor_down()<CR>', {noremap = true, silent = true})  --| Window Down
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Move selected code in virtual down
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Move selected code in virtual up
@@ -53,16 +53,16 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Jump half page down without moving cu
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Jump half page up without moving cursor
 
 vim.keymap.set("n", "n", "nzzzv") -- |
---                                -- | Search terms in middle cursor
+--                                -- | Search terms in the middle
 vim.keymap.set("n", "N", "Nzzzv") -- |
 
 -- Bufferline hotkeys --
-vim.api.nvim_set_keymap('n', '<C-m>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true}) --| Go to next buffer
-vim.api.nvim_set_keymap('n', '<C-n>', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true}) --| Go to previous buffer
-vim.api.nvim_set_keymap('n', '<C-w>', ':Bdelete!<CR>', {noremap = true, silent = true}) --------------| Close buffer
+vim.api.nvim_set_keymap('n', '<C-m>', '<cmd>BufferLineCycleNext<CR>', {noremap = true, silent = true}) -- | Go to next buffer
+vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true}) -- | Go to previous buffer
+vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>Bdelete!<CR>', {noremap = true, silent = true})            -- | Close buffer
 
 vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer rigtht
-vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) ---| Move buffer left
+vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) --| Move buffer left
 
 -- Neo-Tree hotkeys --
 vim.api.nvim_set_keymap('n', '<Leader>n', ':Neotree toggle<CR>', {noremap = true, silent = true}) --| Toggle Neo-Tree

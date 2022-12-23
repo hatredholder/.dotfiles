@@ -7,14 +7,52 @@ local has_words_before = function()
 end
 
 
-local lspkind = require('lspkind')
 local cmp = require'cmp'
+
+local kind_icons = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "",
+	Interface = "ﰮ",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "ﬦ",
+	TypeParameter = "",
+}
 
 cmp.setup({
   formatting = {
-    format = lspkind.cmp_format({with_text = true, maxwidth = 50})
+    -- format = lspkind.cmp_format({with_text = true, maxwidth = 50})
+    fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			vim_item.menu = ({
+				nvim_lsp = "",
+				luasnip = "",
+				buffer = "",
+				path = "",
+			})[entry.source.name]
+			return vim_item
+		end,
   },
-  window = {},
   -- Setup keybindings
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -40,11 +78,8 @@ cmp.setup({
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
     { name = 'buffer' },
+    { name = 'path' },
   })
 })
 
