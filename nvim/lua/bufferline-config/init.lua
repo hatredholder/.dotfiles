@@ -1,8 +1,12 @@
 vim.cmd([[
-highlight! BufferLineWarning guifg=#DBBC7F
-highlight! BufferLineHintDiagnosticVisible guifg=#DBBC7F
-highlight! BufferLineHintDiagnosticSelected guifg=#DBBC7F
-highlight! BufferLineHintSelected guifg=#DBBC7F  gui=italic,bold
+highlight! BufferLineWarning guifg=#859289 guibg=#21272c guisp=#dbbc7f
+
+highlight! BufferLineHintDiagnosticVisible guifg=#A7C07F
+highlight! BufferLineHintDiagnosticSelected guifg=#A7C07F gui=italic,bold
+highlight! BufferLineHintSelected guifg=#A7C07F  gui=italic,bold
+
+highlight! BufferLineInfoSelected guifg=#7fbbb3 gui=italic,bold
+highlight! BufferLineInfoDiagnosticSelected guifg=#7fbbb3 gui=italic,bold
 ]])
 require("bufferline").setup{
   options = {
@@ -11,10 +15,17 @@ require("bufferline").setup{
     },
     show_close_icon = false,
     diagnostics = "nvim_lsp",
-    diagnostics_indicator = function(count, level)
-      local icon = level:match("error") and " " or " "
-      return " " .. icon .. count
-    end,
+    diagnostics_indicator = function(count, level, diagnostics_dict)
+      local s = ""
+      for e, n in pairs(diagnostics_dict) do
+        local sym = e == "error" and ""
+          or e == "warning" and ""
+          or e == "info" and ""
+          or ""
+        s = s .. n .. sym
+      end
+      return s
+    end
 
   }
 }

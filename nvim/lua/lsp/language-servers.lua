@@ -24,20 +24,20 @@ require'lspconfig'.sumneko_lua.setup{
 -- Setup HTML language server
 require'lspconfig'.html.setup{
   capabilities = capabilities,
+  filetypes = {'html', 'htmldjango'},
 }
 
 -- Setup pylsp language server
--- require'lspconfig'.pylsp.setup{
---   capabilities = capabilities,
---   settings = {
---     pylsp = {
---       plugins = {
---         pyflakes = {enabled = false},
---         pylint = {enabled = false},
---         pycodestyle = {enabled = false},
---       }
---     }
---   }
--- }
+require'lspconfig'.pylsp.setup{
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pyflakes = {enabled = false},
+        pylint = {enabled = false},
+        pycodestyle = {enabled = false},
+      }
+    }
+  }
+}
 
-require'lspconfig'.jedi_language_server.setup{}

@@ -300,4 +300,14 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- Printer - a  Neovim  plugin to quickly 朗print code
+  use {
+    'rareitems/printer.nvim',
+    config = function()
+      require('printer').setup({
+        keymap = "gp" -- Plugin doesn't have any keymaps by default
+      })
+    end,
+  }
+
 end)
