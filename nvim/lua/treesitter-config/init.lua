@@ -13,10 +13,8 @@ if not import_tag then return end
 autotag.setup({
 	autotag = {
 		enable = true,
-	},
-	filetypes = {
-		'html', 'htmldjango',
-	},
+    filetypes = { 'html', 'htmldjango', },
+  }
 })
 
 require'nvim-treesitter.configs'.setup {
@@ -26,6 +24,7 @@ require'nvim-treesitter.configs'.setup {
   },
   autotag = {
     enable = true,
+    filetypes = {"html", "htmldjango"},
   },
   -- A list of parser names, or "all"
   ensure_installed = {"python"},

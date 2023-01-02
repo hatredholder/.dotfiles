@@ -74,7 +74,7 @@ end
 require('lualine').setup({
   options = {
     disabled_filetypes = {
-      'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel"
+      'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "undotree"
     },
   },
     sections = {

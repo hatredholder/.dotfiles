@@ -16,7 +16,7 @@ local mappings = {
 
   f = {"<cmd>Telescope live_grep<CR>", "Live Grep (Global Search)"},
   r = {"<cmd>Telescope find_files<CR>", "Find Files"},
-  u = {"<cmd>Telescope undo<cr>", "Undo History"},
+  u = {"<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>", "Undo History"},
   s = {"<cmd>TodoTelescope<cr>", "See Todo's"},
 
   d = {
@@ -24,7 +24,7 @@ local mappings = {
     r = {"<cmd>Telescope find_files<CR>", "Find Files"},
     f = {"<cmd>Telescope live_grep<CR>", "Live Grep"},
     l = {"<cmd>Telescope oldfiles<CR>", "Old Files"},
-    s = {"<cmd>SessionManager! load_last_session<CR>", "Load Session"},
+    s = {"<cmd>SessionManager load_session<CR>", "Load Session"},
     c = {"<cmd>edit ~/.config/nvim/init.lua<CR>", "Open Config"},
     q = {"<cmd>quitall<CR>", "Quit Neovim"},
   },

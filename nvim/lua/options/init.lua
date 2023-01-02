@@ -14,6 +14,14 @@
 
 vim.cmd("filetype plugin indent on")
 
+vim.cmd [[augroup filetype_settings]]
+vim.cmd [[au!]]
+-- Filetype loads
+vim.cmd [[au FileType lua setlocal shiftwidth=2]]
+vim.cmd [[au FileType html setlocal shiftwidth=4]]
+vim.cmd [[au FileType htmldjango setlocal filetype=html]]
+vim.cmd("augroup END")
+
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.hidden = true
 vim.o.whichwrap = 'b,s,<,>,[,],h,l'

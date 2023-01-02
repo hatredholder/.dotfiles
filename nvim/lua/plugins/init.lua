@@ -65,7 +65,7 @@ return require('packer').startup(function(use)
     -- tag = "v2.*",
   }
 
-  -- Neo-tree - file explorer 侮tree for  Neovim
+  -- Neo-tree - file explorer  tree for  Neovim
   use {
     'nvim-neo-tree/neo-tree.nvim',
     config = "require('neotree-config')",
@@ -96,15 +96,14 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim',
     config = "require('telescope-config')",
-    cmd = "Telescope",
+    -- cmd = "Telescope",
     tag = '0.1.0',
     requires = {'nvim-lua/plenary.nvim'},
   }
 
-  -- Telescope-undo -  Telescope extension to view  and search  your undo tree 
+  -- Undotree -  undo  history  visualizer 
   use {
-    'debugloop/telescope-undo.nvim',
-    requires = {'nvim-telescope/telescope.nvim'},
+    'mbbill/undotree',
   }
 
   use {"williamboman/mason-lspconfig.nvim"} --  Mason LSPConfig (required for Mason)
@@ -262,14 +261,17 @@ return require('packer').startup(function(use)
     after = "nvim-treesitter",
   }
 
-  -- Image -  image viewer as  ASCII  art
+  -- Chafa -  image  viewer in  Neovim through Chafa
   use {
-    'samodostal/image.nvim',
+    'princejoogie/chafa.nvim',
     config = function()
-      require('image').setup({
+      require("chafa").setup({
         render = {
-          foreground_color = true,
-          background_color = true,
+          min_padding = 5,
+          show_label = true,
+        },
+        events = {
+          update_on_nvim_resize = true,
         },
       })
     end,
@@ -283,7 +285,9 @@ return require('packer').startup(function(use)
   use {
     "folke/todo-comments.nvim",
     config = function()
-      require("todo-comments").setup()
+      require("todo-comments").setup({
+        sign_priority = 6,
+      })
     end,
     requires = "nvim-lua/plenary.nvim",
   }
@@ -300,14 +304,16 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Printer - a  Neovim  plugin to quickly 朗print code
+  -- Dressing -  plugin to improve the default  vim.ui  interfaces 
   use {
-    'rareitems/printer.nvim',
+    'stevearc/dressing.nvim',
     config = function()
-      require('printer').setup({
-        keymap = "gp" -- Plugin doesn't have any keymaps by default
+      require('dressing').setup({
+        select = {
+          -- Priority list of preferred vim.select implementations
+          backend = { "fzf_lua", "fzf", "builtin", "nui" },
+        },
       })
     end,
   }
-
 end)
