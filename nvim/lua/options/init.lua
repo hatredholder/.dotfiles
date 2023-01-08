@@ -19,6 +19,7 @@ vim.cmd [[au!]]
 -- Filetype loads
 vim.cmd [[au FileType lua setlocal shiftwidth=2]]
 vim.cmd [[au FileType html setlocal shiftwidth=4]]
+vim.cmd [[au FileType go setlocal shiftwidth=4]]
 vim.cmd [[au FileType htmldjango setlocal filetype=html]]
 vim.cmd("augroup END")
 
