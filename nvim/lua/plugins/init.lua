@@ -38,6 +38,12 @@ return require('packer').startup(function(use)
     after = "nvim-treesitter",
   }
 
+  -- Treesitter-context -  show  code  context 
+  use {
+    'nvim-treesitter/nvim-treesitter-context'
+  }
+
+
   -- Lualine - simple  statusline written in  Lua
   use {
     "nvim-lualine/lualine.nvim",
