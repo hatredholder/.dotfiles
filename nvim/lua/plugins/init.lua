@@ -316,4 +316,13 @@ return require('packer').startup(function(use)
       })
     end,
   }
+
+  -- Numb - :number command  peeking 
+  use {
+    'nacro90/numb.nvim',
+    config = function()
+      require('numb').setup()
+    end,
+  }
+
 end)

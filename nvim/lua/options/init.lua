@@ -64,10 +64,10 @@ vim.opt.fillchars:append { eob = " " } -- Disable ~ symbol
 
 vim.wo.number = true -- Enable line numbers
 
+-- Highlight yanked text
+
 local ag = vim.api.nvim_create_augroup
 local au = vim.api.nvim_create_autocmd
-
--- Highlight yanked text
 
 au('TextYankPost', {
   group = ag('yank_highlight', {}),
@@ -77,5 +77,8 @@ au('TextYankPost', {
   end,
 })
 
+-- Disable shift-k
 vim.cmd('map <S-k> <Nop>')
+
+-- Disable Swapfile
 vim.cmd('set noswapfile')

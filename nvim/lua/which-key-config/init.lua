@@ -52,7 +52,7 @@ local mappings = {
     f = {'<cmd>!black %<CR>', "Format Python File"},
   },
 
-  v = {
+  y = {
     name = "Debug",
     R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
     E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
@@ -87,11 +87,11 @@ local mappings = {
     S = { ":PackerStatus<cr>", "Packer Status" },
     u = { ":PackerUpdate<cr>", "Update Plugins" }
   },
-  y = {
-    name = "Cellular",
+  v = {
+    name = "Visuals",
     y = { "<cmd>CellularAutomaton make_it_rain<CR>", "MAKE IT RAIN!" },
     h = { "<cmd>CellularAutomaton game_of_life<CR>", "Game of Code" },
-  }
+  },
 }
 
 local opts = {prefix = "<leader>"}
