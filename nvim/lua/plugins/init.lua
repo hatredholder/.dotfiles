@@ -159,6 +159,7 @@ return require('packer').startup(function(use)
   use {
     'glepnir/dashboard-nvim',
     config = "require('dashboard-config')",
+    commit = 'e517188dab55493fb9034b4d4f1a508ccacfcd45',
   }
 
   -- Indent-blankline - adds  indentation guides to all lines
