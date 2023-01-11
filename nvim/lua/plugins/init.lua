@@ -322,6 +322,7 @@ return require('packer').startup(function(use)
         },
       })
     end,
+    event = "BufWinEnter",
   }
 
   -- Numb - :number command  peeking 
@@ -330,6 +331,12 @@ return require('packer').startup(function(use)
     config = function()
       require('numb').setup()
     end,
+  }
+
+  -- UFO -  VSCode-like  folding in  Neovim
+  use {
+    'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async'
   }
 
 end)

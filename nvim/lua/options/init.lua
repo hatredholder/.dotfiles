@@ -64,6 +64,17 @@ vim.opt.fillchars:append { eob = " " } -- Disable ~ symbol
 
 vim.wo.number = true -- Enable line numbers
 
+
+-- nvim-ufo settings
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldnestmax = 1
+vim.o.foldenable = true
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- vim.o.statuscolumn = "%=%l%s%C"
+vim.o.statuscolumn = '%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? " " : " ") : "  " }%*'
+
 -- Highlight yanked text
 
 local ag = vim.api.nvim_create_augroup
