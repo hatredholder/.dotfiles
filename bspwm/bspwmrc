@@ -1,0 +1,25 @@
+#!/usr/bin/sh
+
+sxhkd &
+
+bspc monitor -d 1 2 3 4 5
+
+bspc config border_width 0
+bspc config window_gap  20
+bspc config top_padding 12
+bspc config bottom_padding -10
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config focused_border_color "AFA992"
+bspc config normal_border_color  "323c41f"
+
+#setxkbmap -option grp:rctrl_toggle ru,us &
+xinput --set-prop "XiaoMi Mi Wireless Mouse" "libinput Accel Speed" -0.7 &
+dunst &
+picom -b --experimental-backends &
+nitrogen --restore &
+xsetroot -cursor_name left_ptr &
+
+~/.config/polybar/launch.sh
