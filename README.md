@@ -2,7 +2,7 @@
 
 ## Info
 
-Personal dotfiles collection - Alacritty, Neovim, TMUX, BSPWM, Picom.
+Personal dotfiles collection - **Alacritty**, **Neovim**, **TMUX**, **BSPWM**, **Picom**.
 
 ## Neovim config dependencies:
 
