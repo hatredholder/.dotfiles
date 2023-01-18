@@ -1,6 +1,6 @@
 # .dotfiles
 
-## Info
+## About
 
 Personal dotfiles collection - **Alacritty**, **Neovim**, **TMUX**, **BSPWM**, **Picom**.
 
