@@ -44,9 +44,6 @@ vim.api.nvim_set_keymap('n', '<C-k>',
 vim.api.nvim_set_keymap('n', '<C-j>',
 '<cmd> lua require("smart-splits").move_cursor_down()<CR>', {noremap = true, silent = true})  --| Window Down
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Move selected code in virtual down
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Move selected code in virtual up
-
 vim.keymap.set("n", "J", "mzJ`z") -- Append to current line with space without moving cursor
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Jump half page down without moving cursor
