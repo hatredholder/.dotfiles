@@ -4,7 +4,9 @@
 
 Personal dotfiles collection - **Alacritty**, **Neovim**, **TMUX**, **BSPWM**, **Picom**.
 
-## Neovim config dependencies:
+## Neovim
+
+### Config Dependencies:
 
 chafa - https://github.com/hpjansson/chafa
 
