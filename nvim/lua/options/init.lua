@@ -19,7 +19,6 @@ vim.cmd [[au!]]
 -- Filetype loads
 vim.cmd [[au FileType lua setlocal shiftwidth=2]]
 vim.cmd [[au FileType html setlocal shiftwidth=4]]
-vim.cmd [[au FileType go setlocal shiftwidth=4]]
 vim.cmd [[au FileType htmldjango setlocal filetype=html]]
 vim.cmd("augroup END")
 
@@ -72,8 +71,6 @@ vim.o.foldlevelstart = 99
 vim.o.foldnestmax = 1
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.o.statuscolumn = "%=%l%s%C"
-vim.o.statuscolumn = '%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? " " : " ") : "  " }%*'
 
 -- Highlight yanked text
 
