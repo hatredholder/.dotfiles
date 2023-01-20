@@ -324,6 +324,7 @@ alias reboot="sudo reboot -h now"
 
 alias lf=lf-ueberzug
 # Use lf to switch directories and bind it to ctrl-o
+
 lfcd () {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
