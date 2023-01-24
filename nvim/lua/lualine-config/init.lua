@@ -53,7 +53,7 @@ function diagnostics_message:init(options)
 	)
 end
 
-function diagnostics_message:update_status(is_focused)
+function diagnostics_message:update_status()
 	local r, _ = unpack(vim.api.nvim_win_get_cursor(0))
 	local diagnostics = vim.diagnostic.get(0, { lnum = r - 1 })
 	if #diagnostics > 0 then

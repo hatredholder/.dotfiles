@@ -67,3 +67,6 @@ vim.api.nvim_set_keymap('n', '<Leader>n', ':Neotree toggle<CR>', {noremap = true
 -- Comment Hotkey -- 
 vim.api.nvim_set_keymap('n', '<c-_>', ':CommentToggle<CR>', {noremap = true, silent = true}) --| Comment in Normal
 vim.api.nvim_set_keymap('v', '<c-_>', ':CommentToggle<CR>', {noremap = true, silent = true}) --| Comment in Visual
+
+-- Notify hotkeys --
+vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>', {noremap = true, silent = true})

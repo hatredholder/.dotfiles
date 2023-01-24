@@ -14,9 +14,9 @@
 
 vim.cmd("filetype plugin indent on")
 
+-- Filetype loads
 vim.cmd [[augroup filetype_settings]]
 vim.cmd [[au!]]
--- Filetype loads
 vim.cmd [[au FileType lua setlocal shiftwidth=2]]
 vim.cmd [[au FileType html setlocal shiftwidth=4]]
 vim.cmd [[au FileType htmldjango setlocal filetype=html]]
