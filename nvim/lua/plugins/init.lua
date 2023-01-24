@@ -297,6 +297,7 @@ return require('packer').startup(function(use)
       })
     end,
     requires = "nvim-lua/plenary.nvim",
+    after = "nvim-treesitter",
   }
 
   -- Mini.animate - 𧻓animations for cursor, scroll, windows
@@ -309,6 +310,7 @@ return require('packer').startup(function(use)
         },
       })
     end,
+    after = "nvim-treesitter",
   }
 
   -- Mini.move -  move blocks of text in any  direction 
@@ -359,6 +361,35 @@ return require('packer').startup(function(use)
   use {
     'kevinhwang91/nvim-ufo',
     requires = 'kevinhwang91/promise-async'
+  }
+
+  -- Illuminate -  plugin for automatically ﯧ highlighting other uses of the  word
+  use {
+    'RRethy/vim-illuminate',
+    config = function()
+      require('illuminate').configure({
+        delay = 200,
+        min_count_to_highlight = 2,
+      })
+    end,
+    after = "nvim-treesitter",
+  }
+
+  -- Mini.indentscope -  visualize and  operate on indent  scope
+  use {
+    'echasnovski/mini.indentscope',
+    config = function()
+      require('mini.indentscope').setup({
+        symbol = "│",
+        options = { try_as_border = true },
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+      pattern = {'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "undotree"},
+      callback = function()
+        vim.b.miniindentscope_disable = true
+      end,
+    })
+    end,
   }
 
 end)
