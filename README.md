@@ -8,7 +8,7 @@ Personal dotfiles collection - **Alacritty**, **Neovim**, **TMUX**, **BSPWM**, *
 
 ### Config Dependencies:
 
-chafa - https://github.com/hpjansson/chafa
+chafa (for image previews) - https://github.com/hpjansson/chafa
 
 ### For folding to work properly:
 
