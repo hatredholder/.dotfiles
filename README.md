@@ -10,6 +10,6 @@ Personal dotfiles collection - **Alacritty**, **Neovim**, **TMUX**, **BSPWM**, *
 
 chafa (for image previews) - https://github.com/hpjansson/chafa
 
-### For folding to work properly:
+### For **folding** to work properly in Neovim:
 
 Add the nvim executable (which is included in nvim directory **[.dotfiles/nvim/nvim]** ) to $PATH
