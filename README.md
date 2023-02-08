@@ -2,7 +2,7 @@
 
 ## About
 
-Personal dotfiles configurations collection for: **Alacritty**, **Neovim**, **TMUX**, **BSPWM**, **Picom** and more!
+Personal dotfiles configurations collection for: **Alacritty**, **BSPWM**, **Neovim**, **Picom**, **TMUX** and more!
 
 ## Neovim
 
