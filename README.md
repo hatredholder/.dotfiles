@@ -1,6 +1,6 @@
 # .dotfiles
 
-Your dotfiles are about how you personalize your own system. These are mine.
+Your **.dotfiles** are about how you personalize your own system. These are mine.
 
 ## About
 
