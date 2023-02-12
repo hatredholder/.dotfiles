@@ -1,15 +1,3 @@
-vim.cmd([[
-highlight! BufferLineWarning guifg=#DBBC7F
-highlight! NeoTreeGitConflict guifg=#7FBBB3 
-highlight! NeoTreeGitUntracked guifg=#DBBC7F
-highlight! NeoTreeGitTabInactive guibg=#191E22
-highlight! NeoTreeGitDotfile guibg=#888888
-highlight! NeoTreeGitUnstaged guifg=#7FBBB3
-highlight! NeoTreeNormal guibg=#2F383E
-highlight! NeoTreeEndOfBuffer guibg=#2F383E
-highlight! NeoTreeRootName guifg=#C6C0A9 gui=italic,bold
-]])
-
 require("neo-tree").setup({
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",

@@ -78,13 +78,5 @@ db.custom_center = {
 	}
 }
 
-local plugins_count = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
+local plugins_count = vim.fn.len(vim.fn.globpath("/home/hatredholder/.local/share/nvim/lazy", "*", 0, 1))
 db.custom_footer = {"", "[ Loaded " .. plugins_count .. " plugins successfully!   ]"}
-
--- Set dashboard colors
-vim.cmd('highlight! DashboardHeader guifg=#96A97A')
-vim.cmd('highlight! DashboardCenter guifg=#DBBC7F')
-vim.cmd('highlight! DashboardShortcut guifg=#DB7A7C')
-vim.cmd('highlight! DashboardFooter guifg=#96A97A')
-
-

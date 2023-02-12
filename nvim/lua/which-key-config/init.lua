@@ -38,12 +38,13 @@ local mappings = {
 
   l = {
     name = "LSP",
+    r = {'<cmd>LspRestart<CR>', "Restart LSP"},
     i = {"<cmd>LspInfo<cr>", "Connected Language Servers"},
 
     h = {'<cmd>lua vim.lsp.buf.hover()<CR>', "Hover"},
 
     d = {'<cmd>lua vim.lsp.buf.definition()<CR>', "Go to definition"},
-    r = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
+    g = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
 
     p = {'<cmd>Telescope diagnostics bufnr=0<CR>', "Get Diagnostics"},
     s = {'<cmd>Lspsaga show_line_diagnostics<CR>', "Show line diagnostics"},

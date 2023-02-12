@@ -10,6 +10,7 @@ highlight! BufferLineInfoDiagnosticSelected guifg=#7fbbb3 gui=italic,bold
 ]])
 require("bufferline").setup{
   options = {
+    always_show_bufferline = false,
     offsets = {
       { filetype = "neo-tree", text="File Explorer", padding = 1},
     },

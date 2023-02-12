@@ -12,227 +12,297 @@
 
 --]]
 
-return require('packer').startup(function(use)
-
-  use {'wbthomason/packer.nvim'} -- Packer - needs no introduction ¯\_(ツ)_/¯
+return require('lazy').setup({
 
   -- Impatient - faster  Neovim startup 祥time
-  use {
+  {
     'lewis6991/impatient.nvim',
-    config="require('impatient')",
-  }
+    config = function()
+      require('impatient')
+    end,
+  },
 
-  use {'sainnhe/everforest'} --  Everforest colorscheme
+  --  Everforest colorscheme
+  {
+    'sainnhe/everforest',
+  },
 
   -- Treesitter - basic syntax ﯧ highlighting
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    config = "require('treesitter-config')",
-    event = "BufWinEnter",
-    run = ":TSUpdate",
-  }
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        indent = {
+          enable = true,
+          disable = {"python"}
+        },
+        autotag = {
+          enable = true,
+          filetypes = {"html", "htmldjango"},
+        },
+        ensure_installed = {"python"},
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+      })
+    end,
+    event = { "BufReadPost", "BufNewFile" },
+    priority = 100,
+    build = ":TSUpdate",
+  },
 
   -- Treesitter-autotag - auto  tags for  HTML 
-  use {
+  {
     'windwp/nvim-ts-autotag',
-    after = "nvim-treesitter",
-  }
+  },
 
   -- Treesitter-context -  show  code  context 
-  use {
-    'nvim-treesitter/nvim-treesitter-context'
-  }
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+  },
 
 
   -- Lualine - simple  statusline written in  Lua
-  use {
+  {
     "nvim-lualine/lualine.nvim",
-    config = "require('lualine-config')",
-    event = "BufRead",
-  }
+    config = function()
+      require('lualine-config')
+    end,
+    event = "VeryLazy",
+  },
 
   -- Web-devicons -  icons for some plugins
-  use {
+  {
     'kyazdani42/nvim-web-devicons',
-    config = "require('nvim-web-devicons-config')",
-  }
+    config = function()
+      require('nvim-web-devicons-config')
+    end,
+    lazy = true,
+  },
 
   -- Bbye - better buffer  close command
-  use {
+  {
     "moll/vim-bbye",
-    event = "BufWinEnter",
-  }
+  },
 
   -- Bufferline - a  snazzy buffer line with tabpage integration
-  use {
+  {
     'akinsho/bufferline.nvim',
-    config = "require('bufferline-config')",
-    event = "BufWinEnter",
-    -- tag = "v2.*",
-  }
+    config = function()
+      require('bufferline-config')
+    end,
+    event = "VeryLazy",
+  },
 
   -- Neo-tree - file explorer  tree for  Neovim
-  use {
+  {
     'nvim-neo-tree/neo-tree.nvim',
-    config = "require('neotree-config')",
-    cmd = {'Neotree'},
+    config = function()
+      require('neotree-config')
+    end,
+    cmd = 'Neotree',
     branch = "v2.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-  }
+  },
+  {"nvim-lua/plenary.nvim"},
+
+  -- Nui - UI components for some of the plugins
+  {
+    "MunifTanjim/nui.nvim",
+    lazy = true,
+  },
 
   -- Autopairs - a powerful  autopair plugin for  Neovim
-  use {
+  {
     "windwp/nvim-autopairs",
-    config = "require('autopairs-config')",
-    after = "nvim-cmp",
-  }
+    config = function()
+      require('autopairs-config')
+    end,
+    event = "VeryLazy",
+  },
 
   -- Which-key - plugin that  displays a popup with available  key bindings
-  use {
+  {
     "folke/which-key.nvim",
-    config = "require('which-key-config')",
-    event = "BufWinEnter",
-  }
+    config = function()
+      require('which-key-config')
+    end,
+    event = "VeryLazy",
+  },
 
   -- Telescope -  highly extendable fuzzy finder over  lists
-  use {
+  {
     'nvim-telescope/telescope.nvim',
-    config = "require('telescope-config')",
-    -- cmd = "Telescope",
+    config = function()
+      require('telescope-config')
+    end,
+    cmd = "Telescope",
     tag = '0.1.0',
-    requires = {'nvim-lua/plenary.nvim'},
-  }
+  },
 
   -- Undotree -  undo  history  visualizer 
-  use {
+  {
     'mbbill/undotree',
-  }
+  },
 
-  use {"williamboman/mason-lspconfig.nvim"} --  Mason LSPConfig (required for Mason)
+  --  Mason LSPConfig (required for Mason)
+  {
+    "williamboman/mason-lspconfig.nvim",
+  },
 
   -- Mason - portable  package manager for  Neovim
-  use {
+  {
     "williamboman/mason.nvim",
     config = function()
       require("mason-config")
     end,
-  }
+  },
 
   -- Nvim-cmp - a completion  engine plugin written in  Lua
-  use {
+  {
     'hrsh7th/nvim-cmp',
-    config = "require('lsp')",
-  } ------------------------------|
-  use {'neovim/nvim-lspconfig'} --| 
-  use {'hrsh7th/cmp-nvim-lsp'} ---|
-  use {'hrsh7th/cmp-buffer'} -----|  Nvim-cmp required plugins
-  use {'hrsh7th/cmp-path'} -------| 
-  use {'hrsh7th/cmp-cmdline'} ----|
-  use {'onsails/lspkind.nvim'} ---|
+    config = function()
+      require('lsp')
+    end,
+    event = "InsertEnter",
+  }, ----------------------------|
+  {'neovim/nvim-lspconfig'}, ----| 
+  {'hrsh7th/cmp-nvim-lsp'}, -----|
+  {'hrsh7th/cmp-buffer'}, -------|  Nvim-cmp required plugins
+  {'hrsh7th/cmp-path'}, ---------| 
+  {'hrsh7th/cmp-cmdline'}, ------|
+  {'onsails/lspkind.nvim'}, -----|
 
   -- Lspsaga -  additional features for Nvim-cmp
-  use {
+  {
     'kkharji/lspsaga.nvim',
-    config = "require('lspsaga-config')",
-  }
+    config = function()
+      require('lspsaga-config')
+    end,
+  },
 
   -- Colorizer - a high-performance color ﯧ highlighter
-  use {
+  {
     'NvChad/nvim-colorizer.lua',
-    config = "require'colorizer'.setup()",
-  }
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
 
   -- Gitsigns - fast  Git decorations
-  use {
+  {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
       require("scrollbar.handlers.gitsigns").setup()
     end,
-  }
+    event = { "BufReadPre", "BufNewFile" },
+  },
 
   -- Dashboard - fancy  Neovim startscreen
-  use {
+  {
     'glepnir/dashboard-nvim',
-    config = "require('dashboard-config')",
+    config = function()
+      require('dashboard-config')
+    end,
     commit = 'e517188dab55493fb9034b4d4f1a508ccacfcd45',
-  }
+    event = "VimEnter",
+  },
 
   -- Indent-blankline - adds  indentation guides to all lines
-  use {
+  {
     "lukas-reineke/indent-blankline.nvim",
-    config = "require('blankline-config')",
-    event = "BufRead",
-  }
+    config = function()
+      require('blankline-config')
+    end,
+    event = { "BufReadPost", "BufNewFile" },
+  },
 
   -- Toggleterm - persist and toggle multiple  terminals
-  use {
+  {
     "akinsho/toggleterm.nvim",
-    config = "require('toggleterm-config')",
-  }
+    config = function()
+      require('toggleterm-config')
+    end,
+  },
 
   -- Comment - toggle  comments in any language
-  use {
+  {
     'terrortylor/nvim-comment',
-    config = "require('nvim_comment').setup({comment_empty=false})",
-    cmd = "CommentToggle",
-  }
+    config = function()
+      require('nvim_comment').setup({comment_empty=false})
+    end,
+  },
 
   -- Session-manager - manage sessions like  folders
-  use {
+  {
     'Shatur/neovim-session-manager',
-    config = "require('session-manager-config')",
-  }
+    config = function()
+      require('session-manager-config')
+    end,
+  },
 
   -- Smart-splits -  smart, ﱿ directional split resizing and  navigation
-  use{
+  {
     'mrjones2014/smart-splits.nvim',
-    config = "require('smartsplits-config')",
-  }
+    config = function()
+      require('smartsplits-config')
+    end,
+  },
 
   -- Noice - completely replaces the  UI for messages,  cmdline and the  popupmenu
-  use({
+  {
     "folke/noice.nvim",
-    config = "require('noice-config')",
-    event = "VimEnter",
-    requires = {
-      "MunifTanjim/nui.nvim",
-    },
-  })
+    config = function()
+      require('noice-config')
+    end,
+  },
 
   -- Notify - a  fancy and  configurable  notification manager
-  use {
+  {
     "rcarriga/nvim-notify",
-    config = "require('notify-config')",
-  }
+    config = function()
+      require('notify-config')
+    end,
+  },
 
   -- Null-ls -  inject  LSP diagnostics,  code actions, and more
-  use {
+  {
     'jose-elias-alvarez/null-ls.nvim',
-    config = "require('null-ls-config')",
-  }
+    config = function()
+      require('null-ls-config')
+    end,
+  },
 
   -- Presence - activity in ﭮ Discord 
-  use {
+  {
     'andweeb/presence.nvim',
-    config = "require('presence-config')",
-  }
+    config = function()
+      require('presence-config')
+    end,
+  },
 
   -- Dap - Debug Adapter Protocol client implementation ( debugger)
-  use {
+  {
     'mfussenegger/nvim-dap',
-    config = "require('dap-config')",
-  }
+    config = function()
+      require('dap-config')
+    end,
+  },
 
-  use {'rcarriga/nvim-dap-ui'} --  UI for Nvim-dap
-  use {'theHamsta/nvim-dap-virtual-text'} -- virtual  text for Nvim-dap
+  --  UI for Nvim-dap
+  {
+    'rcarriga/nvim-dap-ui',
+  },
+
+  -- virtual  text for Nvim-dap
+  {
+    'theHamsta/nvim-dap-virtual-text',
+  },
 
   -- Drop -  pretty particles for Dashboard
-  use({
+  {
     "folke/drop.nvim",
     config = function()
       require("drop").setup({
@@ -242,34 +312,38 @@ return require('packer').startup(function(use)
       })
     end,
     event = "VimEnter",
-  })
+  },
 
   -- Scrollbar - extensible  Neovim scrollbar that shows  Git changes
-  use {
+  {
     'petertriho/nvim-scrollbar',
-    config = "require('scrollbar-config')",
-  }
+    config = function()
+      require('scrollbar-config')
+    end,
+  },
 
   -- Leap - an  interface that makes on-screen  navigation  quicker
-  use {
+  {
     'ggandor/leap.nvim',
-    config = "require('leap').add_default_mappings()",
-  }
+    config = function()
+      require('leap').add_default_mappings()
+    end,
+    event = "VeryLazy",
+  },
 
   -- Python-pep8-indent - indent fix for  Python
-  use {
+  {
     'Vimjas/vim-python-pep8-indent',
     ft = "python",
-  }
+  },
 
   -- Cellular-automaton -  useless but  fancy animations for﬘ buffer text
-  use {
+  {
     'Eandrju/cellular-automaton.nvim',
-    after = "nvim-treesitter",
-  }
+  },
 
   -- Chafa -  image  viewer in  Neovim through Chafa
-  use {
+  {
     'princejoogie/chafa.nvim',
     config = function()
       require("chafa").setup({
@@ -282,26 +356,23 @@ return require('packer').startup(function(use)
         },
       })
     end,
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'm00qek/baleia.nvim',
-    },
-  }
+  },
+
+  {'m00qek/baleia.nvim'},
 
   -- Todo-comments - ﯦ highlight,  list and  search todo comments in your projects
-  use {
+  {
     "folke/todo-comments.nvim",
     config = function()
       require("todo-comments").setup({
         sign_priority = 6,
       })
     end,
-    requires = "nvim-lua/plenary.nvim",
-    after = "nvim-treesitter",
-  }
+    cmd = {"TodoTelescope"},
+  },
 
   -- Mini.animate - 𧻓animations for cursor, scroll, windows
-  use {
+  {
     'echasnovski/mini.animate',
     config = function()
       require('mini.animate').setup({
@@ -310,11 +381,10 @@ return require('packer').startup(function(use)
         },
       })
     end,
-    after = "nvim-treesitter",
-  }
+  },
 
   -- Mini.move -  move blocks of text in any  direction 
-  use {
+  {
     'echasnovski/mini.move',
     config = function()
       require('mini.move').setup({
@@ -333,38 +403,49 @@ return require('packer').startup(function(use)
         },
       })
     end,
-  }
+  },
 
   -- Dressing -  plugin to improve the default  vim.ui  interfaces 
-  use {
+  {
     'stevearc/dressing.nvim',
     config = function()
       require('dressing').setup({
         select = {
-          -- Priority list of preferred vim.select implementations
-          backend = { "fzf_lua", "fzf", "builtin", "nui" },
+          backend = { "fzf_lua"},
         },
       })
     end,
-    event = "BufWinEnter",
-  }
+    event = "VeryLazy",
+  },
+
+  -- Fzf-lua - improved fzf.vim written in  Lua 
+  {
+    'ibhagwan/fzf-lua'
+  },
 
   -- Numb - :number command  peeking 
-  use {
+  {
     'nacro90/numb.nvim',
     config = function()
       require('numb').setup()
     end,
-  }
+  },
 
   -- UFO -  VSCode-like  folding in  Neovim
-  use {
+  {
     'kevinhwang91/nvim-ufo',
-    requires = 'kevinhwang91/promise-async'
-  }
+    config = function()
+    require('ufo').setup({
+      provider_selector = function()
+          return {'treesitter', 'indent'}
+      end
+    })
+    end,
+  },
+  {"kevinhwang91/promise-async"},
 
   -- Illuminate -  plugin for automatically ﯧ highlighting other uses of the  word
-  use {
+  {
     'RRethy/vim-illuminate',
     config = function()
       require('illuminate').configure({
@@ -372,11 +453,11 @@ return require('packer').startup(function(use)
         min_count_to_highlight = 2,
       })
     end,
-    after = "nvim-treesitter",
-  }
+    event = { "BufReadPost", "BufNewFile" },
+  },
 
   -- Mini.indentscope -  visualize and  operate on indent  scope
-  use {
+  {
     'echasnovski/mini.indentscope',
     config = function()
       require('mini.indentscope').setup({
@@ -390,6 +471,7 @@ return require('packer').startup(function(use)
       end,
     })
     end,
-  }
+    event = { "BufReadPre", "BufNewFile" },
+  },
 
-end)
+})
