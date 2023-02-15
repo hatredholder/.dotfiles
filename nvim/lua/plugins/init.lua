@@ -25,6 +25,9 @@ return require('lazy').setup({
   --  Everforest colorscheme
   {
     'sainnhe/everforest',
+    config = function()
+      vim.cmd([[colorscheme everforest]])
+    end,
   },
 
   -- Treesitter - basic syntax ﯧ highlighting
@@ -59,9 +62,9 @@ return require('lazy').setup({
   },
 
   -- Treesitter-context -  show  code  context 
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-  },
+  -- {
+  --   'nvim-treesitter/nvim-treesitter-context',
+  -- },
 
 
   -- Lualine - simple  statusline written in  Lua
@@ -70,6 +73,18 @@ return require('lazy').setup({
     config = function()
       require('lualine-config')
     end,
+    event = "VeryLazy",
+  },
+
+  {
+    "utilyre/barbecue.nvim",
+    config = function()
+      require('barbecue-config')
+    end,
+    dependencies = {
+      "SmiteshP/nvim-navic",
+    },
+    version = "*",
     event = "VeryLazy",
   },
 
@@ -165,7 +180,6 @@ return require('lazy').setup({
     config = function()
       require('lsp')
     end,
-    event = "InsertEnter",
   }, ----------------------------|
   {'neovim/nvim-lspconfig'}, ----| 
   {'hrsh7th/cmp-nvim-lsp'}, -----|
@@ -434,15 +448,28 @@ return require('lazy').setup({
   -- UFO -  VSCode-like  folding in  Neovim
   {
     'kevinhwang91/nvim-ufo',
+    dependencies = {{
+        "kevinhwang91/promise-async",
+        {
+          "luukvbaal/statuscol.nvim",
+          config = function()
+            require("statuscol").setup(
+              {
+                foldfunc = "builtin",
+                setopt = true
+              }
+            )
+          end
+        }
+      }},
     config = function()
-    require('ufo').setup({
-      provider_selector = function()
-          return {'treesitter', 'indent'}
-      end
-    })
+      require('ufo').setup({
+        provider_selector = function()
+            return {'treesitter', 'indent'}
+        end
+      })
     end,
   },
-  {"kevinhwang91/promise-async"},
 
   -- Illuminate -  plugin for automatically ﯧ highlighting other uses of the  word
   {
@@ -473,5 +500,15 @@ return require('lazy').setup({
     end,
     event = { "BufReadPre", "BufNewFile" },
   },
+
+  -- Modicator -  cursor  line number mode  colorful indicator
+  {
+    'mawkler/modicator.nvim',
+    dependencies = "sainnhe/everforest",
+    config = function()
+      vim.cmd([[set cursorline]])
+      require('modicator-config')
+    end,
+  }
 
 })

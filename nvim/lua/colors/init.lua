@@ -55,5 +55,10 @@ vim.cmd([[
 highlight! TSAttribute guifg=#E69875
 ]])
 
+-- Set Modicator colors
+vim.cmd([[
+highlight! CursorLineNr guifg=#a7c080
+]])
+
 -- Set Whichkey colors
-vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg=0, fg="#d3c6aa", bg="#343f44"})
+vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg=0, fg="#d3c6aa", bg="#323b42"})

@@ -68,12 +68,14 @@ vim.wo.number = true -- Enable line numbers
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
-vim.o.foldnestmax = 1
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
--- Highlight yanked text
+-- modicator.nvim settings
+vim.o.number = true
+vim.o.termguicolors = true
 
+-- Highlight yanked text
 local ag = vim.api.nvim_create_augroup
 local au = vim.api.nvim_create_autocmd
 

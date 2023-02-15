@@ -1,5 +1,4 @@
-local utils = require("lualine.utils.utils")
-local highlight = require("lualine.highlight")
+local utils = require("lualine.utils.utils") local highlight = require("lualine.highlight")
 
 local diagnostics_message = require("lualine.component"):extend()
 
@@ -15,8 +14,7 @@ diagnostics_message.default = {
 			{ "DiagnosticWarn", "LspDiagnosticsDefaultWarning", "DiffText" },
 			"#ffa500"
 		),
-		info = utils.extract_color_from_hllist(
-			{ "fg", "sp" },
+		info = utils.extract_color_from_hllist( { "fg", "sp" },
 			{ "DiagnosticInfo", "LspDiagnosticsDefaultInformation", "DiffChange" },
 			"#ffffff"
 		),
@@ -71,18 +69,30 @@ function diagnostics_message:update_status()
 	end
 end
 
+local custom_auto = require('lualine.themes.auto')
+
+custom_auto.normal.c.bg = 'None'
+custom_auto.insert.c.bg = 'None'
+custom_auto.visual.c.bg = 'None'
+custom_auto.command.c.bg = 'None'
+
 require('lualine').setup({
   options = {
+    theme = custom_auto,
     disabled_filetypes = {
       'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "undotree"
     },
   },
-    sections = {
-      lualine_a = {'mode'},
-      lualine_b = {'branch', 'diff', 'diagnostics'},
-      lualine_c = {diagnostics_message},
-      lualine_x = {'filetype'},
-      lualine_y = {'progress'},
-      lualine_z = {'location'}
-    },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {diagnostics_message},
+    lualine_x = {'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
 })
+
+vim.cmd([[
+highlight! lualine_c_inactive guibg=#323b42
+]])
