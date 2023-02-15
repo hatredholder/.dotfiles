@@ -10,7 +10,7 @@ Personal dotfiles configurations collection for: **Alacritty**, **BSPWM**, **Neo
 
 ### Config Dependencies:
 
-**chafa** (for image previews): https://github.com/hpjansson/chafa
+**[chafa](https://github.com/hpjansson/chafa)** (for image previews)
 
 ### For Folding to Work Properly:
 
