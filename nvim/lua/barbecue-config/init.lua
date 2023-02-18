@@ -1,4 +1,5 @@
 require("barbecue").setup({
+  exclude_filetypes = {'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "undotree"},
         theme = { normal = { fg = "#C6C0A9", bold = true },
 
           context_file = { fg = "#535F5C" },

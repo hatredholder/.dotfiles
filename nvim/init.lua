@@ -19,6 +19,9 @@ vim.opt.rtp:prepend(lazypath)
 require('options')
 require('plugins')
 require('hotkeys')
+Asses = 123
+
+Asses = 124
 
 -- Set Custom Colors
 require('colors')

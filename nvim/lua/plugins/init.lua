@@ -476,7 +476,6 @@ return require('lazy').setup({
     'RRethy/vim-illuminate',
     config = function()
       require('illuminate').configure({
-        delay = 200,
         min_count_to_highlight = 2,
       })
     end,
@@ -509,6 +508,6 @@ return require('lazy').setup({
       vim.cmd([[set cursorline]])
       require('modicator-config')
     end,
-  }
+  },
 
 })
