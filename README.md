@@ -10,4 +10,4 @@ Personal dotfiles configurations collection for: **Alacritty**, **BSPWM**, **Neo
 
 ### Config Dependencies:
 
-**[chafa](https://github.com/hpjansson/chafa)** (for image previews)
+**[chafa](https://github.com/hpjansson/chafa)** (for image previews inside Neovim)
