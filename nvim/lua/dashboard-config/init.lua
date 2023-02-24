@@ -78,5 +78,5 @@ db.custom_center = {
 	}
 }
 
-local plugins_count = vim.fn.len(vim.fn.globpath("/home/hatredholder/.local/share/nvim/lazy", "*", 0, 1))
-db.custom_footer = {"", "[ Loaded " .. plugins_count .. " plugins successfully!   ]"}
+local stats = require("lazy").stats()
+db.custom_footer = {"", "[ Loaded " .. stats.count .. " plugins successfully!   ]"}
