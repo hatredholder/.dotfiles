@@ -66,5 +66,6 @@ highlight! IlluminatedWordRead gui=underline guibg=#2D353B
 highlight! IlluminatedWordText gui=underline guibg=#2D353B
 highlight! IlluminatedWordWrite gui=underline guibg=#2D353B
 ]])
+
 -- Set Whichkey colors
 vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg=0, fg="#d3c6aa", bg="#323b42"})
