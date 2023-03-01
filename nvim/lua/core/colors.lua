@@ -1,6 +1,6 @@
 -- Set Bufferline colors
 vim.cmd([[
-highlight! BufferLineWarning guifg=#859289 guibg=#21272c guisp=#dbbc7f
+highlight! BufferLineWarning guifg=#859290 guibg=#21272c guisp=#dbbc7f
 
 highlight! BufferLineHintDiagnosticVisible guifg=#A7C07F
 highlight! BufferLineHintDiagnosticSelected guifg=#A7C07F gui=italic,bold
@@ -35,21 +35,6 @@ vim.api.nvim_set_hl(0, "NoiceCmdlinePopupIconCmdline", { ctermbg=0, fg="#83C092"
 vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderInput", { ctermbg=0, fg="#E69875"})
 vim.api.nvim_set_hl(0, "NoiceCmdlineIconInput", { ctermbg=0, fg="#E69875"})
 
--- Set Scrollbar colors
-vim.cmd([[
-highlight! ScrollbarHandle guibg=#48565d
-highlight! ScrollbarErrorHandle guifg=#859289 guibg=#48565d
-highlight! ScrollbarHintHandle guifg=#859289 guibg=#48565d
-highlight! ScrollbarGitChangeHandle guifg=#7fbbb3 guibg=#48565d
-highlight! ScrollbarWarnHandle guifg=#859289 guibg=#48565d
-highlight! ScrollbarGitAddHandle guifg=#a7c080 guibg=#48565d
-highlight! ScrollbarGitDeleteHandle guifg=#e67e80 guibg=#48565d
-highlight! ScrollbarMiscHandle guifg=#d3c6aa guibg=#48565d
-highlight! ScrollbarSearchHandle guifg=#2d353b guibg=#48565d
-highlight! ScrollbarCursorHandle guifg=#d3c6aa guibg=#48565d
-highlight! ScrollbarInfoHandle guifg=#859289 guibg=#48565d
-]])
-
 -- Set Treesitter colors
 vim.cmd([[
 highlight! TSAttribute guifg=#E69875
@@ -69,4 +54,3 @@ highlight! IlluminatedWordWrite gui=underline guibg=#2D353B
 
 -- Set Whichkey colors
 vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg=0, fg="#d3c6aa", bg="#323b42"})
-
