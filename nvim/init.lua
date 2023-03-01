@@ -16,4 +16,4 @@
 vim.cmd(':set cursorcolumn!')
 
 require("plugins")
-require("config")
+require("core")
