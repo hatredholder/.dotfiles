@@ -12,8 +12,4 @@
 
 --]]
 
--- Set crosshair cursor
-vim.cmd(':set cursorcolumn!')
-
-require("plugins")
-require("core")
+require("core.lazy")

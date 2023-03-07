@@ -11,8 +11,6 @@
    ▀             ▀▀           ▀       ▀            ▀▀         ▀                 ▀     ▀           ▀▀       ▀                     
 
 --]]
--- Set Mapleader to Space --
-vim.g.mapleader = ' '
 
 -- Vanilla Vim hotkeys --
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true, silent = true}) --|
@@ -70,3 +68,6 @@ vim.api.nvim_set_keymap('v', '<c-_>', ':CommentToggle<CR>', {noremap = true, sil
 
 -- Notify hotkeys --
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>', {noremap = true, silent = true})
+
+vim.api.nvim_set_keymap("n", "<c-o>", "<cmd>Portal jumplist backward<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<c-i>", "<cmd>Portal jumplist forward<cr>", {noremap = true, silent = true})

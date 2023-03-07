@@ -14,6 +14,9 @@
 
 vim.cmd("filetype plugin indent on")
 
+-- Set crosshair cursor
+vim.cmd(':set cursorcolumn!')
+
 -- Filetype loads
 vim.cmd [[augroup filetype_settings]]
 vim.cmd [[au!]]
