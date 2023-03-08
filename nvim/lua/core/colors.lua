@@ -11,6 +11,7 @@
    ▀▀          ▀▀       ▀           ▀▀       ▀        ▀    ▀▀        ▀    ▀          ▀▀        ▀         
 
 --]]
+
 -- Set Bufferline colors
 vim.cmd([[
 highlight! BufferLineWarning guifg=#859290 guibg=#21272c guisp=#dbbc7f

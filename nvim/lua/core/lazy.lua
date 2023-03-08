@@ -11,6 +11,7 @@
   ▀        ▀              ▀▀        ▀      ▀   ▀           ▀▀        ▀            
 
 --]]
+
 -- Set Mapleader to Space
 -- (lazy.nvim requires it to be set before loading it)
 vim.g.mapleader = " "

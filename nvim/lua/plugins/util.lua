@@ -11,15 +11,8 @@
    ▀▀           ▀      ▀      ▀       ▀   ▀          ▀▀         ▀            
 
 --]]
-return {
-  -- Plenary - All the lua functions I don't want to write twice
-  {"nvim-lua/plenary.nvim"},
 
-  -- Nui - UI components for some of the plugins
-  {
-    "MunifTanjim/nui.nvim",
-    lazy = true,
-  },
+return {
 
   -- Session-manager - manage sessions like  folders
   {
@@ -89,6 +82,17 @@ return {
         },
       })
     end,
+  },
+
+    -- Plenary - All the lua functions I don't want to write twice
+  {
+    "nvim-lua/plenary.nvim"
+  },
+
+  -- Nui - UI components for some of the plugins
+  {
+    "MunifTanjim/nui.nvim",
+    lazy = true,
   },
 
   -- Fzf-lua - improved fzf.vim written in  Lua 

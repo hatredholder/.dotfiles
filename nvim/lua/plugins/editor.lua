@@ -13,11 +13,6 @@
 --]]
 
 return {
-  -- Bbye - better buffer  close command
-  {
-    "moll/vim-bbye",
-    cmd = "Bdelete",
-  },
 
   -- Neo-tree - file explorer  tree for  Neovim
   {
@@ -143,12 +138,6 @@ return {
     event = "VeryLazy",
   },
 
-  -- Undotree -  undo  history  visualizer 
-  {
-    "mbbill/undotree",
-    cmd = "UndotreeToggle",
-  },
-
   -- Colorizer - a high-performance color ﯧ highlighter
   {
     "NvChad/nvim-colorizer.lua",
@@ -158,11 +147,16 @@ return {
     event = { "BufReadPre", "BufNewFile" },
   },
 
-  -- Comment - toggle  comments in any language
+  -- mini.comment - toggle  comments in any language
   {
-    "terrortylor/nvim-comment",
+    'echasnovski/mini.comment',
     config = function()
-      require("nvim_comment").setup({comment_empty=false})
+      require('mini.comment').setup({
+        mappings = {
+          comment='<c-_>',
+          comment_line='<c-_>',
+        },
+      })
     end,
     event = "VeryLazy",
   },
@@ -334,7 +328,7 @@ return {
         sign_priority = 6,
       })
     end,
-    cmd = {"TodoTelescope"},
+    event = { "BufReadPost", "BufNewFile" },
   },
 
   -- Mini.move -  move blocks of text in any  direction 
@@ -401,5 +395,4 @@ return {
     end,
     event = "VeryLazy",
   },
-
 }

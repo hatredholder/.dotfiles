@@ -11,6 +11,7 @@
      ▀        ▀        ▀      ▀▀           ▀▀         ▀▀        ▀         ▀           ▀           ▀▀        ▀        ▀ ▀   ▀          ▀▀        ▀        
 
 --]]
+
 return {
   -- Treesitter - basic syntax ﯧ highlighting
   {

@@ -11,6 +11,7 @@
      ▀       ▀            ▀        ▀    ▀           ▀▀        ▀
 
 --]]
+
 return {
   --  Mason LSPConfig (required for Mason)
   {

@@ -54,17 +54,13 @@ vim.keymap.set("n", "N", "Nzzzv") -- |
 -- Bufferline hotkeys --
 vim.api.nvim_set_keymap('n', '<C-m>', '<cmd>BufferLineCycleNext<CR>', {noremap = true, silent = true}) -- | Go to next buffer
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true}) -- | Go to previous buffer
-vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>Bdelete!<CR>', {noremap = true, silent = true})            -- | Close buffer
+vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>bd!<CR>', {noremap = true, silent = true})            -- | Close buffer
 
 vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer rigtht
 vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) --| Move buffer left
 
 -- Neo-Tree hotkeys --
 vim.api.nvim_set_keymap('n', '<Leader>n', ':Neotree toggle<CR>', {noremap = true, silent = true}) --| Toggle Neo-Tree
-
--- Comment Hotkey -- 
-vim.api.nvim_set_keymap('n', '<c-_>', ':CommentToggle<CR>', {noremap = true, silent = true}) --| Comment in Normal
-vim.api.nvim_set_keymap('v', '<c-_>', ':CommentToggle<CR>', {noremap = true, silent = true}) --| Comment in Visual
 
 -- Notify hotkeys --
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>', {noremap = true, silent = true})

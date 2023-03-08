@@ -11,6 +11,7 @@
    ▀▀          ▀    ▀          ▀▀         ▀            
 
 --]]
+
 return {
   -- Lualine - simple  statusline written in  Lua
   {
@@ -98,7 +99,7 @@ return {
         options = {
           theme = custom_auto,
           disabled_filetypes = {
-            'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "undotree"
+            'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff",
           },
         },
         sections = {
@@ -120,7 +121,7 @@ return {
     "utilyre/barbecue.nvim",
     config = function()
       require("barbecue").setup({
-        exclude_filetypes = {'packer', 'toggleterm', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "undotree"},
+        exclude_filetypes = {'packer', 'toggleterm', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff"},
         theme = { normal = { fg = "#C6C0A9", bold = true },
         context_file = { fg = "#535F5C" },
         context_module = { fg = "#535F5C" },
@@ -232,7 +233,7 @@ return {
 
         f = {"<cmd>Telescope live_grep<CR>", "Live Grep (Global Search)"},
         r = {"<cmd>Telescope find_files<CR>", "Find Files"},
-        u = {"<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>", "Undo History"},
+        u = {"<cmd>Telescope undo<cr>", "Undo History"},
         s = {"<cmd>TodoTelescope<cr>", "See Todo's"},
 
         d = {
@@ -326,6 +327,25 @@ return {
     config = function()
       local actions = require('telescope.actions')
       require('telescope').setup {
+        extensions = {
+          undo = {
+            use_delta = true,
+            use_custom_command = nil, -- setting this implies `use_delta = false`. Accepted format is: { "bash", "-c", "echo '$DIFF' | delta" }
+            side_by_side = false,
+            diff_context_lines = vim.o.scrolloff,
+            entry_format = "state #$ID, $STAT, $TIME",
+            mappings = {
+              i = {
+              -- IMPORTANT: Note that telescope-undo must be available when telescope is configured if
+              -- you want to replicate these defaults and use the following actions. This means
+              -- installing as a dependency of telescope in it's `requirements` and loading this
+              -- extension from there instead of having the separate plugin definition as outlined
+              -- above.
+              ["<cr>"] = require("telescope-undo.actions").restore,
+              },
+            },
+          },
+        },
         defaults = {
           layout_config = {
             width = 0.75,
@@ -375,7 +395,11 @@ return {
         },
       }
 
+      require("telescope").load_extension("undo")
     end,
+    dependencies = {
+      "debugloop/telescope-undo.nvim",
+    },
     cmd = "Telescope",
     tag = "0.1.0",
   },
@@ -627,6 +651,7 @@ return {
   -- Cellular-automaton -  useless but  fancy animations for buffer text
   {
     "Eandrju/cellular-automaton.nvim",
+    event = "VeryLazy",
   },
 
   -- Mini.animate - 𧻓animations for cursor, scroll, windows
@@ -676,7 +701,9 @@ return {
         options = { try_as_border = true },
       })
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = {"packer", 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "undotree"},
+        pattern = {
+          "packer", 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff",
+        },
         callback = function()
           vim.b.miniindentscope_disable = true
         end,
@@ -753,7 +780,7 @@ return {
     "cbochs/portal.nvim",
     dependencies = {
         "cbochs/grapple.nvim",
-        "ThePrimeagen/harpoon"
+        "ThePrimeagen/harpoon",
     },
   },
 
