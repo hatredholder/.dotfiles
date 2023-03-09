@@ -65,5 +65,6 @@ vim.api.nvim_set_keymap('n', '<Leader>n', ':Neotree toggle<CR>', {noremap = true
 -- Notify hotkeys --
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>', {noremap = true, silent = true})
 
+-- Portal hotkeys --
 vim.api.nvim_set_keymap("n", "<c-o>", "<cmd>Portal jumplist backward<cr>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<c-i>", "<cmd>Portal jumplist forward<cr>", {noremap = true, silent = true})
