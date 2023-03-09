@@ -97,10 +97,14 @@ return {
 
       require('lualine').setup({
         options = {
+          globalstatus = true,
           theme = custom_auto,
           disabled_filetypes = {
-            'packer', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff",
+            'neo-tree', "dashboard", "TelescopePrompt",
           },
+          refresh = {
+            statusline = 10,
+          }
         },
         sections = {
           lualine_a = {'mode'},
@@ -121,7 +125,7 @@ return {
     "utilyre/barbecue.nvim",
     config = function()
       require("barbecue").setup({
-        exclude_filetypes = {'packer', 'toggleterm', 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff"},
+        exclude_filetypes = {'toggleterm', 'neo-tree', "dashboard", "TelescopePrompt", },
         theme = { normal = { fg = "#C6C0A9", bold = true },
         context_file = { fg = "#535F5C" },
         context_module = { fg = "#535F5C" },
@@ -216,13 +220,7 @@ return {
     config = function()
       local wk = require('which-key')
 
-
       local Terminal = require('toggleterm.terminal').Terminal
-
-      local toggle_float = function()
-        local float = Terminal:new({ direction = "float" })
-        return float:toggle()
-      end
 
       local toggle_lazygit = function()
         local lazygit = Terminal:new({ cmd = 'lazygit', direction = "float" })
@@ -248,7 +246,6 @@ return {
 
         t = {
           name = "Terminal",
-          f = {toggle_float, "Floating Terminal"},
           g = {toggle_lazygit, "Lazygit Terminal"}
         },
 
@@ -268,6 +265,13 @@ return {
           N = {'<cmd>lua vim.diagnostic.goto_prev()<CR>', "Go to previous diagnostic"},
 
           f = {'<cmd>!black %<CR>', "Format Python File"},
+        },
+
+        b = {
+          name = "Bookmarks",
+          m = {"<cmd> lua require('grapple').toggle() <CR>", "Mark current file"},
+          o = {"<cmd> lua require('portal.builtin').grapple.tunnel()<CR>", "Open bookmarks portal"},
+          b = {"<cmd> GrapplePopup tags<CR>", "Open bookmarks list"},
         },
 
         y = {
@@ -295,16 +299,6 @@ return {
           b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
         },
 
-        p = {
-          name = "Packer",
-          r = { ":PackerClean<cr>", "Remove Unused Plugins" },
-          c = { ":PackerCompile profile=true<cr>", "Recompile Plugins" },
-          i = { ":PackerInstall<cr>", "Install Plugins" },
-          p = { ":PackerProfile<cr>", "Packer Profile" },
-          s = { ":PackerSync<cr>", "Sync Plugins" },
-          S = { ":PackerStatus<cr>", "Packer Status" },
-          u = { ":PackerUpdate<cr>", "Update Plugins" }
-        },
         v = {
           name = "Visuals",
           y = { "<cmd>CellularAutomaton make_it_rain<CR>", "MAKE IT RAIN!" },
@@ -778,9 +772,25 @@ return {
   -- Portal - improved location  list  navigation 
   {
     "cbochs/portal.nvim",
+    config = function()
+      require("portal").setup({
+        escape = {
+          ["q"] = true,
+          ["<esc>"] = true,
+        },
+        window_options = {
+          relative = "cursor",
+          width = 80,
+          height = 5,
+          col = 3,
+          focusable = false,
+          border = "single",
+          noautocmd = true,
+        }
+      })
+    end,
     dependencies = {
-        "cbochs/grapple.nvim",
-        "ThePrimeagen/harpoon",
+      "cbochs/grapple.nvim",
     },
   },
 
