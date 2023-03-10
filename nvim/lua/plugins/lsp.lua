@@ -150,10 +150,12 @@ return {
         }),
 
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-        }, {
+          { name = 'nvim_lsp', priority = 100 },
           { name = 'buffer' },
+          { name = 'emoji'},
+          { name = 'path'},
         })
+
       })
 
       -- Set configuration for specific filetype.
@@ -248,10 +250,11 @@ return {
       }
 
     end,
-  }, ----------------------------|
+  },
   {"neovim/nvim-lspconfig"}, ----| 
   {"hrsh7th/cmp-nvim-lsp"}, -----|
-  {"hrsh7th/cmp-buffer"}, -------|  Nvim-cmp required plugins
+  {"hrsh7th/cmp-buffer"}, -------|   
+  {"hrsh7th/cmp-emoji"}, --------|  Nvim-cmp required plugins
   {"hrsh7th/cmp-path"}, ---------| 
   {"hrsh7th/cmp-cmdline"}, ------|
   {"onsails/lspkind.nvim"}, -----|
