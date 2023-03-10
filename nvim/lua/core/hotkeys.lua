@@ -68,3 +68,6 @@ vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({
 -- Portal hotkeys --
 vim.api.nvim_set_keymap("n", "<c-o>", "<cmd>Portal jumplist backward<cr>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<c-i>", "<cmd>Portal jumplist forward<cr>", {noremap = true, silent = true})
+
+-- SSR (Structural Search and Replace) hotkeys -- 
+vim.keymap.set({ "n", "x" }, "<leader>sr", function() require("ssr").open() end)
