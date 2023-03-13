@@ -114,7 +114,6 @@ return {
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
-      local lspkind = require('lspkind')
       local cmp = require'cmp'
 
       cmp.setup({
@@ -122,10 +121,24 @@ return {
           completeopt = 'menu,menuone,noselect'
         },
         preselect = cmp.PreselectMode.None,
-        formatting = {
-          format = lspkind.cmp_format({with_text = true, maxwidth = 50})
-        },
-        window = {},
+        window = {
+            completion = {
+              winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+              col_offset = -3,
+              side_padding = 0,
+            },
+          },
+          formatting = {
+            fields = { "kind", "abbr", "menu" },
+            format = function(entry, vim_item)
+              local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+              local strings = vim.split(kind.kind, "%s", { trimempty = true })
+              kind.kind = " " .. (strings[1] or "") .. " "
+              kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+              return kind
+            end,
+          },
         -- Setup keybindings
         mapping = cmp.mapping.preset.insert({
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -154,6 +167,7 @@ return {
           { name = 'buffer' },
           { name = 'emoji'},
           { name = 'path'},
+          { name = 'calc'},
         })
 
       })
@@ -256,6 +270,7 @@ return {
   {"hrsh7th/cmp-buffer"}, -------|   
   {"hrsh7th/cmp-emoji"}, --------|  Nvim-cmp required plugins
   {"hrsh7th/cmp-path"}, ---------| 
+  {"hrsh7th/cmp-calc"}, ---------|
   {"hrsh7th/cmp-cmdline"}, ------|
   {"onsails/lspkind.nvim"}, -----|
 }

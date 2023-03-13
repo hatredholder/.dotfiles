@@ -13,9 +13,9 @@
 --]]
 
 -- Set Bufferline colors
-vim.cmd([[
-highlight! BufferLineWarning guifg=#859290 guibg=#21272c guisp=#dbbc7f
+vim.api.nvim_set_hl(0, "BufferLineWarning", {fg="#859290", bg="#21272c"})
 
+vim.cmd([[
 highlight! BufferLineHintDiagnosticVisible guifg=#A7C07F
 highlight! BufferLineHintDiagnosticSelected guifg=#A7C07F gui=italic,bold
 highlight! BufferLineHintSelected guifg=#A7C07F  gui=italic,bold
@@ -73,3 +73,44 @@ highlight! lualine_c_inactive guibg=#323b42
 
 -- Set Whichkey colors
 vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg=0, fg="#d3c6aa", bg="#323b42"})
+
+-- Set Nvim-CMP colors
+vim.api.nvim_set_hl(0, "Pmenu", {fg="#C5CDD9", bg="#424e53"})
+
+vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", {fg="#7E8294"})
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {fg="#7FBBB3"})
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", {fg="#7FBBB3"})
+vim.api.nvim_set_hl(0, "CmpItemMenu", {fg="#7a8478"})
+
+vim.api.nvim_set_hl(0, "CmpItemKindField", {fg="#EED8DA", bg="#E67E80"})
+vim.api.nvim_set_hl(0, "CmpItemKindProperty", {fg="#EED8DA", bg="#E67E80"})
+vim.api.nvim_set_hl(0, "CmpItemKindEvent", {fg="#EED8DA", bg="#E67E80"})
+
+vim.api.nvim_set_hl(0, "CmpItemKindText", {fg="#C3E88D", bg="#A7C080"})
+vim.api.nvim_set_hl(0, "CmpItemKindEnum", {fg="#C3E88D", bg="#A7C080"})
+vim.api.nvim_set_hl(0, "CmpItemKindKeyword", {fg="#C3E88D", bg="#A7C080"})
+
+vim.api.nvim_set_hl(0, "CmpItemKindConstant", {fg="#FFe082", bg="#DBBC7F"})
+vim.api.nvim_set_hl(0, "CmpItemKindConstructor", {fg="#FFe082", bg="#DBBC7F"})
+vim.api.nvim_set_hl(0, "CmpItemKindReference", {fg="#FFe082", bg="#DBBC7F"})
+
+vim.api.nvim_set_hl(0, "CmpItemKindFunction", {fg="#EADFF0", bg="#D699B6"})
+vim.api.nvim_set_hl(0, "CmpItemKindStruct", {fg="#EADFF0", bg="#D699B6"})
+vim.api.nvim_set_hl(0, "CmpItemKindClass", {fg="#EADFF0", bg="#D699B6"})
+vim.api.nvim_set_hl(0, "CmpItemKindModule", {fg="#EADFF0", bg="#D699B6"})
+vim.api.nvim_set_hl(0, "CmpItemKindOperator", {fg="#EADFF0", bg="#D699B6"})
+
+vim.api.nvim_set_hl(0, "CmpItemKindVariable", {fg="#C5CDD9", bg="#3A515D"})
+vim.api.nvim_set_hl(0, "CmpItemKindFile", {fg="#C5CDD9", bg="#3A515D"})
+
+vim.api.nvim_set_hl(0, "CmpItemKindUnit", {fg="#F5EBD9", bg="#e69875"})
+vim.api.nvim_set_hl(0, "CmpItemKindSnippet", {fg="#F5EBD9", bg="#e69875"})
+vim.api.nvim_set_hl(0, "CmpItemKindFolder", {fg="#F5EBD9", bg="#e69875"})
+
+vim.api.nvim_set_hl(0, "CmpItemKindMethod", {fg="#DDE5f5", bg="#6C8ED4"})
+vim.api.nvim_set_hl(0, "CmpItemKindValue", {fg="#DDE5f5", bg="#6C8ED4"})
+vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", {fg="#DDE5f5", bg="#6C8ED4"})
+
+vim.api.nvim_set_hl(0, "CmpItemKindInterface", {fg="#D8EEEB", bg="#62b8ad"})
+vim.api.nvim_set_hl(0, "CmpItemKindColor", {fg="#D8EEEB", bg="#62b8ad"})
+vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", {fg="#D8EEEB", bg="#62b8ad"})

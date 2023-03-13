@@ -210,6 +210,7 @@ return {
 
         }
       }
+      vim.api.nvim_set_hl(0, "BufferLineWarning", {fg="#859290", bg="#21272c"})
     end,
     event = "VeryLazy",
   },

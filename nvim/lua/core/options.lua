@@ -52,7 +52,7 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.ch = 0 -- Hide command line
 vim.o.clipboard = "unnamedplus" -- System level clipboard
-vim.o.pumblend = 25 -- Pseudo-transparency for popup windows
+vim.o.pumblend = 10 -- Pseudo-transparency for popup windows
 
 vim.bo.tabstop = 2
 vim.bo.softtabstop = 2
