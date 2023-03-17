@@ -1,5 +1,6 @@
 --[[
 
+
  ▄████████  ▄██████▄   ▄█        ▄██████▄     ▄████████    ▄████████    ▄█       ███    █▄     ▄████████ 
 ███    ███ ███    ███ ███       ███    ███   ███    ███   ███    ███   ███       ███    ███   ███    ███ 
 ███    █▀  ███    ███ ███       ███    ███   ███    ███   ███    █▀    ███       ███    ███   ███    ███ 
@@ -52,6 +53,14 @@ vim.api.nvim_set_hl(0, "NoiceCmdlineIconInput", { ctermbg=0, fg="#E69875"})
 -- Set Treesitter colors
 vim.cmd([[
 highlight! TSAttribute guifg=#E69875
+]])
+
+-- Set Diagnostic Virtual Text colors
+vim.cmd([[
+highlight! DiagnosticVirtualTextError guifg=#DB7A7C
+highlight! DiagnosticVirtualTextWarn guifg=#DBBC7F
+highlight! DiagnosticVirtualTextInfo guifg=#7FBBB3
+highlight! DiagnosticVirtualTextHint guifg=#96A97A
 ]])
 
 -- Set Modicator colors
@@ -107,7 +116,6 @@ vim.api.nvim_set_hl(0, "CmpItemKindVariable", {fg="#C5CDD9", bg="#3A515D"})
 vim.api.nvim_set_hl(0, "CmpItemKindFile", {fg="#C5CDD9", bg="#3A515D"})
 
 vim.api.nvim_set_hl(0, "CmpItemKindUnit", {fg="#F5EBD9", bg="#e69875"})
-vim.api.nvim_set_hl(0, "CmpItemKindSnippet", {fg="#F5EBD9", bg="#e69875"})
 vim.api.nvim_set_hl(0, "CmpItemKindFolder", {fg="#F5EBD9", bg="#e69875"})
 
 vim.api.nvim_set_hl(0, "CmpItemKindValue", {fg="#DDE5f5", bg="#6C8ED4"})
@@ -115,4 +123,5 @@ vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", {fg="#DDE5f5", bg="#6C8ED4"})
 
 vim.api.nvim_set_hl(0, "CmpItemKindInterface", {fg="#D8EEEB", bg="#62b8ad"})
 vim.api.nvim_set_hl(0, "CmpItemKindColor", {fg="#D8EEEB", bg="#62b8ad"})
+vim.api.nvim_set_hl(0, "CmpItemKindSnippet", {fg="#D8EEEB", bg="#62b8ad"})
 vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", {fg="#D8EEEB", bg="#62b8ad"})

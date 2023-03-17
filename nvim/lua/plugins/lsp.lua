@@ -102,6 +102,17 @@ return {
     end,
   },
 
+  -- Snippets
+  {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip/loaders/from_vscode").lazy_load()
+    end,
+    event = "VeryLazy",
+  },
+  { 'saadparwaiz1/cmp_luasnip' },
+  { 'rafamadriz/friendly-snippets' },
+
   -- Nvim-cmp - a completion  engine plugin written in  Lua
   {
     "hrsh7th/nvim-cmp",
@@ -121,6 +132,11 @@ return {
           completeopt = 'menu,menuone,noselect'
         },
         preselect = cmp.PreselectMode.None,
+        snippet = {
+          expand = function(args)
+            require'luasnip'.lsp_expand(args.body)
+          end,
+        },
         window = {
             completion = {
               winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -164,6 +180,7 @@ return {
 
         sources = cmp.config.sources({
           { name = 'nvim_lsp', priority = 100 },
+          { name = 'luasnip'},
           { name = 'buffer' },
           { name = 'emoji'},
           { name = 'path'},
@@ -205,6 +222,14 @@ return {
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
+
+      -- Setup Sign for Diagnostic Error
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+          virtual_text = {
+           prefix = "",
+          },
+      })
 
       -- Set up Language Servers
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
