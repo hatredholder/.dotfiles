@@ -31,6 +31,12 @@ vim.cmd('highlight! DashboardCenter guifg=#DBBC7F')
 vim.cmd('highlight! DashboardShortcut guifg=#DB7A7C')
 vim.cmd('highlight! DashboardFooter guifg=#96A97A')
 
+-- Set Leap colors
+vim.cmd('highlight! LeapMatch guifg=#d3c6aa guibg=#D699B6 gui=bold')
+vim.cmd('highlight! LeapLabelPrimary guifg=#A7C07F gui=bold')
+vim.cmd('highlight! LeapLabelSecondary guifg=#D699B6 gui=bold')
+vim.cmd('highlight! LeapBackdrop guifg=#859290')
+
 -- Set Neo-tree colors
 vim.cmd([[
 highlight! BufferLineWarning guifg=#DBBC7F
@@ -42,6 +48,17 @@ highlight! NeoTreeGitUnstaged guifg=#7FBBB3
 highlight! NeoTreeNormal guibg=#2F383E
 highlight! NeoTreeEndOfBuffer guibg=#2F383E
 highlight! NeoTreeRootName guifg=#C6C0A9 gui=italic,bold
+]])
+
+-- Set TS-Rainbow2 colors
+vim.cmd([[
+highlight! TSRainbowRed guifg=#DB7A7C
+highlight! TSRainbowOrange guifg=#E69875
+highlight! TSRainbowYellow guifg=#DBBC7F
+highlight! TSRainbowGreen guifg=#A7C07F
+highlight! TSRainbowCyan guifg=#83C092
+highlight! TSRainbowBlue guifg=#7FBBB3
+highlight! TSRainbowViolet guifg=#D699B6
 ]])
 
 -- Set Noice colors
