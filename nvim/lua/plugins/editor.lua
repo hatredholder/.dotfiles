@@ -354,15 +354,6 @@ return {
     event = { "BufReadPost", "BufNewFile" },
   },
 
-  -- Numb - :number command  peeking 
-  {
-    "nacro90/numb.nvim",
-    config = function()
-      require("numb").setup()
-    end,
-    event = "VeryLazy",
-  },
-
   -- UFO -  VSCode-like  folding in  Neovim
   {
     "kevinhwang91/nvim-ufo",

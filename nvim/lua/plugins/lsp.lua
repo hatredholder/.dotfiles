@@ -83,6 +83,7 @@ return {
     end,
     event = "VeryLazy",
   },
+
   -- Null-ls -  inject  LSP diagnostics,  code actions, and more
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -90,7 +91,6 @@ return {
       require("null-ls").setup({
           sources = {
               require("null-ls").builtins.diagnostics.flake8,
-              -- require("null-ls").builtins.diagnostics.golangci_lint,
 
               require("null-ls").builtins.formatting.black,
               require("null-ls").builtins.formatting.stylua,
@@ -102,7 +102,7 @@ return {
     end,
   },
 
-  -- Snippets
+  -- LuaSnip -  Snippet  Engine written in  Lua. 
   {
     "L3MON4D3/LuaSnip",
     config = function()
@@ -110,8 +110,8 @@ return {
     end,
     event = "VeryLazy",
   },
-  { 'saadparwaiz1/cmp_luasnip' },
-  { 'rafamadriz/friendly-snippets' },
+  -- Friendly-snippets - Set of  preconfigured  snippets for different languages
+  {'rafamadriz/friendly-snippets'},
 
   -- Nvim-cmp - a completion  engine plugin written in  Lua
   {
@@ -183,6 +183,7 @@ return {
           { name = 'luasnip'},
           { name = 'buffer' },
           { name = 'emoji'},
+          { name = 'nerdfont' },
           { name = 'path'},
           { name = 'calc'},
         })
@@ -290,12 +291,14 @@ return {
 
     end,
   },
-  {"neovim/nvim-lspconfig"}, ----| 
-  {"hrsh7th/cmp-nvim-lsp"}, -----|
-  {"hrsh7th/cmp-buffer"}, -------|   
-  {"hrsh7th/cmp-emoji"}, --------|  Nvim-cmp required plugins
-  {"hrsh7th/cmp-path"}, ---------| 
-  {"hrsh7th/cmp-calc"}, ---------|
-  {"hrsh7th/cmp-cmdline"}, ------|
-  {"onsails/lspkind.nvim"}, -----|
+  {"neovim/nvim-lspconfig"}, ------| 
+  {"hrsh7th/cmp-nvim-lsp"}, -------|
+  {"hrsh7th/cmp-buffer"}, ---------|   
+  {"hrsh7th/cmp-emoji"}, ----------| 
+  {"hrsh7th/cmp-path"}, -----------| 
+  {"hrsh7th/cmp-calc"}, -----------|  Nvim-cmp required plugins
+  {"hrsh7th/cmp-cmdline"}, --------|
+  {"onsails/lspkind.nvim"}, -------|
+  {'saadparwaiz1/cmp_luasnip'}, ---|
+  {'chrisgrieser/cmp-nerdfont'}, --|
 }
