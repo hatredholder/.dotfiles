@@ -107,6 +107,7 @@ return {
     "L3MON4D3/LuaSnip",
     config = function()
       require("luasnip/loaders/from_vscode").lazy_load()
+      require'luasnip'.filetype_extend("html", {"djangohtml"})
     end,
     event = "VeryLazy",
   },
@@ -179,13 +180,13 @@ return {
         }),
 
         sources = cmp.config.sources({
-          { name = 'nvim_lsp', priority = 100 },
-          { name = 'luasnip'},
-          { name = 'buffer' },
-          { name = 'emoji'},
-          { name = 'nerdfont' },
-          { name = 'path'},
-          { name = 'calc'},
+          { name = 'nvim_lsp', priority = 7},
+          { name = 'luasnip', priority = 6},
+          { name = 'buffer', priority = 5},
+          { name = 'path', priority = 4},
+          { name = 'calc', priority = 3},
+          { name = 'emoji', priority = 2},
+          { name = 'nerdfont', priority = 1},
         })
 
       })
@@ -228,7 +229,7 @@ return {
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
           virtual_text = {
-           prefix = "",
+           prefix = "",
           },
       })
 
@@ -236,7 +237,7 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       -- Set up Lua Language Server
-      require'lspconfig'.sumneko_lua.setup{
+      require'lspconfig'.lua_ls.setup{
           settings = {
             Lua = {
               runtime = {

@@ -649,17 +649,16 @@ return {
     event = "VeryLazy",
   },
 
-  -- Mini.animate - 𧻓animations for cursor, scroll, windows
+  -- SmoothCursor -  sub-cursor to show 📜scroll direction
   {
-    "echasnovski/mini.animate",
+    'gen740/SmoothCursor.nvim',
     config = function()
-      require('mini.animate').setup({
-        scroll = {
-          enable = false,
-        },
+      require('smoothcursor').setup({
+          cursor = "",
+          texthl = "CursorLineNr",
       })
     end,
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy"
   },
 
   -- Dressing -  plugin to improve the default  vim.ui  interfaces 

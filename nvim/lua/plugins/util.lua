@@ -86,7 +86,7 @@ return {
 
     -- Plenary - All the lua functions I don't want to write twice
   {
-    "nvim-lua/plenary.nvim"
+    "nvim-lua/plenary.nvim",
   },
 
   -- Nui - UI components for some of the plugins
@@ -97,7 +97,6 @@ return {
 
   -- Fzf-lua - improved fzf.vim written in  Lua 
   {
-    "ibhagwan/fzf-lua"
+    "ibhagwan/fzf-lua",
   },
 }
-

@@ -15,12 +15,10 @@
 
 -- Set Bufferline colors
 vim.api.nvim_set_hl(0, "BufferLineWarning", {fg="#859290", bg="#21272c"})
-
 vim.cmd([[
 highlight! BufferLineHintDiagnosticVisible guifg=#A7C07F
 highlight! BufferLineHintDiagnosticSelected guifg=#A7C07F gui=italic,bold
 highlight! BufferLineHintSelected guifg=#A7C07F  gui=italic,bold
-
 highlight! BufferLineInfoSelected guifg=#7fbbb3 gui=italic,bold
 highlight! BufferLineInfoDiagnosticSelected guifg=#7fbbb3 gui=italic,bold
 ]])
@@ -74,15 +72,15 @@ highlight! TSAttribute guifg=#E69875
 
 -- Set Diagnostic Virtual Text colors
 vim.cmd([[
-highlight! DiagnosticVirtualTextError guifg=#DB7A7C
-highlight! DiagnosticVirtualTextWarn guifg=#DBBC7F
-highlight! DiagnosticVirtualTextInfo guifg=#7FBBB3
-highlight! DiagnosticVirtualTextHint guifg=#96A97A
+highlight! DiagnosticVirtualTextError guifg=#DB7A7C guibg=#4a3e3e
+highlight! DiagnosticVirtualTextWarn guifg=#DBBC7F guibg=#4d483d
+highlight! DiagnosticVirtualTextInfo guifg=#7FBBB3 guibg=#354846
+highlight! DiagnosticVirtualTextHint guifg=#96A97A guibg=#353f2c
 ]])
 
 -- Set Modicator colors
 vim.cmd([[
-highlight! CursorLineNr guifg=#a7c080
+highlight! CursorLineNr guifg=#a7c080 gui=bold
 ]])
 
 -- Set Illuminate colors
