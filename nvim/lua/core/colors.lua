@@ -21,6 +21,7 @@ highlight! BufferLineHintDiagnosticSelected guifg=#A7C07F gui=italic,bold
 highlight! BufferLineHintSelected guifg=#A7C07F  gui=italic,bold
 highlight! BufferLineInfoSelected guifg=#7fbbb3 gui=italic,bold
 highlight! BufferLineInfoDiagnosticSelected guifg=#7fbbb3 gui=italic,bold
+highlight! BufferLineOffsetSeparator guifg=#4f585e guibg=#21272c 
 ]])
 
 -- Set Dashboard colors
@@ -46,6 +47,10 @@ highlight! NeoTreeGitUnstaged guifg=#7FBBB3
 highlight! NeoTreeNormal guibg=#2F383E
 highlight! NeoTreeEndOfBuffer guibg=#2F383E
 highlight! NeoTreeRootName guifg=#C6C0A9 gui=italic,bold
+highlight! NeoTreeTabActive guibg=#181c1e guifg=#C6C0A9
+highlight! NeoTreeTabInactive guibg=#2F383E
+highlight! NeoTreeTabSeparatorActive guifg=#2F383E guibg=#2F383E
+highlight! NeoTreeTabSeparatorInactive guifg=#2F383E guibg=#2F383E
 ]])
 
 -- Set TS-Rainbow2 colors

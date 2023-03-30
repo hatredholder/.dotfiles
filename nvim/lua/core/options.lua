@@ -96,3 +96,8 @@ vim.cmd('map <S-k> <Nop>')
 
 -- Disable Swapfile
 vim.cmd('set noswapfile')
+
+-- Prioritize diagnostic signs
+vim.diagnostic.config {
+  severity_sort = true
+}

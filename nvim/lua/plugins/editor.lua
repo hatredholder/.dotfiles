@@ -13,12 +13,17 @@
 --]]
 
 return {
-
   -- Neo-tree - file explorer  tree for  Neovim
   {
     "nvim-neo-tree/neo-tree.nvim",
     config = function()
       require("neo-tree").setup({
+        sources = {
+            "filesystem",
+            "buffers",
+            "git_status",
+            "diagnostics",
+        },
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
         enable_git_status = true,
@@ -27,20 +32,14 @@ return {
           winbar = true,
           content_layout = "center",
           tab_labels = {
-            filesystem = " File",
-            buffers = "פּ Bufs",
+            filesystem = "  File ",
+            buffers = " פּ Bufs",
             git_status = " Git",
+            diagnostics = " 裂Diagnostics",
           },
         },
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         sort_function = nil , -- use a custom function for sorting files and directories in the tree 
-        -- sort_function = function (a,b)
-        --       if a.type == b.type then
-        --           return a.path > b.path
-        --       else
-        --           return a.type > b.type
-        --       end
-        --   end , -- this sorts files and directories descendantly
         default_component_configs = {
           container = {
             enable_character_fade = true
@@ -69,7 +68,7 @@ return {
             highlight = "NeoTreeFileIcon"
           },
           modified = {
-            symbol = "[+]",
+            symbol = "",
             highlight = "NvimTreeGitNew",
           },
           name = {
@@ -80,8 +79,8 @@ return {
           git_status = {
             symbols = {
               -- Change type
-              added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-              modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+              added     = "",
+              modified  = "",
               deleted   = "✖",-- this can only be used in the git_status source
               renamed   = "",-- this can only be used in the git_status source
               -- Status type
@@ -95,7 +94,7 @@ return {
         },
         window = {
           position = "left",
-          width = 30,
+          width = 40,
           mappings = {
             ["<space>"] = "none",
             ["/"] = "none",
@@ -119,6 +118,10 @@ return {
     end,
     cmd = "Neotree",
     branch = "v2.x",
+  },
+
+  {
+    "mrbjarksen/neo-tree-diagnostics.nvim",
   },
 
   -- Autopairs - a powerful  autopair plugin for  Neovim

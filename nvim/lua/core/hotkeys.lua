@@ -60,7 +60,7 @@ vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = tru
 vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) --| Move buffer left
 
 -- Neo-Tree hotkeys --
-vim.api.nvim_set_keymap('n', '<Leader>n', ':Neotree toggle<CR>', {noremap = true, silent = true}) --| Toggle Neo-Tree
+vim.api.nvim_set_keymap('n', '<Leader>n', '<cmd>Neotree toggle<CR>', {noremap = true, silent = true}) --| Toggle Neo-Tree
 
 -- Notify hotkeys --
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>', {noremap = true, silent = true})
@@ -68,6 +68,3 @@ vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({
 -- Portal hotkeys --
 vim.api.nvim_set_keymap("n", "<c-o>", "<cmd>Portal jumplist backward<cr>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<c-i>", "<cmd>Portal jumplist forward<cr>", {noremap = true, silent = true})
-
--- SSR (Structural Search and Replace) hotkeys -- 
-vim.keymap.set({ "n", "x" }, "<leader>sr", function() require("ssr").open() end)

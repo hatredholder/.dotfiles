@@ -100,7 +100,7 @@ return {
           globalstatus = true,
           theme = custom_auto,
           disabled_filetypes = {
-            'neo-tree', "dashboard", "TelescopePrompt",
+            "dashboard", "TelescopePrompt",
           },
           refresh = {
             statusline = 10,
@@ -192,9 +192,10 @@ return {
         options = {
           always_show_bufferline = false,
           offsets = {
-            { filetype = "neo-tree", text="File Explorer", padding = 1},
+            { filetype = "neo-tree", text="FILE EXPLORER", padding = 0, highlight = 'BufferLineExplorer', separator = true,},
           },
           show_close_icon = false,
+          hover = { enabled = true, reveal = { 'close' } },
           diagnostics = "nvim_lsp",
           diagnostics_indicator = function(_, _, diagnostics_dict)
             local s = ""
@@ -211,6 +212,7 @@ return {
         }
       }
       vim.api.nvim_set_hl(0, "BufferLineWarning", {fg="#859290", bg="#21272c"})
+      vim.api.nvim_set_hl(0, "BufferLineExplorer", {fg="#859290", bg="#21272c", bold=true})
     end,
     event = "VeryLazy",
   },
@@ -403,8 +405,9 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require("gitsigns").setup()
-
+      require("gitsigns").setup({
+        sign_priority = 100,
+      })
       -- Setup gitsigns for petertriho/nvim-scrollbar
       require("scrollbar.handlers.gitsigns").setup()
     end,
@@ -654,8 +657,10 @@ return {
     'gen740/SmoothCursor.nvim',
     config = function()
       require('smoothcursor').setup({
+          priority = 1,
           cursor = "",
           texthl = "CursorLineNr",
+          disabled_filetypes = {'neo-tree', "dashboard", "TelescopePrompt",},
       })
     end,
     event = "VeryLazy"
