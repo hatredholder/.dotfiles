@@ -37,4 +37,4 @@
 
 ## Disclaimer
 
-All of the configs and scripts in this repo belong to my personal setup. None of them is guaranteed to work properly on your machine, so use them carefully and responsibly, and as always remember to make backups and save RAM.
+All of the configs in this repo belong to my personal setup. None of them is guaranteed to work properly on your machine, so use them carefully and responsibly, and as always remember to make backups and save RAM.
