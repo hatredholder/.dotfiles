@@ -1,6 +1,6 @@
 <h1 align="center"><i><u>~/.dotfiles</u></i></h1>
 
-Your **dotfiles** are about how you personalize your own system. These are mine.
+<p align="center">:evergreen_tree: Your dotfiles are about how you personalize your own system. These are mine. :evergreen_tree:</p>
 
 <h1>TODO: Add good screenshots</h1>
 
