@@ -1,8 +1,9 @@
 <h1 align="center"><i><u>~/.dotfiles</u></i></h1>
 
-Your **dotfiles** are about how you personalize your own system. These are mine.
+<p align="center">:evergreen_tree: Your dotfiles are about how you personalize your own system. These are mine. :evergreen_tree:</p>
 
 <h1>TODO: Add good screenshots</h1>
+<h1>TODO: Move from TMUX to ZelliJ</h1>
 
 ![neovim](https://user-images.githubusercontent.com/86254474/220361597-ec3c867c-770b-4312-b127-e72b57f5c4df.png)
 
@@ -34,3 +35,7 @@ Your **dotfiles** are about how you personalize your own system. These are mine.
 
 ## r/unixporn 
 - TODO: Add r/unixporn post here
+
+## Disclaimer
+
+All of the configs in this repo belong to my personal setup. None of them is guaranteed to work properly on your machine, so use them carefully and responsibly, and as always remember to make backups and save RAM.
