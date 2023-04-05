@@ -1,14 +1,14 @@
 --[[
 
-   ▄████████ ████████▄   ▄█      ███      ▄██████▄     ▄████████   ▄█       ███    █▄     ▄████████
-  ███    ███ ███   ▀███ ███  ▀█████████▄ ███    ███   ███    ███   ███       ███    ███   ███    ███
-  ███    █▀  ███    ███ ███▌    ▀███▀▀██ ███    ███   ███    ███   ███       ███    ███   ███    ███
- ▄███▄▄▄     ███    ███ ███▌     ███   ▀ ███    ███  ▄███▄▄▄▄██▀   ███       ███    ███   ███    ███
-▀▀███▀▀▀     ███    ███ ███▌     ███     ███    ███ ▀▀███▀▀▀▀▀     ███       ███    ███ ▀███████████
-  ███    █▄  ███    ███ ███      ███     ███    ███ ▀███████████   ███       ███    ███   ███    ███
-  ███    ███ ███   ▄███ ███      ███     ███    ███   ███    ███   ███▌    ▄ ███    ███   ███    ███
-  ██████████ ████████▀  █▀      ▄████▀    ▀██████▀    ███    ███   █████▄▄██ ████████▀    ███    █▀
-     ▀▀          ▀▀     ▀         ▀                   ▀        ▀ ▀   ▀          ▀▀         ▀ 
+   ▄████████ ████████▄   ▄█      ███      ▄██████▄     ▄████████    ▄█       ███    █▄     ▄████████
+  ███    ███ ███   ▀███ ███  ▀█████████▄ ███    ███   ███    ███    ███       ███    ███   ███    ███
+  ███    █▀  ███    ███ ███▌    ▀███▀▀██ ███    ███   ███    ███    ███       ███    ███   ███    ███
+ ▄███▄▄▄     ███    ███ ███▌     ███   ▀ ███    ███  ▄███▄▄▄▄██▀    ███       ███    ███   ███    ███
+▀▀███▀▀▀     ███    ███ ███▌     ███     ███    ███ ▀▀███▀▀▀▀▀      ███       ███    ███ ▀███████████
+  ███    █▄  ███    ███ ███      ███     ███    ███ ▀███████████    ███       ███    ███   ███    ███
+  ███    ███ ███   ▄███ ███      ███     ███    ███   ███    ███    ███▌    ▄ ███    ███   ███    ███
+  ██████████ ████████▀  █▀      ▄████▀    ▀██████▀    ███    ███    █████▄▄██ ████████▀    ███    █▀
+     ▀▀          ▀▀     ▀         ▀                   ▀        ▀  ▀   ▀          ▀▀         ▀ 
 
 --]]
 
@@ -206,7 +206,7 @@ return {
           'WinEnter',
         },
         -- enable or disable the tmux integration
-        tmux_integration = true,
+       multiplexer_integration = "tmux",
       })
     end,
     event = { "BufReadPost", "BufNewFile" },
@@ -319,6 +319,7 @@ return {
     config = function()
       vim.cmd [[set colorcolumn=100]]
     end,
+    event = "VeryLazy",
   },
 
   -- Todo-comments - ﯦ highlight,  list and  search todo comments in your projects
@@ -326,7 +327,17 @@ return {
     "folke/todo-comments.nvim",
     config = function()
       require("todo-comments").setup({
-        sign_priority = 6,
+        sign_priority = 0,
+        keywords = {
+          FIX = {
+            icon = " ", -- icon used for the sign, and in search results
+            color = "error", -- can be a hex color, or a named color (see below)
+            alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+            -- signs = false, -- configure signs for some keywords individually
+          },
+          TODO = { icon = "✅", color = "#7fbbb3" },
+          NOTE = { icon = " ", color = "#E69875" },
+        },
       })
     end,
     event = { "BufReadPost", "BufNewFile" },

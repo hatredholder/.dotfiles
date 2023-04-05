@@ -90,10 +90,12 @@ return {
 
       local custom_auto = require('lualine.themes.auto')
 
-      custom_auto.normal.c.bg = 'None'
-      custom_auto.insert.c.bg = 'None'
-      custom_auto.visual.c.bg = 'None'
-      custom_auto.command.c.bg = 'None'
+      custom_auto.normal.c.bg = '#272e33'
+      custom_auto.insert.c.bg = '#272e33'
+      custom_auto.visual.c.bg = '#272e33'
+      custom_auto.command.c.bg = '#272e33'
+      custom_auto.terminal.c.bg = '#272e33'
+
 
       require('lualine').setup({
         options = {
@@ -189,13 +191,31 @@ return {
     "akinsho/bufferline.nvim",
     config = function()
       require("bufferline").setup{
+
+      highlights = {
+          background = {
+            bg = "#2D353B",
+            fg="#c6c0a9",
+          },
+          fill = {
+            bg = "#2D353B"
+          },
+          -- buffer_visible = {
+          --   fg = '<colour-value-here>',
+          --   bg = '<colour-value-here>'
+          -- },
+
+        },
         options = {
           always_show_bufferline = false,
           offsets = {
-            { filetype = "neo-tree", text="FILE EXPLORER", padding = 0, highlight = 'BufferLineExplorer', separator = true,},
+            { filetype = "neo-tree", text="FILE EXPLORER", padding = 0, highlight = 'BufferLineExplorer', text_align = 'left', separator = true,},
           },
-          show_close_icon = false,
-          hover = { enabled = true, reveal = { 'close' } },
+          hover = {
+              enabled = true,
+              delay = 200,
+              reveal = {'close'}
+          },
           diagnostics = "nvim_lsp",
           diagnostics_indicator = function(_, _, diagnostics_dict)
             local s = ""
@@ -207,12 +227,40 @@ return {
               s = s .. n .. sym
             end
             return s
-          end
+          end,
+          custom_areas = {
+            right = function()
+            local result = {}
+            local seve = vim.diagnostic.severity
 
-        }
+            -- get diagnostics from all buffers
+            local error = #vim.diagnostic.get(nil, {severity = seve.ERROR})
+            local warning = #vim.diagnostic.get(nil, {severity = seve.WARN})
+            local info = #vim.diagnostic.get(nil, {severity = seve.INFO})
+            local hint = #vim.diagnostic.get(nil, {severity = seve.HINT})
+
+            if error ~= 0 then
+            table.insert(result, {text = "  " .. error, fg = "#c6c0a9"})
+            end
+
+            if warning ~= 0 then
+            table.insert(result, {text = "  " .. warning, fg = "#c6c0a9"})
+            end
+
+            if hint ~= 0 then
+            table.insert(result, {text = "  " .. hint, fg = "#c6c0a9"})
+            end
+
+            if info ~= 0 then
+            table.insert(result, {text = "  " .. info, fg = "#c6c0a9"})
+            end
+            return result
+            end,
+          },
+        },
       }
-      vim.api.nvim_set_hl(0, "BufferLineWarning", {fg="#859290", bg="#21272c"})
-      vim.api.nvim_set_hl(0, "BufferLineExplorer", {fg="#859290", bg="#21272c", bold=true})
+      vim.api.nvim_set_hl(0, "BufferLineWarning", {fg="#859290", bg="#2D353B"})
+      vim.api.nvim_set_hl(0, "BufferLineExplorer", {fg="#859290", bg="#2D353B", bold=true, italic=true})
     end,
     event = "VeryLazy",
   },
@@ -305,7 +353,8 @@ return {
         v = {
           name = "Visuals",
           y = { "<cmd>CellularAutomaton make_it_rain<CR>", "MAKE IT RAIN!" },
-          h = { "<cmd>CellularAutomaton game_of_life<CR>", "Game of Code" },
+          c = { "<cmd>CellularAutomaton game_of_life<CR>", "Game of Code" },
+          h = { "<cmd>Hack<CR>", "Hollywood Mode"},
         },
       }
 
@@ -575,7 +624,7 @@ return {
     config = function()
       require("notify").setup{
         background_colour = "Normal",
-        fps = 30,
+        fps = 60,
         icons = {
           DEBUG = "",
           ERROR = "",
@@ -584,11 +633,11 @@ return {
           WARN = ""
         },
         level = 2,
-        minimum_width = 50,
-        render = "default",
-        stages = "fade_in_slide_out",
-        timeout = 5000,
-        top_down = true
+        minimum_width = 10,
+        render = "minimal",
+        stages = "fade",
+        timeout = 1000,
+        top_down = true,
       }
     end,
     event = "VeryLazy",
@@ -649,8 +698,27 @@ return {
   -- Cellular-automaton -  useless but  fancy animations for buffer text
   {
     "Eandrju/cellular-automaton.nvim",
-    event = "VeryLazy",
+    cmd = "CellularAutomaton",
   },
+
+  -- Hacker - Hollywood  hacker experience
+  {
+    "letieu/hacker.nvim",
+    config = function()
+      require("hacker").setup {
+        filetype = "lua", -- filetype of code snippet
+        speed = { -- characters insert each time, random from min -> max
+          min = 2,
+          max = 10,
+        },
+        is_popup = false, -- show random float window when typing
+        popup_after = 5,
+      }
+      vim.cmd[[SmoothCursorToggle]]
+    end,
+    cmd = "Hack",
+  },
+
 
   -- SmoothCursor -  sub-cursor to show 📜scroll direction
   {
@@ -660,7 +728,7 @@ return {
           priority = 1,
           cursor = "",
           texthl = "CursorLineNr",
-          disabled_filetypes = {'neo-tree', "dashboard", "TelescopePrompt",},
+          disabled_filetypes = {'neo-tree', "dashboard", "TelescopePrompt", "help",},
       })
     end,
     event = "VeryLazy"
@@ -686,6 +754,9 @@ return {
       require("illuminate").configure({
         min_count_to_highlight = 2,
         under_cursor = false,
+        filetypes_denylist = {
+          'neo-tree',
+        },
       })
     end,
     event = { "BufReadPost", "BufNewFile" },
@@ -701,7 +772,7 @@ return {
       })
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
-          "packer", 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff",
+          "packer", 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "help",
         },
         callback = function()
           vim.b.miniindentscope_disable = true
@@ -798,6 +869,36 @@ return {
       "cbochs/grapple.nvim",
     },
   },
+
+  -- Incline - 🎈Floating statuslines
+  {
+    "b0o/incline.nvim",
+    config = function()
+      require('incline').setup({
+        highlight = {
+          groups = {
+            InclineNormal = { guibg = "#a5b888", guifg = "#e1e1d7" },
+          },
+        },
+        window = {
+          margin = {
+            horizontal = 5,
+            vertical = 1,
+          },
+          options = {
+            signcolumn = "no",
+            wrap = true
+          },
+        },
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local icon, _ = require("nvim-web-devicons").get_icon_color(filename)
+          return { { icon, guifg = "#e1e1d7" }, { " " }, { filename } }
+        end,
+      })
+    end,
+    event = "VeryLazy"
+  }
 
   -- (disabled until https://github.com/levouh/tint.nvim/issues/38 gets fixed)
   -- Tint -  dim inactive  windows using window-local  highlight namespaces. 

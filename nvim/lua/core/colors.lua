@@ -14,14 +14,67 @@
 --]]
 
 -- Set Bufferline colors
-vim.api.nvim_set_hl(0, "BufferLineWarning", {fg="#859290", bg="#21272c"})
+vim.api.nvim_set_hl(0, "BufferLineWarning", {fg="#c6c0a9", bg="#21272c"})
+
 vim.cmd([[
-highlight! BufferLineHintDiagnosticVisible guifg=#A7C07F
-highlight! BufferLineHintDiagnosticSelected guifg=#A7C07F gui=italic,bold
-highlight! BufferLineHintSelected guifg=#A7C07F  gui=italic,bold
-highlight! BufferLineInfoSelected guifg=#7fbbb3 gui=italic,bold
-highlight! BufferLineInfoDiagnosticSelected guifg=#7fbbb3 gui=italic,bold
-highlight! BufferLineOffsetSeparator guifg=#4f585e guibg=#21272c 
+highlight! BufferLineDiagnosticVisible guifg=#c6c0a9 guibg=#21272c
+
+highlight! BufferLineHint guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineHintVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineHintDiagnostic guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineHintDiagnosticVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineHintDiagnosticSelected guifg=#A7C07F guibg=#21272c gui=italic,bold
+highlight! BufferLineHintSelected guifg=#A7C07F  guibg=#21272c gui=italic,bold
+
+highlight! BufferLineInfo guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineInfoVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineInfoDiagnostic guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineInfoDiagnosticVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineInfoDiagnosticSelected guifg=#7fbbb3 guibg=#21272c gui=italic,bold
+highlight! BufferLineInfoSelected guifg=#7fbbb3  guibg=#21272c gui=italic,bold
+
+highlight! BufferLineWarning guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineWarningVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineWarningDiagnostic guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineWarningDiagnosticVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineWarningDiagnosticSelected guifg=#DBBC7F guibg=#21272c gui=italic,bold
+highlight! BufferLineWarningSelected guifg=#DBBC7F  guibg=#21272c gui=italic,bold
+
+highlight! BufferLineError guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineErrorVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineErrorDiagnostic guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineErrorDiagnosticVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineErrorDiagnosticSelected guifg=#DB7A7C guibg=#21272c gui=italic,bold
+highlight! BufferLineErrorSelected guifg=#DB7A7C  guibg=#21272c gui=italic,bold
+
+highlight! BufferLineOffsetSeparator guifg=#4f585e guibg=#2D353B
+
+highlight! BufferLineSeparator guifg=#2D353B  guibg=#2D353B
+highlight! BufferLineSeparatorSelected guifg=#2D353B  guibg=#21272c
+highlight! BufferLineSeparatorVisible guifg=#21272c  guibg=#21272c
+
+highlight! BufferLineBuffer guifg=#c6c0a9  guibg=#2D353B
+highlight! BufferLineBufferVisible guifg=#c6c0a9  guibg=#21272c
+highlight! BufferLineBufferSelected guifg=#c6c0a9  guibg=#21272c gui=italic,bold
+
+highlight! BufferLineDuplicate guifg=#c6c0a9 guibg=#2d353b
+highlight! BufferLineDuplicateVisible guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineDuplicateSelected guifg=#c6c0a9 guibg=#21272c gui=italic,bold
+
+highlight! BufferLineCloseButtonSelected guifg=#c6c0a9 guibg=#21272c
+
+highlight! BufferLineModified guifg=#a7c080 guibg=#2D353B
+highlight! BufferLineModifiedSelected guifg=#a7c080 guibg=#21272c
+
+highlight! BufferLineIndicatorSelected guifg=#a7c080 guibg=#21272c
+highlight! BufferLineIndicatorVisible guifg=#21272c guibg=#21272c
+
+highlight! BufferLineDevIconLua guifg=#c6c0a9 guibg=#2d353b
+highlight! BufferLineDevIconPy guifg=#c6c0a9 guibg=#2d353b
+highlight! BufferLineDevIconPySelected guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineDevIconPyInactive guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineDevIconLuaSelected guifg=#c6c0a9 guibg=#21272c
+highlight! BufferLineDevIconLuaInactive guifg=#c6c0a9 guibg=#21272c
 ]])
 
 -- Set Dashboard colors
@@ -44,13 +97,14 @@ highlight! NeoTreeGitUntracked guifg=#DBBC7F
 highlight! NeoTreeGitTabInactive guibg=#191E22
 highlight! NeoTreeGitDotfile guibg=#888888
 highlight! NeoTreeGitUnstaged guifg=#7FBBB3
-highlight! NeoTreeNormal guibg=#2F383E
-highlight! NeoTreeEndOfBuffer guibg=#2F383E
+highlight! NeoTreeNormal guibg=#2D353B
+highlight! NeoTreeEndOfBuffer guibg=#2D353B
 highlight! NeoTreeRootName guifg=#C6C0A9 gui=italic,bold
 highlight! NeoTreeTabActive guibg=#181c1e guifg=#C6C0A9
-highlight! NeoTreeTabInactive guibg=#2F383E
-highlight! NeoTreeTabSeparatorActive guifg=#2F383E guibg=#2F383E
-highlight! NeoTreeTabSeparatorInactive guifg=#2F383E guibg=#2F383E
+highlight! NeoTreeTabInactive guibg=#2D353B
+highlight! NeoTreeTabSeparatorActive guifg=#181c1e guibg=#181c1e
+highlight! NeoTreeTabSeparatorInactive guifg=#2D353B guibg=#2D353B
+highlight! NeoTreeExpander guifg=gray
 ]])
 
 -- Set TS-Rainbow2 colors
