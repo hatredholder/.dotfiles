@@ -110,7 +110,7 @@ return {
         },
         sections = {
           lualine_a = {'mode'},
-          lualine_b = {'branch', 'diff', 'diagnostics'},
+          lualine_b = {'branch', 'diff',},
           lualine_c = {diagnostics_message},
           lualine_x = {'filetype'},
           lualine_y = {'progress'},
@@ -195,16 +195,21 @@ return {
       highlights = {
           background = {
             bg = "#2D353B",
-            fg="#c6c0a9",
+            fg = "#677172",
+          },
+          buffer_selected = {
+            bg = "#21272c",
+            fg = "#c6c0a9",
+            bold = true,
+            italic = true,
+          },
+          buffer_visible = {
+            bg = "#21272c",
+            fg = "#c6c0a9",
           },
           fill = {
             bg = "#2D353B"
           },
-          -- buffer_visible = {
-          --   fg = '<colour-value-here>',
-          --   bg = '<colour-value-here>'
-          -- },
-
         },
         options = {
           always_show_bufferline = false,
@@ -240,19 +245,19 @@ return {
             local hint = #vim.diagnostic.get(nil, {severity = seve.HINT})
 
             if error ~= 0 then
-            table.insert(result, {text = "  " .. error, fg = "#c6c0a9"})
+            table.insert(result, {text = "  " .. error .. " ", bg = "#272e33", fg = "#c6c0a9"})
             end
 
             if warning ~= 0 then
-            table.insert(result, {text = "  " .. warning, fg = "#c6c0a9"})
+            table.insert(result, {text = "  " .. warning .. " ", bg = "#272e33", fg = "#c6c0a9"})
             end
 
             if hint ~= 0 then
-            table.insert(result, {text = "  " .. hint, fg = "#c6c0a9"})
+            table.insert(result, {text = "  " .. hint .. " ", bg = "#272e33", fg = "#c6c0a9"})
             end
 
             if info ~= 0 then
-            table.insert(result, {text = "  " .. info, fg = "#c6c0a9"})
+            table.insert(result, {text = "  " .. info .. " ", bg = "#272e33", fg = "#c6c0a9"})
             end
             return result
             end,
@@ -898,15 +903,15 @@ return {
       })
     end,
     event = "VeryLazy"
-  }
+  },
 
   -- (disabled until https://github.com/levouh/tint.nvim/issues/38 gets fixed)
   -- Tint -  dim inactive  windows using window-local  highlight namespaces. 
-  -- {
-  --   "levouh/tint.nvim",
-  --   config = function()
-  --     require("tint").setup()
-  --   end,
-  --   event = { "BufReadPre", "BufNewFile" },
-  -- }
+  {
+    "levouh/tint.nvim",
+    config = function()
+      require("tint").setup()
+    end,
+    event = { "BufReadPre", "BufNewFile" },
+  }
 }
