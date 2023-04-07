@@ -4,7 +4,7 @@
 
 <h1>TODO: Add good screenshots</h1>
 
-![neovim](https://user-images.githubusercontent.com/86254474/220361597-ec3c867c-770b-4312-b127-e72b57f5c4df.png)
+![neovim](https://user-images.githubusercontent.com/86254474/230661911-271a21ce-9685-48b8-bdbe-1145f44d3495.png)
 
 ## Used Software
 
