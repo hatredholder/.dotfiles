@@ -25,6 +25,7 @@ vim.cmd [[au FileType html setlocal shiftwidth=4]]
 vim.cmd [[au FileType htmldjango setlocal filetype=html]]
 vim.cmd("augroup END")
 
+vim.o.timeoutlen = 300 -- time in milliseconds to wait for a mapped sequence to complete
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.hidden = true
 vim.o.whichwrap = 'b,s,<,>,[,],h,l'
@@ -34,13 +35,12 @@ vim.o.cmdheight = 2
 vim.o.splitbelow = true
 vim.o.termguicolors = true
 vim.o.splitright = true
-vim.o.conceallevel = 0
+vim.o.conceallevel = 2
 vim.o.showtabline = 2
 vim.o.showmode = false
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.updatetime = 300
-vim.o.timeoutlen = 100
 vim.o.hlsearch = false
 vim.o.ignorecase = true
 vim.o.scrolloff = 3
@@ -99,5 +99,8 @@ vim.cmd('set noswapfile')
 
 -- Prioritize diagnostic signs
 vim.diagnostic.config {
-  severity_sort = true
+  virtual_text = {
+    prefix = '',
+  },
+  severity_sort = true,
 }

@@ -127,7 +127,7 @@ return {
     "utilyre/barbecue.nvim",
     config = function()
       require("barbecue").setup({
-        exclude_filetypes = {'toggleterm', 'neo-tree', "dashboard", "TelescopePrompt", },
+        exclude_filetypes = {'toggleterm', 'neo-tree', "dashboard", "TelescopePrompt", "norg"},
         theme = { normal = { fg = "#C6C0A9", bold = true },
         context_file = { fg = "#535F5C" },
         context_module = { fg = "#535F5C" },
@@ -279,9 +279,15 @@ return {
       local Terminal = require('toggleterm.terminal').Terminal
 
       local toggle_lazygit = function()
-        local lazygit = Terminal:new({ cmd = 'lazygit', direction = "float" })
+        local lazygit = Terminal:new({ cmd = 'lazygit', direction = "float", count = 1 })
         return lazygit:toggle()
       end
+
+      local toggle_neorg = function()
+        local neorg = Terminal:new({ cmd = 'cd /home/hatredholder/notes; nvim /home/hatredholder/notes/index.norg', direction = "float", count = 2 })
+        return neorg:toggle()
+      end
+
 
       local mappings = {
 
@@ -361,6 +367,14 @@ return {
           c = { "<cmd>CellularAutomaton game_of_life<CR>", "Game of Code" },
           h = { "<cmd>Hack<CR>", "Hollywood Mode"},
         },
+
+        o = {
+          name = "Neorg",
+          o = {toggle_neorg, "Open Neorg" },
+          t = {"<cmd>Neorg journal today<CR>", "Journal Today"},
+          y = {"<cmd>Neorg journal tomorrow<CR>", "Journal Tomorrow"},
+          j = {"<cmd>Neorg journal toc update<CR>", "Update Journal"},
+        }
       }
 
       local opts = {prefix = "<leader>"}
@@ -513,42 +527,42 @@ return {
           icon = " ",
           desc = "Find Files            ",
           action = "Telescope find_files",
-          shortcut = "SPC d r",
+          shortcut = " SPC d r ",
         },
         {
           -- icon = " ",
           icon = " ",
           desc = "Search Text           ",
           action = "Telescope live_grep",
-          shortcut = "SPC d f",
+          shortcut = " SPC d f ",
         },
         {
           -- icon = "羽",
           icon = " ",
           desc = "Recent Files          ",
           action = "Telescope oldfiles",
-          shortcut = "SPC d l",
+          shortcut = " SPC d l ",
         },
         {
           -- icon = "ﭢ ",
           icon = " ",
           desc = "Load Session          ",
           action = "SessionManager! load_last_session",
-          shortcut = "SPC d s",
+          shortcut = " SPC d s ",
         },
         {
           -- icon = " ",
           icon = " ",
           desc = "Open Config           ",
           action = "edit ~/.config/nvim/init.lua",
-          shortcut = "SPC d c",
+          shortcut = " SPC d c ",
         },
         {
           -- icon = " ",
           icon = " ",
           desc = "Quit Neovim           ",
           action = "quitall",
-          shortcut = "SPC d q",
+          shortcut = " SPC d q ",
         }
       }
 
@@ -563,6 +577,9 @@ return {
   -- Indent-blankline - adds  indentation guides to all lines
   {
     "lukas-reineke/indent-blankline.nvim",
+    init = function()
+      vim.g.indent_blankline_filetype_exclude = {"norg"}
+    end,
     config = function()
       require("indent_blankline").setup {
         char = "│",
@@ -580,7 +597,7 @@ return {
     "akinsho/toggleterm.nvim",
     config = function()
       require"toggleterm".setup {
-        size = 10,
+        size = 15,
         open_mapping = [[<c-\>]],
         shade_filetypes = {},
         shade_terminals = false,
@@ -589,8 +606,6 @@ return {
         persist_size = true,
         direction = 'float',
          highlights = {
-          -- highlights which map to a highlight group name and a table of it's values
-          -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
           FloatBorder = {
             guifg = "#A7C080",
           },
@@ -641,7 +656,7 @@ return {
         minimum_width = 10,
         render = "minimal",
         stages = "fade",
-        timeout = 1000,
+        timeout = 3000,
         top_down = true,
       }
     end,
@@ -761,6 +776,7 @@ return {
         under_cursor = false,
         filetypes_denylist = {
           'neo-tree',
+          'norg',
         },
       })
     end,
@@ -777,7 +793,9 @@ return {
       })
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
-          "packer", 'neo-tree', "dashboard", "TelescopePrompt", "DiffviewFilePanel", "diff", "help",
+          "packer", 'neo-tree', "dashboard",
+          "TelescopePrompt", "DiffviewFilePanel", "diff",
+          "help", "norg", 'toggleterm',
         },
         callback = function()
           vim.b.miniindentscope_disable = true
@@ -888,12 +906,19 @@ return {
         window = {
           margin = {
             horizontal = 5,
-            vertical = 1,
+            vertical = 3,
           },
           options = {
             signcolumn = "no",
             wrap = true
           },
+        },
+        ignore = {
+          buftypes = "special",
+          filetypes = {"norg"},
+          floating_wins = true,
+          unlisted_buffers = true,
+          wintypes = "special"
         },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
@@ -907,11 +932,11 @@ return {
 
   -- (disabled until https://github.com/levouh/tint.nvim/issues/38 gets fixed)
   -- Tint -  dim inactive  windows using window-local  highlight namespaces. 
-  {
-    "levouh/tint.nvim",
-    config = function()
-      require("tint").setup()
-    end,
-    event = { "BufReadPre", "BufNewFile" },
-  }
+  -- {
+  --   "levouh/tint.nvim",
+  --   config = function()
+  --     require("tint").setup()
+  --   end,
+  --   event = { "BufReadPre", "BufNewFile" },
+  -- }
 }

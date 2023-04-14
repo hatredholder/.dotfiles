@@ -64,11 +64,11 @@ highlight! BufferLineSeparator guifg=#2D353B  guibg=#2D353B
 highlight! BufferLineSeparatorVisible guifg=#21272c  guibg=#21272c
 highlight! BufferLineSeparatorSelected guifg=#21272c  guibg=#21272c
 
-highlight! BufferLineDuplicate guifg=#c6c0a9 guibg=#2d353b
+highlight! BufferLineDuplicate guifg=#677172 guibg=#2d353b
 highlight! BufferLineDuplicateVisible guifg=#c6c0a9 guibg=#21272c
 highlight! BufferLineDuplicateSelected guifg=#c6c0a9 guibg=#21272c gui=italic,bold
 
-highlight! BufferLineCloseButton guifg=#c6c0a9 guibg=#2D353B
+highlight! BufferLineCloseButton guifg=#677172 guibg=#2D353B
 highlight! BufferLineCloseButtonVisible guifg=#c6c0a9 guibg=#21272c
 highlight! BufferLineCloseButtonSelected guifg=#c6c0a9 guibg=#21272c
 
@@ -84,6 +84,13 @@ vim.cmd('highlight! DashboardHeader guifg=#96A97A')
 vim.cmd('highlight! DashboardCenter guifg=#DBBC7F')
 vim.cmd('highlight! DashboardShortcut guifg=#DB7A7C')
 vim.cmd('highlight! DashboardFooter guifg=#96A97A')
+
+vim.cmd('highlight! DashboardCenter1Icon guifg=#E59774')
+vim.cmd('highlight! DashboardCenter3Icon guifg=#E59774')
+vim.cmd('highlight! DashboardCenter5Icon guifg=#E59774')
+vim.cmd('highlight! DashboardCenter7Icon guifg=#E59774')
+vim.cmd('highlight! DashboardCenter9Icon guifg=#E59774')
+vim.cmd('highlight! DashboardCenter11Icon guifg=#E59774')
 
 -- Set Leap colors
 vim.cmd('highlight! LeapMatch guifg=#d3c6aa guibg=#D699B6 gui=bold')
@@ -158,6 +165,14 @@ highlight! lualine_c_inactive guibg=#323b42
 
 -- Set Whichkey colors
 vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg=0, fg="#d3c6aa", bg="#323b42"})
+
+-- Set Neorg colors
+vim.cmd[[
+highlight! link @neorg.quotes.1.prefix green
+highlight! link @neorg.quotes.1.content green
+highlight! link @neorg.quotes.5.prefix gray
+highlight! link @neorg.quotes.5.content gray
+]]
 
 -- Set Nvim-CMP colors
 vim.api.nvim_set_hl(0, "Pmenu", {fg="#C5CDD9", bg="#424e53"})

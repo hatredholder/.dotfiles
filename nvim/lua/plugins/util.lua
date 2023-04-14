@@ -26,6 +26,9 @@ return {
         autoload_mode = require('session_manager.config').AutoloadMode.Disabled, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
         autosave_last_session = true, -- Automatically save last session on exit and on session switch.
         autosave_ignore_not_normal = true, -- Plugin will not save a session when no buffers are opened, or all of them aren't writable or listed.
+        autosave_ignore_dirs = {
+          '/home/hatredholder/notes'
+        },
         autosave_ignore_filetypes = { -- All buffers of these file types will be closed before the session is saved.
           'gitcommit',
         },
@@ -35,6 +38,48 @@ return {
 
     end,
     event = "VimEnter",
+  },
+
+  -- Neorg -  org-mode alternative in  Neovim
+  {
+    "nvim-neorg/neorg",
+    cmd = "Neorg",
+    ft = "norg",
+    opts = {
+      load = {
+        ["core.defaults"] = {},
+        ["core.norg.concealer"] = {
+          config = {
+              icon_preset = "diamond",
+              icons = {
+                todo = {
+                  on_hold = {
+                    icon = "󰏤"
+                  }
+                }
+              }
+            }
+          },
+        ["core.norg.dirman"] = {
+          config = {
+            workspaces = {
+                notes = "~/notes",
+            },
+            default_workspace = "notes",
+          },
+        },
+        ["core.keybinds"] = {
+          config = {
+            hook = function(keybinds)
+              keybinds.remap_key("norg", "n", "<CR>", "gx")
+            end
+          },
+        },
+        ["core.norg.completion"] = {
+          config = { engine = "nvim-cmp" },
+        },
+      },
+    },
   },
 
   -- Presence - activity in ﭮ Discord 

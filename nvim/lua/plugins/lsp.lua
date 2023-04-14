@@ -1,6 +1,6 @@
 --[[
 
-▄█          ▄████████    ▄███████▄    ▄█       ███    █▄     ▄████████ 
+▄█          ▄████████    ▄███████▄    ▄█        ███    █▄     ▄████████ 
 ███         ███    ███   ███    ███   ███       ███    ███   ███    ███ 
 ███         ███    █▀    ███    ███   ███       ███    ███   ███    ███ 
 ███         ███          ███    ███   ███       ███    ███   ███    ███ 
@@ -47,7 +47,7 @@ return {
           enable = false,
           sign = true,
           sign_priority = 40,
-          virtual_text = true,
+          virtual_text = false,
         },
         finder_definition_icon = "  ",
         finder_reference_icon = "  ",
@@ -81,7 +81,7 @@ return {
         highlight_prefix = false,
       }
     end,
-    event = "VeryLazy",
+    event = "BufEnter",
   },
 
   -- Null-ls -  inject  LSP diagnostics,  code actions, and more
@@ -180,6 +180,7 @@ return {
         }),
 
         sources = cmp.config.sources({
+          { name = "neorg", priority = 8},
           { name = 'nvim_lsp', priority = 7},
           { name = 'luasnip', priority = 6},
           { name = 'buffer', priority = 5},
@@ -224,14 +225,6 @@ return {
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
-
-      -- Setup Sign for Diagnostic Error
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-          virtual_text = {
-           prefix = "",
-          },
-      })
 
       -- Set up Language Servers
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -296,8 +289,8 @@ return {
   {"hrsh7th/cmp-nvim-lsp"}, -------|
   {"hrsh7th/cmp-buffer"}, ---------|   
   {"hrsh7th/cmp-emoji"}, ----------| 
-  {"hrsh7th/cmp-path"}, -----------| 
-  {"hrsh7th/cmp-calc"}, -----------|  Nvim-cmp required plugins
+  {"hrsh7th/cmp-path"}, -----------|  Nvim-cmp required plugins
+  {"hrsh7th/cmp-calc"}, -----------|
   {"hrsh7th/cmp-cmdline"}, --------|
   {"onsails/lspkind.nvim"}, -------|
   {'saadparwaiz1/cmp_luasnip'}, ---|

@@ -175,7 +175,7 @@ return {
         -- the default number of lines/columns to resize by at a time
         default_amount = 3,
         -- when moving cursor between splits left or right,
-        -- place the cursor on the same row of the *screen*
+        -- place the cursor on the same row of the *screen
         -- regardless of line numbers. False by default.
         -- Can be overridden via function parameter, see Usage.
         move_cursor_same_row = false,
@@ -206,7 +206,7 @@ return {
           'WinEnter',
         },
         -- enable or disable the tmux integration
-       multiplexer_integration = "tmux",
+        multiplexer_integration = "tmux",
       })
     end,
     event = { "BufReadPost", "BufNewFile" },
@@ -227,18 +227,18 @@ return {
 
       -- Pastebin-clone dap config
       dap.configurations.python = dap.configurations.python or {}
-          table.insert(dap.configurations.python, {
-          name = 'Flask - Pybin',
-          type = 'python',
-          request = 'launch',
-          module = 'flask',
-          python = "/home/hatredholder/Programming/Python/Flask/pastebin-clone/bin/python",
-          env = {
-            FLASK_APP = "app.py",
-          },
-          jinja = true,
-          args = {'run', '--no-debugger'},
-        })
+      table.insert(dap.configurations.python, {
+        name = 'Flask - Pybin',
+        type = 'python',
+        request = 'launch',
+        module = 'flask',
+        python = "/home/hatredholder/Programming/Python/Flask/pastebin-clone/bin/python",
+        env = {
+          FLASK_APP = "app.py",
+        },
+        jinja = true,
+        args = {'run', '--no-debugger'},
+      })
 
       -- -- Social Network dap config
       -- dap.configurations.python = dap.configurations.python or {}
@@ -252,13 +252,13 @@ return {
       --   })
 
       require("nvim-dap-virtual-text").setup {
-          commented = true,
+        commented = true,
       }
       require("dapui").setup({
         layouts = {
           {
             elements = {
-            -- Elements can be strings or table with id and size keys.
+              -- Elements can be strings or table with id and size keys.
               { id = "scopes", size = 0.25 },
               "breakpoints",
               "stacks",
@@ -312,6 +312,25 @@ return {
     event = "VeryLazy",
   },
 
+  -- Leap-spooky - 󰊠 Actions at a distance 
+  {
+    "ggandor/leap-spooky.nvim",
+    config = function()
+        require('leap-spooky').setup {
+          affixes = {
+            -- These will generate mappings for all native text objects, like:
+            -- (ir|ar|iR|aR|im|am|iM|aM){obj}.
+            -- Special line objects will also be added, by repeating the affixes.
+            -- E.g. `yrr<leap>` and `ymm<leap>` will yank a line in the current
+            -- window.
+            -- You can also use 'rest' & 'move' as mnemonics.
+            remote   = { window = 'r', cross_window = 'R' },
+            magnetic = { window = 'm', cross_window = 'M' },
+          },
+        }
+    end,
+  },
+
   -- Python-pep8-indent - indent fix for  Python
   {
     "Vimjas/vim-python-pep8-indent",
@@ -348,7 +367,7 @@ return {
     "echasnovski/mini.move",
     config = function()
       require("mini.move").setup({
-          mappings = {
+        mappings = {
           -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
           left = '<S-h>',
           right = '<S-l>',
@@ -370,8 +389,8 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
-        "kevinhwang91/promise-async",
-        "luukvbaal/statuscol.nvim",
+      "kevinhwang91/promise-async",
+      "luukvbaal/statuscol.nvim",
     },
     init = function()
       vim.o.foldcolumn = "1"
@@ -387,12 +406,12 @@ return {
           { text = { "%s" }, click = "v:lua.ScSa" },
           { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
           { text = { " ", builtin.foldfunc, " " }, click = "v:lua.ScFa" },
-      }})
+        }})
     end,
     config = function()
       require('ufo').setup({
         provider_selector = function()
-            return {'treesitter', 'indent'}
+          return {'treesitter', 'indent'}
         end
       })
     end,
@@ -407,20 +426,30 @@ return {
   },
 
   -- Spider - Use the w, e, b motions like a 🕷️spider. Considers camelCase and skips insignificant punctuation. 
-  {
-    "chrisgrieser/nvim-spider",
-    config = function()
-      require("spider").setup({
-        skipInsignificantPunctuation = false
-      })
-      vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
-      vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
-      vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
-      vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
-    end,
-    event = "VeryLazy",
-  },
+  -- {
+  --   "chrisgrieser/nvim-spider",
+  --   config = function()
+  --     require("spider").setup({
+  --       skipInsignificantPunctuation = false
+  --     })
+  --     vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
+  --     vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
+  --     vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
+  --     vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
+  --   end,
+  --   event = "VeryLazy",
+  -- },
 
   -- Deadcolumn -  plugin that shows  ﴳ colorcolumn dynamically with :set colorcolumn
   { 'Bekaboo/deadcolumn.nvim' },
+
+  -- Surround - Add/change/delete 󱓼 surrounding 󱤎 delimiter pairs with ease
+  {
+    "kylechui/nvim-surround",
+    version = "", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup()
+    end
+  },
 }
