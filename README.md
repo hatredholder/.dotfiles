@@ -2,9 +2,13 @@
 
 <p align="center">:evergreen_tree: Your dotfiles are about how you personalize your own system. These are mine. :evergreen_tree:</p>
 
-<h1>TODO: Add good screenshots</h1>
+## Showcase
 
-![neovim](https://user-images.githubusercontent.com/86254474/230661911-271a21ce-9685-48b8-bdbe-1145f44d3495.png)
+![everforest_rice_1](https://user-images.githubusercontent.com/86254474/232735149-7b0ee4ae-1079-4c6f-8c3f-23d785b9ab4a.png)
+
+![everforest_rice_2](https://user-images.githubusercontent.com/86254474/230661911-271a21ce-9685-48b8-bdbe-1145f44d3495.png)
+
+![everforest_rice_3](https://user-images.githubusercontent.com/86254474/232734949-4b1bbd70-944f-4ed5-a043-57258829f8dc.png)
 
 ## Used Software
 
