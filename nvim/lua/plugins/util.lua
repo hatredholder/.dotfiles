@@ -27,7 +27,7 @@ return {
         autosave_last_session = true, -- Automatically save last session on exit and on session switch.
         autosave_ignore_not_normal = true, -- Plugin will not save a session when no buffers are opened, or all of them aren't writable or listed.
         autosave_ignore_dirs = {
-          '/home/hatredholder/notes'
+          -- '/home/hatredholder/notes'
         },
         autosave_ignore_filetypes = { -- All buffers of these file types will be closed before the session is saved.
           'gitcommit',
@@ -56,6 +56,14 @@ return {
                   on_hold = {
                     icon = "󰏤"
                   }
+                },
+                delimiter = {
+                  horizontal_line = {
+                    icon = "─"
+                  },
+                  weak = {
+                    enabled = true,
+                  }
                 }
               }
             }
@@ -72,6 +80,8 @@ return {
           config = {
             hook = function(keybinds)
               keybinds.remap_key("norg", "n", "<CR>", "gx")
+              keybinds.remap("norg", "n", "gtd", "<cmd>Neorg keybind norg core.norg.qol.todo_items.todo.task_done<CR><Plug>(nvim-surround-normal)$-")
+              keybinds.remap("norg", "n", "gtu", "<cmd>Neorg keybind norg core.norg.qol.todo_items.todo.task_undone<CR><Plug>(nvim-surround-delete)-")
             end
           },
         },
@@ -80,6 +90,51 @@ return {
         },
       },
     },
+  },
+
+  {
+    'lukas-reineke/headlines.nvim',
+    config = function()
+      require("headlines").setup{
+        norg = {
+          query = vim.treesitter.parse_query(
+              "norg",
+              [[
+                  [
+                      (heading1_prefix)
+                      (heading2_prefix)
+                      (heading3_prefix)
+                      (heading4_prefix)
+                      (heading5_prefix)
+                      (heading6_prefix)
+                  ] @headline
+
+                  (weak_paragraph_delimiter) @dash
+                  (strong_paragraph_delimiter) @doubledash
+
+                  ((ranged_tag
+                      name: (tag_name) @_name
+                      (#eq? @_name "code")
+                  ) @codeblock (#offset! @codeblock 0 0 1 0))
+
+                  (quote1_prefix) @quote
+              ]]
+          ),
+          headline_highlights = { "Headline1", "Headline2", "Headline3", "Headline4" },
+          codeblock_highlight = "CodeBlock",
+          dash_highlight = "Dash",
+          dash_string = "-",
+          doubledash_highlight = "DoubleDash",
+          doubledash_string = "=",
+          quote_highlight = "Quote",
+          quote_string = "┃",
+          fat_headlines = false,
+          fat_headline_upper_string = "▃",
+          fat_headline_lower_string = "🬂",
+        },
+      }
+    end,
+    event = "VeryLazy",
   },
 
   -- Presence - activity in ﭮ Discord 

@@ -932,11 +932,11 @@ return {
 
   -- (disabled until https://github.com/levouh/tint.nvim/issues/38 gets fixed)
   -- Tint -  dim inactive  windows using window-local  highlight namespaces. 
-  -- {
-  --   "levouh/tint.nvim",
-  --   config = function()
-  --     require("tint").setup()
-  --   end,
-  --   event = { "BufReadPre", "BufNewFile" },
-  -- }
+  {
+    "levouh/tint.nvim",
+    config = function()
+      require("tint").setup()
+    end,
+    event = { "BufReadPre", "BufNewFile" },
+  }
 }

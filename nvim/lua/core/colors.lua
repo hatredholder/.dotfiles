@@ -140,7 +140,7 @@ highlight! TSAttribute guifg=#E69875
 
 -- Set Diagnostic Virtual Text colors
 vim.cmd([[
-highlight! DiagnosticVirtualTextError guifg=#DB7A7C guibg=#4a3e3e
+highlight! DiagnosticVirtualTextError guifg=#DB7A7C guibg=#573737
 highlight! DiagnosticVirtualTextWarn guifg=#DBBC7F guibg=#4d483d
 highlight! DiagnosticVirtualTextInfo guifg=#7FBBB3 guibg=#354846
 highlight! DiagnosticVirtualTextHint guifg=#96A97A guibg=#353f2c
@@ -172,6 +172,18 @@ highlight! link @neorg.quotes.1.prefix green
 highlight! link @neorg.quotes.1.content green
 highlight! link @neorg.quotes.5.prefix gray
 highlight! link @neorg.quotes.5.content gray
+
+highlight! link @neorg.headings.1.prefix red
+highlight! link @neorg.headings.1.title red
+highlight! link @neorg.headings.3.prefix yellow
+highlight! link @neorg.headings.3.title yellow
+highlight! link @neorg.headings.4.prefix green
+highlight! link @neorg.headings.4.title green
+
+highlight! Headline1 guibg=#573737
+highlight! Headline2 guibg=#4a3e3e
+highlight! Headline3 guibg=#4d483d
+highlight! Headline4 guibg=#353f2c
 ]]
 
 -- Set Nvim-CMP colors

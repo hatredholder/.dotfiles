@@ -28,6 +28,8 @@ vim.api.nvim_set_keymap('v', 'x', '"_x', {noremap = true, silent = true}) --|
 vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>w!<cr>', {noremap = true, silent = true})  --| Force save
 vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>qa!<cr>', {noremap = true, silent = true}) --| Force quit
 
+vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>qa!<cr>', {noremap = true, silent = true}) --| Force quit
+
 vim.api.nvim_set_keymap('n', '<Leader>o', 'o<Esc>0"_D', {noremap = true, silent = true}) --| Newline in normal mode on next line
 vim.api.nvim_set_keymap('n', '<Leader>O', 'O<Esc>0"_D', {noremap = true, silent = true}) --| Newline in normal mode on current line
 
