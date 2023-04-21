@@ -14,10 +14,13 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config focused_border_color "AFA992"
 bspc config normal_border_color  "323c41f"
+bspc config pointer_motion_interval 80
+
+bspc rule -a Zathura state=tiled  # run zathura in tiled mode
 
 dunst &  # turn dunst on (custom notifications)
-picom -b --experimental-backends &  # turn picom on (window compositor)
-nitrogen --restore &  # turn nitrogen on (wallpapers)
+picom -b &  # turn picom on (window compositor)
+nitrogen --restore &  # turn nitrogen on (wallpaper setter)
 xsetroot -cursor_name left_ptr &  # set custom cursor
 
 ~/.config/polybar/launch.sh  # launch polybar
