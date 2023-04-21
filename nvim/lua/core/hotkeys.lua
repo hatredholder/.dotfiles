@@ -68,3 +68,6 @@ vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({
 -- Portal hotkeys --
 vim.api.nvim_set_keymap("n", "<c-o>", "<cmd>Portal jumplist backward<cr>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<c-i>", "<cmd>Portal jumplist forward<cr>", {noremap = true, silent = true})
+
+-- Treesj hotkey --
+vim.keymap.set('n', '<c-b>', function() require('treesj').toggle({ split = { recursive = true } }) end)

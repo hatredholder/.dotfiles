@@ -223,8 +223,6 @@ return {
         args = { '-m', 'debugpy.adapter' };
       }
 
-      -- TODO: Delete personal configurations before uploading to github
-
       -- Pastebin-clone dap config
       dap.configurations.python = dap.configurations.python or {}
       table.insert(dap.configurations.python, {
@@ -239,17 +237,6 @@ return {
         jinja = true,
         args = {'run', '--no-debugger'},
       })
-
-      -- -- Social Network dap config
-      -- dap.configurations.python = dap.configurations.python or {}
-      --     table.insert(dap.configurations.python, {
-      --     name = 'Django - Social Network',
-      --     type = 'python',
-      --     request = 'launch',
-      --     python = "/home/hatredholder/Programming/Python/Django/social_network/bin/python",
-      --     program = vim.fn.getcwd() .. '/manage.py',  -- NOTE: Adapt path to manage.py as needed
-      --     args = {'runserver', '--noreload'},
-      --   })
 
       require("nvim-dap-virtual-text").setup {
         commented = true,
@@ -426,22 +413,24 @@ return {
   },
 
   -- Spider - Use the w, e, b motions like a 🕷️spider. Considers camelCase and skips insignificant punctuation. 
-  -- {
-  --   "chrisgrieser/nvim-spider",
-  --   config = function()
-  --     require("spider").setup({
-  --       skipInsignificantPunctuation = false
-  --     })
-  --     vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
-  --     vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
-  --     vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
-  --     vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
-  --   end,
-  --   event = "VeryLazy",
-  -- },
+  {
+    "chrisgrieser/nvim-spider",
+    config = function()
+      require("spider").setup({
+        skipInsignificantPunctuation = false
+      })
+      vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
+      vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
+      vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
+      vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
+    end,
+    event = "VeryLazy",
+  },
 
   -- Deadcolumn -  plugin that shows  ﴳ colorcolumn dynamically with :set colorcolumn
-  { 'Bekaboo/deadcolumn.nvim' },
+  {
+    'Bekaboo/deadcolumn.nvim',
+  },
 
   -- Surround - Add/change/delete 󱓼 surrounding 󱤎 delimiter pairs with ease
   {
@@ -451,5 +440,16 @@ return {
     config = function()
         require("nvim-surround").setup()
     end
+  },
+
+  -- Treesj -  splitting/joining 🔳blocks of  code
+  {
+    "Wansmer/treesj",
+    config = function()
+      require('treesj').setup({
+        use_default_keymaps = false,
+      })
+    end,
+    event = "VeryLazy",
   },
 }
