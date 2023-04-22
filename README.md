@@ -37,9 +37,8 @@
 - Wallpaper Setter: [Nitrogen](https://github.com/l3ib/nitrogen)
 
 ## r/unixporn 
-- [\[BSPWM\] Some Everforestry for Your Eyes! 🌿 ](https://www.reddit.com/r/unixporn/comments/12r56rn/bspwm_some_everforestry_for_your_eyes/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button) 
+- [\[BSPWM\] Some Everforestry for Your Eyes! 🌿 ](https://www.reddit.com/r/unixporn/comments/12r56rn/bspwm_some_everforestry_for_your_eyes/) 
 
 ## Disclaimer
-
 
 All of the configs in this repo belong to my personal setup. None of them is guaranteed to work properly on your machine, so use them carefully and responsibly, and as always remember to make backups and save RAM.
