@@ -20,6 +20,8 @@ vim.cmd(':set cursorcolumn!')
 -- Filetype loads
 vim.cmd [[augroup filetype_settings]]
 vim.cmd [[au!]]
+vim.cmd [[au FileType go setlocal shiftwidth=4]]
+vim.cmd [[au FileType go setlocal tabstop=4]]
 vim.cmd [[au FileType lua setlocal shiftwidth=2]]
 vim.cmd [[au FileType html setlocal shiftwidth=4]]
 vim.cmd [[au FileType htmldjango setlocal filetype=html]]
