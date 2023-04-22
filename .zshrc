@@ -5,6 +5,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
+bindkey -v  # enable vi mode (required for zsh-vi-mode plugin)
+
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -12,18 +14,18 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
-bindkey -v  # enable vi mode (required for zsh-vi-mode plugin)
 
 # Plugins
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme #p10k theme
+source ~/.config/zsh/vi/zsh-vi-mode.plugin.zsh  # vi mode
 source ~/.config/zsh/sudo_plugin.zsh  # esc-esc for repeat in sudo
 source ~/.config/zsh/fs/fast-syntax-highlighting.plugin.zsh  # syntax-highlighting
 source ~/.config/zsh/as/zsh-autosuggestions.zsh  # autosuggestions
-source ~/.config/zsh/vi/zsh-vi-mode.plugin.zsh  # vi mode
 source ~/.config/zsh/cb/zsh-system-clipboard.zsh  # yank to clipboard in vi mode
 
 # Env
 export PATH="$HOME/.local/share/bob/nightly/nvim-linux64/bin:$PATH"
+export PATH="$PATH:/home/$USER/.local/bin"
 
 export SPOTIPY_CLIENT_ID='a87891a3c80b417eb952b7779537d674'
 export SPOTIPY_CLIENT_SECRET='e6c0ab3c5e6b4f94ac81b642378420a1'
