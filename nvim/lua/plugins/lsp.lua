@@ -91,12 +91,12 @@ return {
       require("null-ls").setup({
           sources = {
               require("null-ls").builtins.diagnostics.ruff,
-
               require("null-ls").builtins.formatting.black,
               require("null-ls").builtins.formatting.stylua,
               require("null-ls").builtins.completion.spell,
 
               require("null-ls").builtins.formatting.goimports,
+              require("null-ls").builtins.diagnostics.golangci_lint,
           },
       })
     end,
@@ -178,6 +178,8 @@ return {
             end
           end, { "i", "s" }),
         }),
+
+
         sources = cmp.config.sources({
           { name = "neorg", priority = 9},
           {
@@ -202,6 +204,24 @@ return {
           { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
         }, {
           { name = 'buffer' },
+        })
+      })
+
+      -- Set configuration for Go
+      -- (disable emojis and nerdfont)
+      cmp.setup.filetype('go', {
+        sources = cmp.config.sources({
+          { name = "neorg", priority = 9},
+          {
+            name = 'rg',
+            -- keyword_length = 3,
+            priority = 8,
+          },
+          { name = 'nvim_lsp', priority = 7},
+          { name = 'luasnip', priority = 6},
+          { name = 'buffer', priority = 5},
+          { name = 'path', priority = 4},
+          { name = 'calc', priority = 3},
         })
       })
 

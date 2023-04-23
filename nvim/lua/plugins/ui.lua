@@ -368,9 +368,9 @@ return {
           h = { "<cmd>Hack<CR>", "Hollywood Mode"},
         },
 
-        o = {
+        k = {
           name = "Neorg",
-          o = {toggle_neorg, "Open Neorg" },
+          k = {toggle_neorg, "Open Neorg" },
           t = {"<cmd>Neorg journal today<CR>", "Journal Today"},
           y = {"<cmd>Neorg journal tomorrow<CR>", "Journal Tomorrow"},
           j = {"<cmd>Neorg journal toc update<CR>", "Update Journal"},

@@ -62,7 +62,7 @@ return {
                     icon = "─"
                   },
                   weak = {
-                    enabled = true,
+                    enabled = false,
                   }
                 }
               }
