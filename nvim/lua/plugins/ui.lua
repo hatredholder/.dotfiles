@@ -313,20 +313,21 @@ return {
 
         l = {
           name = "LSP",
-          r = {'<cmd>LspRestart<CR>', "Restart LSP"},
+          R = {'<cmd>LspRestart<CR>', "Restart LSP"},
           i = {"<cmd>LspInfo<cr>", "Connected Language Servers"},
 
           h = {'<cmd>lua vim.lsp.buf.hover()<CR>', "Hover"},
 
           d = {'<cmd>lua vim.lsp.buf.definition()<CR>', "Go to definition"},
-          g = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
+          r = {'<cmd>lua vim.lsp.buf.references()<CR>', "References"},
 
-          p = {'<cmd>Telescope diagnostics bufnr=0<CR>', "Get Diagnostics"},
+          e = {'<cmd>Telescope diagnostics bufnr=0<CR>', "Get Diagnostics"},
           s = {'<cmd>Lspsaga show_line_diagnostics<CR>', "Show line diagnostics"},
           n = {'<cmd>lua vim.diagnostic.goto_next()<CR>', "Go to next diagnostic"},
           N = {'<cmd>lua vim.diagnostic.goto_prev()<CR>', "Go to previous diagnostic"},
 
-          f = {'<cmd>!black %<CR>', "Format Python File"},
+          p = {'<cmd>!black %<CR>', "Format Python File"},
+          g = {'<cmd>!gofumpt -w . > /dev/null<CR>', "Format Golang File"},
         },
 
         b = {
