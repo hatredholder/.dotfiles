@@ -90,13 +90,18 @@ return {
     config = function()
       require("null-ls").setup({
           sources = {
-              require("null-ls").builtins.diagnostics.ruff,
-              require("null-ls").builtins.formatting.black,
+              -- lua
               require("null-ls").builtins.formatting.stylua,
               require("null-ls").builtins.completion.spell,
 
+              -- python
+              require("null-ls").builtins.diagnostics.ruff,
+              require("null-ls").builtins.formatting.black,
+
+
+              -- golang
               require("null-ls").builtins.formatting.goimports,
-              require("null-ls").builtins.diagnostics.golangci_lint,
+              -- require("null-ls").builtins.diagnostics.golangci_lint,
           },
       })
     end,
@@ -279,6 +284,8 @@ return {
         filetypes = {'html', 'htmldjango'},
       }
 
+      ----- Python setup
+
       -- Setup pylsp language server
       require'lspconfig'.pylsp.setup{
         capabilities = capabilities,
@@ -293,18 +300,26 @@ return {
         }
       }
 
-      -- require'lspconfig'.gopls.setup{
-      --   capabilities = capabilities,
-      --   filetypes = {"go", "gomod"},
-      --   root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
-      --   settings = {
-      --     gopls = {
-      --       analyses = {
-      --         unusedparams = false,
-      --       },
-      --       staticcheck = false,
-      --     },
-      --   },
+      ----- Golang setup
+
+      -- Setup gopls
+      require'lspconfig'.gopls.setup{
+        capabilities = capabilities,
+        filetypes = {"go", "gomod"},
+        root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+          },
+        },
+      }
+
+      -- Setup golangci_lint
+      -- require'lspconfig'.golangci_lint_ls.setup{
+      --   command = { "golangci-lint", "run", "--disable", "typecheck", "staticcheck", "unused", "--out-format", "json" }
       -- }
 
     end,
