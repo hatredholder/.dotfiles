@@ -87,6 +87,11 @@
     tp-yt0app-drawer {
         background: var(--background-primary);
     }
+    
+    #container.ytd-searchbox:hover, #container.ytd-searchbox:focus{
+        border-color: #2f383e;
+        border-width: 1px;
+    }
 
     ytd-masthead {
         --paper-input-container-input-align: baseline;
