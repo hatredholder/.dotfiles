@@ -137,6 +137,9 @@ return {
         completion = {
           completeopt = 'menu,menuone,noselect'
         },
+        experimental = {
+          ghost_text = {hlgroup = "Comment"}
+        },
         preselect = cmp.PreselectMode.None,
         snippet = {
           expand = function(args)
@@ -153,7 +156,18 @@ return {
           formatting = {
             fields = { "kind", "abbr", "menu" },
             format = function(entry, vim_item)
-              local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+              -- Setup Highlight for Codeium
+              if entry.source.name == "codeium" then
+                vim_item.kind = "  "
+                vim_item.menu = "    (Codeium)"
+                vim_item.kind_hl_group = "CmpItemKindSnippet"
+                return vim_item
+              end
+
+              local kind = require("lspkind").cmp_format({
+                mode = "symbol_text",
+                maxwidth = 50,
+              })(entry, vim_item)
               local strings = vim.split(kind.kind, "%s", { trimempty = true })
               kind.kind = " " .. (strings[1] or "") .. " "
               kind.menu = "    (" .. (strings[2] or "") .. ")"
@@ -184,19 +198,14 @@ return {
           end, { "i", "s" }),
         }),
 
-
         sources = cmp.config.sources({
-          { name = "neorg", priority = 9},
-          {
-            name = 'rg',
-            -- keyword_length = 3,
-            priority = 8,
-          },
-          { name = 'nvim_lsp', priority = 7},
-          { name = 'luasnip', priority = 6},
-          { name = 'buffer', priority = 5},
-          { name = 'path', priority = 4},
-          { name = 'calc', priority = 3},
+          { name = "codeium", priority = 9},
+          { name = "neorg", priority = 8},
+          { name = 'rg', priority = 7},
+          { name = 'nvim_lsp', priority = 6},
+          { name = 'luasnip', priority = 5},
+          { name = 'buffer', priority = 4},
+          { name = 'path', priority = 3},
           { name = 'emoji', priority = 2},
           { name = 'nerdfont', priority = 1},
         })
@@ -216,17 +225,13 @@ return {
       -- (disable emojis and nerdfont)
       cmp.setup.filetype('go', {
         sources = cmp.config.sources({
-          { name = "neorg", priority = 9},
-          {
-            name = 'rg',
-            -- keyword_length = 3,
-            priority = 8,
-          },
-          { name = 'nvim_lsp', priority = 7},
-          { name = 'luasnip', priority = 6},
-          { name = 'buffer', priority = 5},
-          { name = 'path', priority = 4},
-          { name = 'calc', priority = 3},
+          { name = "codeium", priority = 9},
+          { name = "neorg", priority = 8},
+          { name = 'rg', priority = 7},
+          { name = 'nvim_lsp', priority = 6},
+          { name = 'luasnip', priority = 5},
+          { name = 'buffer', priority = 4},
+          { name = 'path', priority = 3},
         })
       })
 
@@ -328,8 +333,7 @@ return {
   {"hrsh7th/cmp-nvim-lsp"}, -------|
   {"hrsh7th/cmp-buffer"}, ---------|   
   {"hrsh7th/cmp-emoji"}, ----------| 
-  {"hrsh7th/cmp-path"}, -----------| 
-  {"hrsh7th/cmp-calc"}, -----------|  Nvim-cmp required plugins
+  {"hrsh7th/cmp-path"}, -----------|  Nvim-cmp required plugins
   {"hrsh7th/cmp-cmdline"}, --------|
   {"lukas-reineke/cmp-rg"}, -------|
   {"onsails/lspkind.nvim"}, -------|
