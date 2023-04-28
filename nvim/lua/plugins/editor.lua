@@ -31,11 +31,23 @@ return {
         source_selector = {
           winbar = true,
           content_layout = "center",
-          tab_labels = {
-            filesystem = "  File ",
-            buffers = " פּ Bufs",
-            git_status = " Git",
-            diagnostics = " 裂Diagnostics",
+          sources = {
+            {
+              source = "filesystem",
+              display_name = "  File ",
+            },
+            {
+              source = "buffers",
+              display_name = " פּ Bufs",
+            },
+            {
+              source = "git_status",
+              display_name = " Git",
+            },
+            {
+              source = "diagnostics",
+              display_name = " 裂Diagnostics",
+            },
           },
         },
         sort_case_insensitive = false, -- used when sorting files and directories in the tree

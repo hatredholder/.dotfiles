@@ -105,6 +105,7 @@ highlight! NeoTreeGitConflict guifg=#7FBBB3
 highlight! NeoTreeGitUntracked guifg=#DBBC7F
 highlight! NeoTreeGitTabInactive guibg=#191E22
 highlight! NeoTreeGitDotfile guibg=#888888
+highlight! NeoTreeDirectoryIcon guifg=#A7C07F
 highlight! NeoTreeGitUnstaged guifg=#7FBBB3
 highlight! NeoTreeNormal guibg=#2D353B
 highlight! NeoTreeEndOfBuffer guibg=#2D353B
