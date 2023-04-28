@@ -102,7 +102,7 @@ return {
           globalstatus = true,
           theme = custom_auto,
           disabled_filetypes = {
-            "dashboard", "TelescopePrompt",
+            "dashboard", "TelescopePrompt", "norg",
           },
           refresh = {
             statusline = 10,
@@ -239,10 +239,10 @@ return {
             local seve = vim.diagnostic.severity
 
             -- get diagnostics from all buffers
-            local error = #vim.diagnostic.get(nil, {severity = seve.ERROR})
-            local warning = #vim.diagnostic.get(nil, {severity = seve.WARN})
-            local info = #vim.diagnostic.get(nil, {severity = seve.INFO})
-            local hint = #vim.diagnostic.get(nil, {severity = seve.HINT})
+            local error = #vim.diagnostic.get(0, {severity = seve.ERROR})
+            local warning = #vim.diagnostic.get(0, {severity = seve.WARN})
+            local info = #vim.diagnostic.get(0, {severity = seve.INFO})
+            local hint = #vim.diagnostic.get(0, {severity = seve.HINT})
 
             if error ~= 0 then
             table.insert(result, {text = "  " .. error .. " ", bg = "#272e33", fg = "#c6c0a9"})
@@ -294,7 +294,7 @@ return {
         f = {"<cmd>Telescope live_grep<CR>", "Live Grep (Global Search)"},
         r = {"<cmd>Telescope find_files<CR>", "Find Files"},
         u = {"<cmd>Telescope undo<cr>", "Undo History"},
-        g = {"<cmd>TodoTelescope<cr>", "See Todo's"},
+        v = {"<cmd>TodoTelescope<cr>", "See Todo's"},
 
         d = {
           name = "Dashboard",
@@ -327,7 +327,13 @@ return {
           N = {'<cmd>lua vim.diagnostic.goto_prev()<CR>', "Go to previous diagnostic"},
 
           p = {'<cmd>!black %<CR>', "Format Python File"},
-          g = {'<cmd>!gofumpt -w . > /dev/null<CR>', "Format Golang File"},
+        },
+
+        g = {
+          name = "Golang",
+          c = {"<cmd>GoCmt<CR>", "Add Comment"},
+          t = {"<cmd>GoAddTag<CR>", "Add Tags"},
+          f = {'<cmd>lua require("go.format").goimport()<CR>', "Format File"},
         },
 
         b = {
@@ -362,7 +368,7 @@ return {
           b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
         },
 
-        v = {
+        p = {
           name = "Visuals",
           y = { "<cmd>CellularAutomaton make_it_rain<CR>", "MAKE IT RAIN!" },
           c = { "<cmd>CellularAutomaton game_of_life<CR>", "Game of Code" },
@@ -622,6 +628,9 @@ return {
     config = function()
       require("noice").setup({
         lsp = {
+          progress = {
+            enabled = false,
+          },
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
@@ -644,6 +653,7 @@ return {
     end,
     config = function()
       require("notify").setup{
+        col_offset = 3,
         background_colour = "Normal",
         fps = 60,
         icons = {
@@ -656,9 +666,9 @@ return {
         level = 2,
         minimum_width = 10,
         render = "minimal",
-        stages = "fade",
         timeout = 3000,
-        top_down = true,
+        top_down = false,
+        stages = "fade_in_slide_out"
       }
     end,
     event = "VeryLazy",
@@ -761,7 +771,38 @@ return {
     config = function()
       require('dressing').setup({
         select = {
-          backend = { "fzf_lua"},
+          backend = {"builtin"},
+          builtin = {
+            -- These are passed to nvim_open_win
+            anchor = "NW",
+            border = "rounded",
+            -- 'editor' and 'win' will default to being centered
+            relative = "win",
+
+            buf_options = {},
+            win_options = {
+              -- Window transparency (0-100)
+              winblend = 10,
+            },
+
+            -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+            -- the min_ and max_ options can be a list of mixed types.
+            -- max_width = {140, 0.8} means "the lesser of 140 columns or 80% of total"
+            width = nil,
+            max_width = { 50, 0.8 },
+            min_width = { 50, 0.2 },
+            height = nil,
+            max_height = 0.1,
+            min_height = { 10, 0.2 },
+
+            -- Set to `false` to disable
+            mappings = {
+              ["q"]     = "Close",
+              ["<Esc>"] = "Close",
+              ["<CR>"]  = "Confirm",
+              ["<C-c>"] = false,
+            },
+          },
         },
       })
     end,
