@@ -48,7 +48,7 @@ return {
     opts = {
       load = {
         ["core.defaults"] = {},
-        ["core.norg.concealer"] = {
+        ["core.concealer"] = {
           config = {
               icon_preset = "diamond",
               icons = {
@@ -68,7 +68,7 @@ return {
               }
             }
           },
-        ["core.norg.dirman"] = {
+        ["core.dirman"] = {
           config = {
             workspaces = {
                 notes = "~/notes",
@@ -80,12 +80,12 @@ return {
           config = {
             hook = function(keybinds)
               keybinds.remap_key("norg", "n", "<CR>", "gx")
-              keybinds.remap("norg", "n", "gtd", "<cmd>Neorg keybind norg core.norg.qol.todo_items.todo.task_done<CR><Plug>(nvim-surround-normal)$-")
-              keybinds.remap("norg", "n", "gtu", "<cmd>Neorg keybind norg core.norg.qol.todo_items.todo.task_undone<CR><Plug>(nvim-surround-delete)-")
+              keybinds.remap("norg", "n", "gtd", "<cmd>Neorg keybind norg core.qol.todo_items.todo.task_done<CR><Plug>(nvim-surround-normal)$-")
+              keybinds.remap("norg", "n", "gtu", "<cmd>Neorg keybind norg core.qol.todo_items.todo.task_undone<CR><Plug>(nvim-surround-delete)-")
             end
           },
         },
-        ["core.norg.completion"] = {
+        ["core.completion"] = {
           config = { engine = "nvim-cmp" },
         },
       },
@@ -125,7 +125,7 @@ return {
           dash_highlight = "Dash",
           dash_string = "-",
           doubledash_highlight = "DoubleDash",
-          doubledash_string = "=",
+          doubledash_string = "&",
           quote_highlight = "Quote",
           quote_string = "┃",
           fat_headlines = false,
@@ -193,10 +193,5 @@ return {
   {
     "MunifTanjim/nui.nvim",
     lazy = true,
-  },
-
-  -- Fzf-lua - improved fzf.vim written in  Lua 
-  {
-    "ibhagwan/fzf-lua",
   },
 }
