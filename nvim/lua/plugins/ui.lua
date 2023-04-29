@@ -292,13 +292,13 @@ return {
       local mappings = {
 
         f = {"<cmd>Telescope live_grep<CR>", "Live Grep (Global Search)"},
-        r = {"<cmd>Telescope find_files<CR>", "Find Files"},
+        z = {"<cmd>Telescope find_files<CR>", "Find Files"},
         u = {"<cmd>Telescope undo<cr>", "Undo History"},
         v = {"<cmd>TodoTelescope<cr>", "See Todo's"},
 
         d = {
           name = "Dashboard",
-          r = {"<cmd>Telescope find_files<CR>", "Find Files"},
+          z = {"<cmd>Telescope find_files<CR>", "Find Files"},
           f = {"<cmd>Telescope live_grep<CR>", "Live Grep"},
           l = {"<cmd>Telescope oldfiles<CR>", "Old Files"},
           s = {"<cmd>SessionManager load_session<CR>", "Load Session"},
@@ -327,13 +327,6 @@ return {
           N = {'<cmd>lua vim.diagnostic.goto_prev()<CR>', "Go to previous diagnostic"},
 
           p = {'<cmd>!black %<CR>', "Format Python File"},
-        },
-
-        g = {
-          name = "Golang",
-          c = {"<cmd>GoCmt<CR>", "Add Comment"},
-          t = {"<cmd>GoAddTag<CR>", "Add Tags"},
-          f = {'<cmd>lua require("go.format").goimport()<CR>', "Format File"},
         },
 
         b = {
@@ -381,7 +374,14 @@ return {
           t = {"<cmd>Neorg journal today<CR>", "Journal Today"},
           y = {"<cmd>Neorg journal tomorrow<CR>", "Journal Tomorrow"},
           j = {"<cmd>Neorg journal toc update<CR>", "Update Journal"},
-        }
+        },
+
+        r = {
+          name = "REST",
+          r = {"<Plug>RestNvim", "Run Request"},
+          l = {"<Plug>RestNvimLast", "Run Last Request"},
+          p = {"<Plug>RestNvimPreview", "Preview cURL Command"},
+        },
       }
 
       local opts = {prefix = "<leader>"}
