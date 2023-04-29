@@ -789,8 +789,8 @@ return {
             -- the min_ and max_ options can be a list of mixed types.
             -- max_width = {140, 0.8} means "the lesser of 140 columns or 80% of total"
             width = nil,
-            max_width = { 50, 0.8 },
-            min_width = { 50, 0.2 },
+            max_width = { 60, 0.8 },
+            min_width = { 60, 0.2 },
             height = nil,
             max_height = 0.1,
             min_height = { 10, 0.2 },
