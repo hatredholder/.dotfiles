@@ -463,6 +463,7 @@ return {
     event = "VeryLazy",
   },
 
+  -- Codeium - the  Modern  Coding 󰿗 Superpower
   {
     "jcdickinson/codeium.nvim",
     dependencies = {
