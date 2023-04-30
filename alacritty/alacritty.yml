@@ -1,4 +1,9 @@
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
 ## Configuration for Alacritty, the GPU enhanced terminal emulator.
+## It's a very basic and simple config file, for full configuration...
+## See, /usr/share/doc/alacritty/example/alacritty.yml
 
 ## Import files (Colors, Fonts, Etc)
 import:
@@ -7,7 +12,7 @@ import:
 
 ## Set environment variables
 env:
-  TERM: alacritty
+  TERM: xterm-256color
   WINIT_X11_SCALE_FACTOR: '1.0'
 
 ## Terminal window settings
@@ -17,8 +22,10 @@ window:
     lines: 24
 
   padding:
-    x: 15
-    y: 15
+    x: 10
+    y: 10
+    
+    dynamic_padding: false
 
   decorations: full
   startup_mode: Windowed
@@ -42,11 +49,15 @@ cursor:
 ## Live config reload
 live_config_reload: true
 
-## Save to clipboard on selection
 selection:
     save_to_clipboard: true
 
-## Some keybindings
+## Shell
+#shell:
+#  program: /bin/zsh
+#  args:
+#    - --login
+
 key_bindings:
   - { key: V, mods: Control, action: Paste }
   
