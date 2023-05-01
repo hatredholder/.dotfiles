@@ -234,6 +234,7 @@ return {
         custom_dynamic_variables = {},
         yank_dry_run = true,
       })
-    end
+    end,
+    event = "VeryLazy",
   }
 }
