@@ -534,7 +534,7 @@ return {
           icon = " ",
           desc = "Find Files            ",
           action = "Telescope find_files",
-          shortcut = " SPC d r ",
+          shortcut = " SPC d z ",
         },
         {
           -- icon = " ",
@@ -666,7 +666,7 @@ return {
         level = 2,
         minimum_width = 10,
         render = "minimal",
-        timeout = 3000,
+        timeout = 4000,
         top_down = false,
         stages = "fade_in_slide_out"
       }
@@ -974,11 +974,11 @@ return {
 
   -- (disabled until https://github.com/levouh/tint.nvim/issues/38 gets fixed)
   -- Tint -  dim inactive  windows using window-local  highlight namespaces. 
-  {
-    "levouh/tint.nvim",
-    config = function()
-      require("tint").setup()
-    end,
-    event = { "BufReadPre", "BufNewFile" },
-  }
+  -- {
+  --   "levouh/tint.nvim",
+  --   config = function()
+  --     require("tint").setup()
+  --   end,
+  --   event = { "BufReadPre", "BufNewFile" },
+  -- }
 }
