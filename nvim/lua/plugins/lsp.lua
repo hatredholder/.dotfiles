@@ -137,9 +137,9 @@ return {
         completion = {
           completeopt = 'menu,menuone,noselect'
         },
-        experimental = {
-          ghost_text = {hlgroup = "Comment"}
-        },
+        -- experimental = {
+        --   ghost_text = {hlgroup = "Comment"}
+        -- },
         preselect = cmp.PreselectMode.None,
         snippet = {
           expand = function(args)
