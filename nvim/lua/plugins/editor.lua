@@ -302,6 +302,14 @@ return {
     "theHamsta/nvim-dap-virtual-text",
   },
 
+  --  Go Adapter for Nvim-dap
+  {
+    "leoluz/nvim-dap-go",
+    config = function ()
+      require('dap-go').setup()
+    end
+  },
+
   -- Leap - an  interface that makes on-screen  navigation  quicker
   {
     "ggandor/leap.nvim",
