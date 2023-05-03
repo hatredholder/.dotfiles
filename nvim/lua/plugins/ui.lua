@@ -297,7 +297,7 @@ return {
         v = {"<cmd>TodoTelescope<cr>", "See Todo's"},
 
         d = {
-          name = "Dashboard",
+          name = "Dashboard  󱜤",
           z = {"<cmd>Telescope find_files<CR>", "Find Files"},
           f = {"<cmd>Telescope live_grep<CR>", "Live Grep"},
           l = {"<cmd>Telescope oldfiles<CR>", "Old Files"},
@@ -307,12 +307,12 @@ return {
         },
 
         t = {
-          name = "Terminal",
+          name = "Terminal  ",
           g = {toggle_lazygit, "Lazygit Terminal"}
         },
 
         l = {
-          name = "LSP",
+          name = "LSP        ",
           R = {'<cmd>LspRestart<CR>', "Restart LSP"},
           i = {"<cmd>LspInfo<cr>", "Connected Language Servers"},
 
@@ -330,22 +330,19 @@ return {
         },
 
         b = {
-          name = "Bookmarks",
+          name = "Bookmarks  󰸖",
           m = {"<cmd> lua require('grapple').toggle() <CR>", "Mark current file"},
           o = {"<cmd> lua require('portal.builtin').grapple.tunnel()<CR>", "Open bookmarks portal"},
           b = {"<cmd> GrapplePopup tags<CR>", "Open bookmarks list"},
         },
 
         y = {
-          name = "Debug",
+          name = "Debug     ",
           R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
           E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
           C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
           U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
 
-          t = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-          u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-          y = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
           o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
 
           c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
@@ -358,18 +355,20 @@ return {
           s = { "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", "Scopes" },
           p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
           r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+
+          B = { "<cmd>lua require'dap'.clear_breakpoints()<cr>", "Clear All Breakpoints"},
           b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
         },
 
         p = {
-          name = "Visuals",
+          name = "Visuals   󰛐",
           y = { "<cmd>CellularAutomaton make_it_rain<CR>", "MAKE IT RAIN!" },
           c = { "<cmd>CellularAutomaton game_of_life<CR>", "Game of Code" },
           h = { "<cmd>Hack<CR>", "Hollywood Mode"},
         },
 
         k = {
-          name = "Neorg",
+          name = "Neorg      ",
           k = {toggle_neorg, "Open Neorg" },
           t = {"<cmd>Neorg journal today<CR>", "Journal Today"},
           y = {"<cmd>Neorg journal tomorrow<CR>", "Journal Tomorrow"},
@@ -377,7 +376,7 @@ return {
         },
 
         r = {
-          name = "REST",
+          name = "REST      󱂛",
           r = {"<Plug>RestNvim", "Run Request"},
           l = {"<Plug>RestNvimLast", "Run Last Request"},
           p = {"<Plug>RestNvimPreview", "Preview cURL Command"},
