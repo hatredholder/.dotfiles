@@ -932,6 +932,7 @@ return {
     dependencies = {
       "cbochs/grapple.nvim",
     },
+    event = "VeryLazy",
   },
 
   -- Incline - 🎈Floating statuslines
