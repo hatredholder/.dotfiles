@@ -26,9 +26,6 @@ return {
         autoload_mode = require('session_manager.config').AutoloadMode.Disabled, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
         autosave_last_session = true, -- Automatically save last session on exit and on session switch.
         autosave_ignore_not_normal = true, -- Plugin will not save a session when no buffers are opened, or all of them aren't writable or listed.
-        autosave_ignore_dirs = {
-          -- '/home/hatredholder/notes'
-        },
         autosave_ignore_filetypes = { -- All buffers of these file types will be closed before the session is saved.
           'gitcommit',
         },
@@ -202,7 +199,7 @@ return {
     config = function()
       require("rest-nvim").setup({
         -- Open request results in a horizontal split
-        result_split_horizontal = false,
+        result_split_horizontal = true,
         -- Keep the http file buffer above|left when split horizontal|vertical
         result_split_in_place = false,
         -- Skip SSL verification, useful for unknown certificates
@@ -229,7 +226,7 @@ return {
           },
         },
         -- Jump to request line on run
-        jump_to_request = false,
+        jump_to_request = true,
         env_file = '.env',
         custom_dynamic_variables = {},
         yank_dry_run = true,
