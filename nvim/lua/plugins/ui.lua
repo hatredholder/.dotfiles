@@ -191,30 +191,36 @@ return {
     "akinsho/bufferline.nvim",
     config = function()
       require("bufferline").setup{
-
-      highlights = {
-          background = {
-            bg = "#2D353B",
-            fg = "#677172",
+        highlights = {
+            background = {
+              bg = "#2D353B",
+              fg = "#677172",
+            },
+            buffer_selected = {
+              bg = "#21272c",
+              fg = "#c6c0a9",
+              bold = true,
+              italic = true,
+            },
+            buffer_visible = {
+              bg = "#21272c",
+              fg = "#c6c0a9",
+            },
+            fill = {
+              bg = "#2D353B"
+            },
           },
-          buffer_selected = {
-            bg = "#21272c",
-            fg = "#c6c0a9",
-            bold = true,
-            italic = true,
-          },
-          buffer_visible = {
-            bg = "#21272c",
-            fg = "#c6c0a9",
-          },
-          fill = {
-            bg = "#2D353B"
-          },
-        },
         options = {
           always_show_bufferline = false,
           offsets = {
-            { filetype = "neo-tree", text="FILE EXPLORER", padding = 0, highlight = 'BufferLineExplorer', text_align = 'left', separator = true,},
+            {
+              filetype = "neo-tree",
+              text="FILE EXPLORER",
+              padding = 0,
+              highlight = 'BufferLineExplorer',
+              text_align = 'left',
+              separator = true,
+            },
           },
           hover = {
               enabled = true,
@@ -238,7 +244,7 @@ return {
             local result = {}
             local seve = vim.diagnostic.severity
 
-            -- get diagnostics from all buffers
+            -- get diagnostics
             local error = #vim.diagnostic.get(0, {severity = seve.ERROR})
             local warning = #vim.diagnostic.get(0, {severity = seve.WARN})
             local info = #vim.diagnostic.get(0, {severity = seve.INFO})
@@ -573,7 +579,6 @@ return {
       }
 
       db.custom_footer = {"", "[ Loaded " .. require("lazy").stats().count .. " plugins successfully!   ]"}
-
 
     end,
     commit = "e517188dab55493fb9034b4d4f1a508ccacfcd45",
