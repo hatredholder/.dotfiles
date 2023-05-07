@@ -74,6 +74,12 @@
     #search-icon-legacy.ytd-searchbox {
         border-radius: 0;
     }
+    .yt-spec-touch-feedback-shape__fill, .ytd-topbar-menu-button-renderer{
+        display: none
+    }
+    .yt-spec-button-shape-next--icon-only-default{
+        display: none
+    }
     #search-icon-legacy.ytd-searchbox:hover,
     #search-icon-legacy.ytd-searchbox:focus {
         background: var(--purple);
