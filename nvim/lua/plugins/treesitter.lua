@@ -38,12 +38,12 @@ return {
           enable = true,
           filetypes = {"html", "htmldjango"},
         },
-        ensure_installed = {"python"},
         auto_install = true,
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
         },
+        ensure_installed = {"python"},
       })
     end,
     priority = 100,

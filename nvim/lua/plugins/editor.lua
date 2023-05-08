@@ -132,6 +132,7 @@ return {
     branch = "v2.x",
   },
 
+  -- Neo-tree-diagnostics - 裂Diagnostics source for Neo-tree
   {
     "mrbjarksen/neo-tree-diagnostics.nvim",
   },
