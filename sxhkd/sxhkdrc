@@ -1,148 +1,135 @@
 #
-# wm independent hotkeys
+# WM Independent Hotkeys
 #
 ctrl + shift + F12
   shutdown -h now
 
-# change keyboard layout
+# Change Keyboard Layout
 ctrl + shift + o
 	source ~/.config/sxhkd/kbd.sh
 
-# terminal emulator
+# Terminal Emulator
 super + Return
 	alacritty
 
-# program launcher
+# Program Launcher
 super + @space
 	rofi -show drun
 
-# make sxhkd reload its configuration files:
+# Make sxhkd Reload Its Configuration Files
 super + Escape
 	pkill -USR1 -x sxhkd
 
 #
-# bspwm hotkeys
+# BSPWM hotkeys
 #
 
-# quit/restart bspwm
+# Quit/Restart BSPWM
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
-# close and kill
+# Close and Kill
 super + {_,shift + }w
 	bspc node -{c,k}
 
-# alternate between the tiled and monocle layout
+# Alternate Between the Tiled and Monocle Layout
 super + m
 	bspc desktop -l next
 
-# send the newest marked node to the newest preselected node
+# Send the Newest Marked Node to the Newest Preselected Node
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest window
+# Swap the Current Node and the Biggest Window
 super + g
 	bspc node -s biggest.window
 
 #
-# state/flags
+# State/Flags
 #
 
-# set the window state
+# Set the Window State
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
+# Set the Node Flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 #
-# focus/swap
+# Focus/Swap
 #
 
-# focus the node in the given direction
+# Focus the Node in the Given Direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
+# Focus the Node for the Given Path Jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-# focus the next/previous window in the current desktop
+# Focus the Next/Previous Window in the Current Desktop
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
-# focus the next/previous desktop in the current monitor
+# Focus the Next/Previous Desktop in the Current Monitor
 super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
+# Focus the Last Node/Desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
+# Focus the Older or Newer Node in the Focus History
 super + {o,i}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
-# focus or send to the given desktop
+# Focus or Send to the Given Desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
-# preselect
+# Preselect
 #
 
-# preselect the direction
+# Preselect the Direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
-# preselect the ratio
+# Preselect the Ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-# cancel the preselection for the focused node
+# Cancel the Preselection for the Focused Node
 super + ctrl + space
 	bspc node -p cancel
 
-# cancel the preselection for the focused desktop
-#super + ctrl + shift + space
-#	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
 #
-# move/resize
+# Move/Resize
 #
 
-# expand a window by moving one of its side outward
+# Expand a Window by Moving One of Its Side Outward
 super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-# contract a window by moving one of its side inward
-#super + alt + shift + {h,j,k,l}
-#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
-# move window by direction in same workspace
+# Move Window by Direction in Same Workspace
 super + {Left,Down,Up,Right}
 	bspc node -f {west,south,north,east}
 
-# th1nhhdk
 # flameshot
 Print
 	flameshot gui
 
-# command launcher
+# Command Launcher
 super + shift + @space
 	rofi -no-lazy-grab -show run
 
-# move focused window to the next workspace and then switch to that workspace
+# Move Focused Window to the Next Workspace and Then Switch to That Workspace
 alt + shift + {Right,Left}
 	id=$(bspc query --nodes --node); bspc node --to-desktop {next,prev}; bspc desktop --focus next; bspc node --focus ${id}
 
-# next/prev workspace
+# Next/Prev Workspace
 ctrl + alt + {Right,Left}
 	bspc desktop {next,prev} -f
-
-# change keyboard layout
-#alt + shift {e, r} 
-#	{setxkbmap us , setxkbmap ru -variant phonetic }
