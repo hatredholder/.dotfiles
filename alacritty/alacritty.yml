@@ -7,12 +7,12 @@ import:
   - ~/.config/alacritty/colorschemes/everforest.yml
   - ~/.config/alacritty/fonts.yml
 
-## Set environment variables
+## Set Environment Variables
 env:
   TERM: xterm-256color
   WINIT_X11_SCALE_FACTOR: '1.0'
 
-## Terminal window settings
+## Terminal Window Settings
 window:
   dimensions:
     columns: 82
@@ -28,11 +28,11 @@ window:
   startup_mode: Windowed
   dynamic_title: true
 
-## scrolling
+## Scrolling
   history: 10000
   multiplier: 3
 
-## Background opacity
+## Background Opacity
   opacity: 1.0
 
 ## Cursor
@@ -43,12 +43,14 @@ cursor:
 
   unfocused_hollow: false
 
-## Live config reload
+## Live Config Reload
 live_config_reload: true
 
+## Save to Clipboard on Selection
 selection:
     save_to_clipboard: true
 
+## Some Useful Keybinds
 key_bindings:
   - { key: V, mods: Control, action: Paste }
   

@@ -1,37 +1,24 @@
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-
-# Font configuration
+# Font Configuration
 font:
-  # Normal (roman) font face
+  # Normal (Roman) Font Face
   normal:
     family: "Hack Nerd Font"
     style: Regular
 
-  # Bold font face
+  # Bold Font Face
   bold:
     family: "Hack Nerd Font"
     style: Bold
 
-  # Italic font face
+  # Italic Font Face
   italic:
     family: "Hack Nerd Font"
     style: Italic
 
-  # Bold italic font face
+  # Bold Italic Font Face
   bold_italic:
     family: "Hack Nerd Font"
     style: Bold Italic
 
-  # Point size
+  # Font Size
   size: 10.5
-
-  # Offset
-  #offset:
-  #  x: 0
-  #  y: 0
-
-  # Glyph offset
-  #glyph_offset:
-  #  x: 0
-  #  y: 0
