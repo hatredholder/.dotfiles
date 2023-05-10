@@ -12,6 +12,7 @@
 
 --]]
 
+
 return {
   -- Neo-tree - file explorer  tree for  Neovim
   {
@@ -311,7 +312,7 @@ return {
     end
   },
 
-  -- Leap - an  interface that makes on-screen  navigation  quicker
+  -- Leap - 󱕘 an  interface that makes on-screen  navigation  quicker
   {
     "ggandor/leap.nvim",
     config = function()
@@ -337,6 +338,18 @@ return {
           },
         }
     end,
+  },
+
+  -- Flit - Enhanced f/t motions for Leap 󱕘
+  {
+    "ggandor/flit.nvim",
+    config = true,
+  },
+
+  -- Various-textobjs - two dozen new text objects
+  {
+    "chrisgrieser/nvim-various-textobjs",
+    opts = { useDefaultKeymaps = true },
   },
 
   -- Python-pep8-indent - indent fix for  Python
