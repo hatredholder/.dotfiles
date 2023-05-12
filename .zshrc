@@ -26,6 +26,7 @@ source ~/.config/zsh/cb/zsh-system-clipboard.zsh  # yank to clipboard in vi mode
 # Env
 export PATH="$HOME/.local/share/bob/nightly/nvim-linux64/bin:$PATH"
 export PATH="$PATH:/home/$USER/.local/bin"
+export PATH="$HOME:/home/hatredholder/go/bin:$PATH"
 
 export SPOTIPY_CLIENT_ID='a87891a3c80b417eb952b7779537d674'
 export SPOTIPY_CLIENT_SECRET='e6c0ab3c5e6b4f94ac81b642378420a1'
