@@ -16,6 +16,7 @@ return {
   --  Mason LSPConfig (required for Mason)
   {
     "williamboman/mason-lspconfig.nvim",
+    event = "VeryLazy",
   },
 
   -- Mason - portable  package manager for  Neovim
@@ -25,6 +26,8 @@ return {
       require("mason").setup()
       require("mason-lspconfig").setup()
     end,
+    event = "VeryLazy",
+    cmd = "Mason",
   },
 
   -- Lspsaga -  additional features for Nvim-cmp
@@ -105,6 +108,7 @@ return {
           },
       })
     end,
+    event = "VeryLazy",
   },
 
   -- LuaSnip -  Snippet  Engine written in  Lua. 
@@ -117,7 +121,10 @@ return {
     event = "VeryLazy",
   },
   -- Friendly-snippets - Set of  preconfigured  snippets for different languages
-  {'rafamadriz/friendly-snippets'},
+  {
+    'rafamadriz/friendly-snippets',
+    event = "VeryLazy",
+  },
 
   -- Nvim-cmp - a completion  engine plugin written in  Lua
   {

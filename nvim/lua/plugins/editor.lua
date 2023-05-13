@@ -297,11 +297,13 @@ return {
   --  UI for Nvim-dap
   {
     "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
   },
 
   -- virtual  text for Nvim-dap
   {
     "theHamsta/nvim-dap-virtual-text",
+    event = "VeryLazy",
   },
 
   --  Go Adapter for Nvim-dap
@@ -309,7 +311,8 @@ return {
     "leoluz/nvim-dap-go",
     config = function ()
       require('dap-go').setup()
-    end
+    end,
+    event = "VeryLazy",
   },
 
   -- Leap - 󱕘 an  interface that makes on-screen  navigation  quicker
@@ -338,12 +341,14 @@ return {
           },
         }
     end,
+    event = "VeryLazy",
   },
 
   -- Flit - Enhanced f/t motions for Leap 󱕘
   {
     "ggandor/flit.nvim",
     config = true,
+    event = "VeryLazy",
   },
 
   -- Various-textobjs - two dozen new text objects
