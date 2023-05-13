@@ -52,10 +52,12 @@ return {
   -- Treesitter-autotag - auto  tags for  HTML 
   {
     "windwp/nvim-ts-autotag",
+    event = "VeryLazy",
   },
 
   -- TS-Rainbow2 - 🌈Rainbow delimiters through 🎄Tree-sitter 
   {
     "HiPhish/nvim-ts-rainbow2",
+    event = "VeryLazy",
   }
 }

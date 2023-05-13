@@ -328,12 +328,6 @@ return {
           },
         },
       }
-
-      -- Setup golangci_lint
-      -- require'lspconfig'.golangci_lint_ls.setup{
-      --   command = { "golangci-lint", "run", "--disable", "typecheck", "staticcheck", "unused", "--out-format", "json" }
-      -- }
-
     end,
   },
   {"neovim/nvim-lspconfig"}, ------| 
