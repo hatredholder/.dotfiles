@@ -184,6 +184,7 @@ return {
     -- Plenary - All the lua functions I don't want to write twice
   {
     "nvim-lua/plenary.nvim",
+    event = "VeryLazy",
   },
 
   -- Nui - UI components for some of the plugins
