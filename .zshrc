@@ -46,13 +46,21 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 alias cd..="cd .."
 alias CLEAR="clear"
 
+alias rm="rmtrash"
+alias rmdir="rmdirtrash"
+alias rm-list="trash-list"
+alias rm-clear="trash-empty"
+alias rm-restore="trash-restore"
+
 alias unin="sudo dnf remove"
 alias install="sudo dnf install"
 alias update="sudo dnf update"
 
 alias v="nvim"
 alias vi="vimx"
+
 alias cat="bat --theme base16"
+alias man="tldr"
 
 alias ls="exa -a --color=always --icons --group-directories-first"
 alias la="exa -a --color=always --icons --group-directories-first"
