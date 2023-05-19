@@ -154,9 +154,9 @@ highlight! CursorLineNr guifg=#a7c080 gui=bold
 
 -- Set Illuminate colors
 vim.cmd([[
-highlight! IlluminatedWordRead gui=underline guibg=#2D353B
-highlight! IlluminatedWordText gui=underline guibg=#2D353B
-highlight! IlluminatedWordWrite gui=underline guibg=#2D353B
+highlight! IlluminatedWordRead gui=underline
+highlight! IlluminatedWordText gui=underline
+highlight! IlluminatedWordWrite gui=underline
 ]])
 
 -- Set Lualine Colors
