@@ -314,7 +314,9 @@ return {
 
         t = {
           name = "Terminal  ",
-          g = {toggle_lazygit, "Lazygit Terminal"}
+          f = {"<cmd>ToggleTerm 3<CR>","Floating Terminal"},
+          g = {toggle_lazygit, "Lazygit Terminal"},
+          k = {toggle_neorg, "Open Neorg" },
         },
 
         l = {
@@ -375,7 +377,6 @@ return {
 
         k = {
           name = "Neorg      ",
-          k = {toggle_neorg, "Open Neorg" },
           t = {"<cmd>Neorg journal today<CR>", "Journal Today"},
           y = {"<cmd>Neorg journal tomorrow<CR>", "Journal Tomorrow"},
           j = {"<cmd>Neorg journal toc update<CR>", "Update Journal"},
