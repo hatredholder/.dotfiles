@@ -123,7 +123,6 @@ return {
   -- Friendly-snippets - Set of  preconfigured  snippets for different languages
   {
     'rafamadriz/friendly-snippets',
-    event = "VeryLazy",
   },
 
   -- Nvim-cmp - a completion  engine plugin written in  Lua
