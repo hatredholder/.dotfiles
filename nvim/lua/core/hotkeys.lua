@@ -54,7 +54,7 @@ vim.keymap.set("n", "N", "Nzzzv") -- |
 -- Bufferline hotkeys --
 vim.api.nvim_set_keymap('n', '<C-m>', '<cmd>BufferLineCycleNext<CR>', {noremap = true, silent = true}) -- | Go to next buffer
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true}) -- | Go to previous buffer
-vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>bd!<CR>', {noremap = true, silent = true})            -- | Close buffer
+vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>bd!<CR>', {noremap = true, silent = true})                 -- | Close buffer
 
 vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer rigtht
 vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) --| Move buffer left
@@ -69,5 +69,9 @@ vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({
 vim.api.nvim_set_keymap("n", "<c-o>", "<cmd>Portal jumplist backward<cr>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<c-i>", "<cmd>Portal jumplist forward<cr>", {noremap = true, silent = true})
 
--- Treesj hotkey --
+-- Treesj hotkeys --
 vim.keymap.set('n', '<c-b>', function() require('treesj').toggle({ split = { recursive = true } }) end)
+
+-- Fold hotkeys --
+vim.api.nvim_set_keymap('n', 'zq', "<cmd>lua require('fold-preview').toggle_preview()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'za', "za<cmd>lua require('fold-preview').close_preview()<CR>", {noremap = true, silent = true})

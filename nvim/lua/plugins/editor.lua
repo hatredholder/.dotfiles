@@ -444,6 +444,19 @@ return {
     event = "VeryLazy",
   },
 
+  -- Fold-preview - 👁️ preview folds in a ☁️ float window
+  {
+    "anuvyklack/fold-preview.nvim",
+    dependencies = "anuvyklack/keymap-amend.nvim",
+    config = function()
+      require('fold-preview').setup({
+        default_keybindings = false,
+        auto = 1,
+      })
+    end,
+    event = "VeryLazy",
+  },
+
   -- GX - Open 🔗links without netrw
   {
     "chrishrb/gx.nvim",
