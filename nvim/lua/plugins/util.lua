@@ -89,6 +89,7 @@ return {
     },
   },
 
+  -- Headlines -  horizontal 💡highlights for Neorg
   {
     'lukas-reineke/headlines.nvim',
     config = function()
@@ -181,7 +182,7 @@ return {
     end,
   },
 
-    -- Plenary - All the lua functions I don't want to write twice
+  -- Plenary - All the lua functions I don't want to write twice
   {
     "nvim-lua/plenary.nvim",
     event = "VeryLazy",
@@ -193,7 +194,7 @@ return {
     lazy = true,
   },
 
-  -- rest - a REST client in  Neovim
+  -- Rest - a REST client in  Neovim
   {
     "rest-nvim/rest.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
