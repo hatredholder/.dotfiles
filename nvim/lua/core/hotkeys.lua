@@ -56,7 +56,7 @@ vim.api.nvim_set_keymap('n', '<C-m>', '<cmd>BufferLineCycleNext<CR>', {noremap =
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true}) -- | Go to previous buffer
 vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>bd!<CR>', {noremap = true, silent = true})                 -- | Close buffer
 
-vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer rigtht
+vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer right 
 vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) --| Move buffer left
 
 -- Neo-Tree hotkeys --
