@@ -285,12 +285,12 @@ return {
       local Terminal = require('toggleterm.terminal').Terminal
 
       local toggle_lazygit = function()
-        local lazygit = Terminal:new({ cmd = 'lazygit', direction = "float", count = 1 })
+        local lazygit = Terminal:new({ cmd = 'lazygit', direction = "float", count = 2 })
         return lazygit:toggle()
       end
 
       local toggle_neorg = function()
-        local neorg = Terminal:new({ cmd = 'cd /home/hatredholder/notes; nvim /home/hatredholder/notes/index.norg', direction = "float", count = 2 })
+        local neorg = Terminal:new({ cmd = 'cd /home/hatredholder/notes; nvim /home/hatredholder/notes/index.norg', direction = "float", count = 3 })
         return neorg:toggle()
       end
 
@@ -314,7 +314,7 @@ return {
 
         t = {
           name = "Terminal  ",
-          f = {"<cmd>ToggleTerm 3<CR>","Floating Terminal"},
+          f = {"<cmd>ToggleTerm 4<CR>","Floating Terminal"},
           g = {toggle_lazygit, "Lazygit Terminal"},
           k = {toggle_neorg, "Open Neorg" },
         },
@@ -623,6 +623,7 @@ return {
           },
         },
       }
+      vim.api.nvim_set_keymap("n", "<c-\\>", "<cmd>ToggleTerm 1<cr>", {noremap = true, silent = true})
     end,
     cmd = "ToggleTerm",
   },
