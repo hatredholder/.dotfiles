@@ -756,7 +756,6 @@ return {
     cmd = "Hack",
   },
 
-
   -- SmoothCursor -  sub-cursor to show 📜scroll direction
   {
     'gen740/SmoothCursor.nvim',
