@@ -1,5 +1,6 @@
 set previewer lf-ueberzug-previewer
 set cleaner lf-ueberzug-cleaner
+
 # Basic Settings
 set hidden true
 set ignorecase true
