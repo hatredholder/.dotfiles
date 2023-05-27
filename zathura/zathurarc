@@ -5,7 +5,7 @@ set notification-error-fg       "#E67E80" # bright:red
 set notification-warning-bg     "#2B3438" # bg
 set notification-warning-fg     "#DBBC7F" # bright:yellow
 set notification-bg             "#2B3438" # bg
-set notification-fg             "A7C080" # bright:green
+set notification-fg             "#A7C080" # bright:green
 
 set completion-bg               "#374145" # bg2
 set completion-fg               "#D3C6AA" # fg
