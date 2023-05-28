@@ -50,10 +50,6 @@ cmd trash ${{
   done
 }}
 
-cmd restore_trash ${{
-  trash-restore
-}}
-
 # Bindings
 # Remove some defaults
 map m
@@ -70,7 +66,7 @@ map Ae execute
 
 # Basic Functions
 map . set hidden!
-map d delete
+map d trash
 map p paste
 map x cut
 map c copy
@@ -78,18 +74,14 @@ map <enter> open
 map R reload
 map a mkfile
 map md mkdir
-map bg setwallpaper
 map C clear
+map q quit
 map <c-q> quit
 
-map dd trash
-map dr restore_trash
-
 # Movement
-map gd cd ~/documents
-map gD cd ~/downloads
-map gp cd ~/pictures
+map gd cd ~/Documents
+map gD cd ~/Downloads
+map gp cd ~/Pictures
+map gr cd ~/Programming
 map gc cd ~/.config
-map gr cd ~/repos
-map gv cd ~/videos/recordings
 map gs cd ~/.local/bin
