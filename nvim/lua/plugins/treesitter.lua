@@ -49,6 +49,7 @@ return {
     priority = 100,
     build = ":TSUpdate",
   },
+
   -- Treesitter-autotag - auto  tags for  HTML 
   {
     "windwp/nvim-ts-autotag",

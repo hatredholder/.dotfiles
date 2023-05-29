@@ -120,6 +120,7 @@ return {
     end,
     event = "VeryLazy",
   },
+
   -- Friendly-snippets - Set of  preconfigured  snippets for different languages
   {
     'rafamadriz/friendly-snippets',
