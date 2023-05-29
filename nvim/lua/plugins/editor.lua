@@ -164,11 +164,13 @@ return {
     event = { "BufReadPre", "BufNewFile" },
   },
 
-  -- mini.comment - toggle  comments in any language
+  -- Comment - toggle  comments in any language
   {
-    'echasnovski/mini.comment',
+    'terrortylor/nvim-comment',
     config = function()
-      require('mini.comment').setup()
+      require('nvim_comment').setup({
+        comment_empty = false,
+      })
     end,
     event = "VeryLazy",
   },
@@ -354,7 +356,10 @@ return {
   -- Various-textobjs - two dozen new text objects
   {
     "chrisgrieser/nvim-various-textobjs",
-    opts = { useDefaultKeymaps = true },
+    opts = {
+      useDefaultKeymaps = true,
+      disabledKeymaps = {"aS", "iS"},
+    },
   },
 
   -- Python-pep8-indent - indent fix for  Python
@@ -482,6 +487,7 @@ return {
   -- Deadcolumn -  plugin that shows  ﴳ colorcolumn dynamically with :set colorcolumn
   {
     'Bekaboo/deadcolumn.nvim',
+    event = "VeryLazy",
   },
 
   -- Surround - Add/change/delete 󱓼 surrounding 󱤎 delimiter pairs with ease
@@ -497,7 +503,7 @@ return {
   {
     "Wansmer/treesj",
     config = function()
-      require('treesj').setup({ use_default_keymaps = false, max_join_length = 240 })
+      require('treesj').setup({ use_default_keymaps = false, max_join_length = 720 })
     end,
     event = "VeryLazy",
   },
