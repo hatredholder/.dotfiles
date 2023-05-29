@@ -85,7 +85,6 @@ vim.o.termguicolors = true
 -- Highlight yanked text
 local ag = vim.api.nvim_create_augroup
 local au = vim.api.nvim_create_autocmd
-
 au('TextYankPost', {
   group = ag('yank_highlight', {}),
   pattern = '*',
@@ -100,11 +99,8 @@ vim.cmd('map <S-k> <Nop>')
 -- Disable Swapfile
 vim.cmd('set noswapfile')
 
--- Prioritize diagnostic signs
+-- Prioritize diagnostic signs over anything
 vim.diagnostic.config {
-  virtual_text = {
-    prefix = '',
-  },
   severity_sort = true,
 }
 
@@ -115,3 +111,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
      vim.lsp.buf.format()
   end,
 })
+
+-- Remember folds
+vim.cmd [[
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent! loadview
+augroup END
+]]
