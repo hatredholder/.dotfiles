@@ -57,7 +57,7 @@ alias install="sudo dnf install"
 alias update="sudo dnf update"
 
 alias v="nvim"
-alias vi="vimx"
+alias vi="vim"
 
 alias cat="bat --theme base16"
 alias man="tldr"
