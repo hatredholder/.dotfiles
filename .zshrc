@@ -44,7 +44,6 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 
 # Aliases
 alias cd..="cd .."
-alias CLEAR="clear"
 
 alias rm="rmtrash"
 alias rmdir="rmdirtrash"
