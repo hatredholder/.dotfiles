@@ -49,12 +49,6 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 alias cd..="cd .."
 alias CLEAR="clear"
 
-# alias rm="rmtrash"
-# alias rmdir="rmdirtrash"
-# alias rm-list="trash-list"
-# alias rm-clear="trash-empty"
-# alias rm-restore="trash-restore"
-
 alias uninstall="sudo pacman -R"
 alias install="sudo pacman -S"
 
