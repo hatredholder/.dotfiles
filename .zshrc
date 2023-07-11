@@ -17,7 +17,7 @@ bindkey "^[[B" down-line-or-beginning-search
 
 
 # Plugins
-source ~/.config/powerlevel10k/powerlevel10k.zsh-theme #p10k theme
+source ~/.config/powerlevel10k/powerlevel10k.zsh-theme # p10k theme
 source ~/.config/zsh/vi/zsh-vi-mode.zsh  # vi mode
 source ~/.config/zsh/sudo_plugin.zsh  # esc-esc for repeat in sudo
 source ~/.config/zsh/fs/fast-syntax-highlighting.zsh  # syntax-highlighting
