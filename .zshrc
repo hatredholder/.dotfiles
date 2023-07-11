@@ -1,9 +1,10 @@
 # Options 
 setopt globdots
 setopt INC_APPEND_HISTORY
+
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=~/.config/zsh/.zsh_history
 
 bindkey -v  # enable vi mode (required for zsh-vi-mode plugin)
 
@@ -17,21 +18,23 @@ bindkey "^[[B" down-line-or-beginning-search
 
 # Plugins
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme #p10k theme
-source ~/.config/zsh/vi/zsh-vi-mode.plugin.zsh  # vi mode
+source ~/.config/zsh/vi/zsh-vi-mode.zsh  # vi mode
 source ~/.config/zsh/sudo_plugin.zsh  # esc-esc for repeat in sudo
-source ~/.config/zsh/fs/fast-syntax-highlighting.plugin.zsh  # syntax-highlighting
+source ~/.config/zsh/fs/fast-syntax-highlighting.zsh  # syntax-highlighting
 source ~/.config/zsh/as/zsh-autosuggestions.zsh  # autosuggestions
 source ~/.config/zsh/cb/zsh-system-clipboard.zsh  # yank to clipboard in vi mode
+source ~/.config/zsh/tt/termtitle.zsh # termtitle
 
 # Env
+export ZDOTDIR="$HOME/.config/zsh/"  # zsh config directory
+
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+
+export SUDO_EDITOR='/usr/bin/nvim'  # neovim as default sudo editor
+
 export PATH="$HOME/.local/share/bob/nightly/nvim-linux64/bin:$PATH"
 export PATH="$PATH:/home/$USER/.local/bin"
 export PATH="$HOME:/home/hatredholder/go/bin:$PATH"
-
-export SPOTIPY_CLIENT_ID='a87891a3c80b417eb952b7779537d674'
-export SPOTIPY_CLIENT_SECRET='e6c0ab3c5e6b4f94ac81b642378420a1'
-
-export SUDO_EDITOR='/usr/local/bin/nvim'
 
 ## Golang Env
 export PATH="$PATH:/usr/local/go/bin"
@@ -44,22 +47,21 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 
 # Aliases
 alias cd..="cd .."
+alias CLEAR="clear"
 
-alias rm="rmtrash"
-alias rmdir="rmdirtrash"
-alias rm-list="trash-list"
-alias rm-clear="trash-empty"
-alias rm-restore="trash-restore"
+# alias rm="rmtrash"
+# alias rmdir="rmdirtrash"
+# alias rm-list="trash-list"
+# alias rm-clear="trash-empty"
+# alias rm-restore="trash-restore"
 
-alias unin="sudo dnf remove"
-alias install="sudo dnf install"
-alias update="sudo dnf update"
+alias uninstall="sudo pacman -R"
+alias install="sudo pacman -S"
 
 alias v="nvim"
 alias vi="vim"
 
 alias cat="bat --theme base16"
-alias man="tldr"
 
 alias ls="exa -a --color=always --icons --group-directories-first"
 alias la="exa -a --color=always --icons --group-directories-first"
@@ -85,7 +87,6 @@ bindkey -s '^o' 'lfcd\n'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-colorscript --exec bars
 export PATH=$PATH:/home/hatredholder/.spicetify
 
 
@@ -224,7 +225,7 @@ eval "$(zoxide init zsh)"
 export LS_COLORS="di=32;01:ex=34"
 export LF_ICONS="\
 fi=:\
-di=:\
+di=:\
 ln=:\
 pi=|:\
 so=ﯲ:\
@@ -237,11 +238,11 @@ tw=:\
 ow=w:\
 st=:\
 ex=:\
-tw=:\
-st=:\
-ow=:\
-dt=:\
-di=:\
+tw=:\
+st=:\
+ow=:\
+dt=:\
+di=:\
 fi=:\
 ln=:\
 or=:\
