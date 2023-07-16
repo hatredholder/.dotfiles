@@ -2,7 +2,7 @@
 
 <p align="center">:evergreen_tree: Your dotfiles are about how you personalize your own system. These are mine. :evergreen_tree: </p>
 
-## Showcase
+## :eyes: Showcase
 
 ![everforest_rice_1](https://user-images.githubusercontent.com/86254474/232735149-7b0ee4ae-1079-4c6f-8c3f-23d785b9ab4a.png)
 
@@ -10,7 +10,7 @@
 
 ![everforest_rice_3](https://user-images.githubusercontent.com/86254474/232734949-4b1bbd70-944f-4ed5-a043-57258829f8dc.png)
 
-## Used Software
+## :cd: Used Software
 
 > System
 - OS: [Fedora Linux](https://getfedora.org/)
@@ -39,6 +39,6 @@
 ## r/unixporn 
 - [\[BSPWM\] Some Everforestry for Your Eyes! 🌿 ](https://www.reddit.com/r/unixporn/comments/12r56rn/bspwm_some_everforestry_for_your_eyes/) 
 
-## Disclaimer
+## ⚠️ Disclaimer
 
 All of the configs in this repo belong to my personal setup. None of them is guaranteed to work properly on your machine, so use them thoughtfully and responsibly, and as always remember to make backups.
