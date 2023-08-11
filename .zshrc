@@ -61,8 +61,9 @@ alias ls="exa -a --color=always --icons --group-directories-first"
 alias la="exa -a --color=always --icons --group-directories-first"
 alias l="exa -a --color=always --icons --group-directories-first -lah"
 
-alias shutdown="sudo shutdown -h now"
-alias reboot="sudo reboot -h now"
+alias \?="~/.config/zsh/scripts/duck"
+alias \?\?="~/.config/zsh/scripts/gpt"
+alias \?\?\?="~/.config/zsh/scripts/google"
 
 alias lf=lf-ueberzug
 
