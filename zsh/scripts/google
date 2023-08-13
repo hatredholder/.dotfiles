@@ -1,0 +1,3 @@
+#!/bin/sh
+url="https://google.com/search?q=$(urlencode "$*")"
+exec w3m "https://google.com/search?q=$url"

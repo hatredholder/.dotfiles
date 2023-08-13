@@ -1,0 +1,3 @@
+#!/bin/sh
+url="lite.duckduckgo.com/lite?q=$*"
+exec w3m "$url"
