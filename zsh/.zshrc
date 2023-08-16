@@ -17,13 +17,12 @@ bindkey "^[[B" down-line-or-beginning-search
 
 
 # Plugins
-source ~/.config/powerlevel10k/powerlevel10k.zsh-theme # p10k theme
-source ~/.config/zsh/vi/zsh-vi-mode.zsh  # vi mode
-source ~/.config/zsh/sudo_plugin.zsh  # esc-esc for repeat in sudo
-source ~/.config/zsh/fs/fast-syntax-highlighting.zsh  # syntax-highlighting
-source ~/.config/zsh/as/zsh-autosuggestions.zsh  # autosuggestions
-source ~/.config/zsh/cb/zsh-system-clipboard.zsh  # yank to clipboard in vi mode
-source ~/.config/zsh/tt/termtitle.zsh # termtitle
+source ~/.config/zsh/plugins/zsh-autosuggestions.zsh  # autosuggestions
+source ~/.config/zsh/plugins/zsh-system-clipboard.zsh  # yank to clipboard in vi mode
+source ~/.config/zsh/plugins/fast-syntax-highlighting.zsh  # syntax-highlighting
+source ~/.config/zsh/plugins/sudo_plugin.zsh  # esc-esc for repeat in sudo
+source ~/.config/zsh/plugins/zsh-vi-mode.zsh  # vi mode
+source ~/.config/zsh/plugins/termtitle.zsh # termtitle
 
 # Env
 export ZDOTDIR="$HOME/.config/zsh/"  # zsh config directory
@@ -496,3 +495,4 @@ ex=:\
 *.src=:\
 *.ebuild=
 "
+
