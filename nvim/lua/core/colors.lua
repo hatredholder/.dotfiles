@@ -37,6 +37,10 @@ highlight! BufferLineHintDiagnosticVisible guifg=#c6c0a9 guibg=#21272c
 highlight! BufferLineHintDiagnosticSelected guifg=#A7C07F guibg=#21272c gui=italic,bold
 highlight! BufferLineHintSelected guifg=#A7C07F  guibg=#21272c gui=italic,bold
 
+highlight! BufferLineNumbers guifg=#677172 guibg=#2D353B gui=italic,bold
+highlight! BufferLineNumbersSelected guifg=#c6c0a9 guibg=#21272c gui=italic,bold
+highlight! BufferLineNumbersVisible guifg=##c6c0a9 guibg=#21272c gui=italic,bold
+
 highlight! BufferLineInfo guifg=#677172 guibg=#2D353B
 highlight! BufferLineInfoVisible guifg=#c6c0a9 guibg=#21272c
 highlight! BufferLineInfoDiagnostic guifg=#677172 guibg=#2D353B
@@ -92,29 +96,13 @@ vim.cmd('highlight! DashboardCenter7Icon guifg=#E59774')
 vim.cmd('highlight! DashboardCenter9Icon guifg=#E59774')
 vim.cmd('highlight! DashboardCenter11Icon guifg=#E59774')
 
--- Set Leap colors
-vim.cmd('highlight! LeapMatch guifg=#d3c6aa guibg=#D699B6 gui=bold')
-vim.cmd('highlight! LeapLabelPrimary guifg=#A7C07F gui=bold')
-vim.cmd('highlight! LeapLabelSecondary guifg=#D699B6 gui=bold')
-vim.cmd('highlight! LeapBackdrop guifg=#859290')
-
--- Set Neo-tree colors
+-- Set mini.files colors
 vim.cmd([[
-highlight! BufferLineWarning guifg=#DBBC7F
-highlight! NeoTreeGitConflict guifg=#7FBBB3 
-highlight! NeoTreeGitUntracked guifg=#DBBC7F
-highlight! NeoTreeGitTabInactive guibg=#191E22
-highlight! NeoTreeGitDotfile guibg=#888888
-highlight! NeoTreeDirectoryIcon guifg=#A7C07F
-highlight! NeoTreeGitUnstaged guifg=#7FBBB3
-highlight! NeoTreeNormal guibg=#2D353B
-highlight! NeoTreeEndOfBuffer guibg=#2D353B
-highlight! NeoTreeRootName guifg=#C6C0A9 gui=italic,bold
-highlight! NeoTreeTabActive guibg=#181c1e guifg=#C6C0A9
-highlight! NeoTreeTabInactive guibg=#2D353B
-highlight! NeoTreeTabSeparatorActive guifg=#2D353B guibg=#181c1e
-highlight! NeoTreeTabSeparatorInactive guifg=#2D353B guibg=#2D353B
-highlight! NeoTreeExpander guifg=gray
+highlight! MiniFilesBorder guifg=#c6c0a9
+highlight! MiniFilesDirectory guifg=#c6c0a9
+highlight! MiniFilesBorderModified guifg=#E3D367
+highlight! MiniFilesTitle guifg=#c6c0a9
+highlight! MiniFilesTitleFocused guifg=#c6c0a9 gui=bold
 ]])
 
 -- Set TS-Rainbow2 colors

@@ -43,28 +43,36 @@ return {
     cmd = "Neorg",
     ft = "norg",
     opts = {
+      -- Conceallevel for Neorg
+      vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+        pattern = {"*.norg"},
+        command = "set conceallevel=3"
+      }),
+
       load = {
         ["core.defaults"] = {},
         ["core.concealer"] = {
           config = {
-              icon_preset = "diamond",
-              icons = {
-                todo = {
-                  on_hold = {
-                    icon = "󰏤"
-                  }
+            icons = {
+              todo = {
+                on_hold = {
+                  icon = "󰏤"
                 },
-                delimiter = {
-                  horizontal_line = {
-                    icon = "─"
-                  },
-                  weak = {
-                    enabled = false,
-                  }
+                uncertain = {
+                  icon = ""
+                },
+              },
+              delimiter = {
+                horizontal_line = {
+                  icon = "─"
+                },
+                weak = {
+                  enabled = false,
                 }
               }
             }
-          },
+          }
+        },
         ["core.dirman"] = {
           config = {
             workspaces = {
@@ -78,7 +86,7 @@ return {
             hook = function(keybinds)
               keybinds.remap_key("norg", "n", "<CR>", "gx")
               keybinds.remap("norg", "n", "gtd", "<cmd>Neorg keybind norg core.qol.todo_items.todo.task_done<CR><Plug>(nvim-surround-normal)$-")
-              keybinds.remap("norg", "n", "gtu", "<cmd>Neorg keybind norg core.qol.todo_items.todo.task_undone<CR><Plug>(nvim-surround-delete)-")
+              keybinds.remap("norg", "n", "gtu", "<cmd>Neorg keybind norg core.qol.todo_items.todo.task_on_hold<CR><Plug>(nvim-surround-delete)-")
             end
           },
         },
@@ -90,12 +98,12 @@ return {
   },
 
   -- Headlines -  horizontal 💡highlights for Neorg
-  {
+   {
     'lukas-reineke/headlines.nvim',
     config = function()
       require("headlines").setup{
         norg = {
-          query = vim.treesitter.parse_query(
+          query = vim.treesitter.query.parse(
               "norg",
               [[
                   [
@@ -130,6 +138,9 @@ return {
           fat_headline_upper_string = "▃",
           fat_headline_lower_string = "🬂",
         },
+        markdown = {
+          fat_headlines = false,
+        }
       }
     end,
     event = "VeryLazy",
@@ -235,5 +246,12 @@ return {
       })
     end,
     event = "VeryLazy",
-  }
+  },
+
+  -- Winshift - manage windows with ease
+  {
+    "sindrets/winshift.nvim",
+    config = true,
+    event = "VeryLazy",
+  },
 }

@@ -33,14 +33,8 @@ vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>qa!<cr>', {noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<Leader>o', 'o<Esc>0"_D', {noremap = true, silent = true}) --| Newline in normal mode on next line
 vim.api.nvim_set_keymap('n', '<Leader>O', 'O<Esc>0"_D', {noremap = true, silent = true}) --| Newline in normal mode on current line
 
-vim.api.nvim_set_keymap('n', '<C-h>',
-'<cmd> lua require("smart-splits").move_cursor_left()<CR>', {noremap = true, silent = true})  --| Window Left
-vim.api.nvim_set_keymap('n', '<C-l>',
-'<cmd> lua require("smart-splits").move_cursor_right()<CR>', {noremap = true, silent = true}) --| Window Right
-vim.api.nvim_set_keymap('n', '<C-k>',
-'<cmd> lua require("smart-splits").move_cursor_up()<CR>', {noremap = true, silent = true})    --| Window Up
-vim.api.nvim_set_keymap('n', '<C-j>',
-'<cmd> lua require("smart-splits").move_cursor_down()<CR>', {noremap = true, silent = true})  --| Window Down
+vim.api.nvim_set_keymap('n', '<Leader>s', '<cmd>vsplit<cr>', {noremap = true, silent = true}) --| Newline in normal mode on current line
+vim.api.nvim_set_keymap('n', '<Leader>w', '<cmd>WinShift<cr>', {noremap = true, silent = true}) --| Rearrange windows
 
 vim.keymap.set("n", "J", "mzJ`z") -- Append to current line with space without moving cursor
 
@@ -51,23 +45,45 @@ vim.keymap.set("n", "n", "nzzzv") -- |
 --                                -- | Search terms in the middle
 vim.keymap.set("n", "N", "Nzzzv") -- |
 
+-- Smart-splits hotkeys --
+vim.api.nvim_set_keymap('n', '<A-h>',
+'<cmd> lua require("smart-splits").move_cursor_left()<CR>', {noremap = true, silent = true})  --| Window Left
+vim.api.nvim_set_keymap('n', '<A-l>',
+'<cmd> lua require("smart-splits").move_cursor_right()<CR>', {noremap = true, silent = true}) --| Window Right
+vim.api.nvim_set_keymap('n', '<A-k>',
+'<cmd> lua require("smart-splits").move_cursor_up()<CR>', {noremap = true, silent = true})    --| Window Up
+vim.api.nvim_set_keymap('n', '<A-j>',
+'<cmd> lua require("smart-splits").move_cursor_down()<CR>', {noremap = true, silent = true})  --| Window Down
+
 -- Bufferline hotkeys --
-vim.api.nvim_set_keymap('n', '<C-m>', '<cmd>BufferLineCycleNext<CR>', {noremap = true, silent = true}) --| Go to next buffer
-vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true}) --| Go to previous buffer
-vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>bd!<CR>', {noremap = true, silent = true})                 --| Close buffer
+vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>BufferLineCycleNext<CR>', {noremap = true, silent = true}) --| Go to next buffer
+vim.api.nvim_set_keymap('n', '<C-h>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true}) --| Go to previous buffer
+vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>Bwipeout!<CR>', {noremap = true, silent = true})           --| Close buffer
+vim.api.nvim_set_keymap('n', '<a-w>', '<cmd>bwipeout!<CR>', {noremap = true, silent = true})           --| Close buffer
 
 vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferLineMoveNext<cr>', {noremap = true, silent = true}) --| Move buffer right 
 vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferLineMovePrev<cr>', {noremap = true, silent = true}) --| Move buffer left
 
--- Neo-Tree hotkeys --
-vim.api.nvim_set_keymap('n', '<Leader>n', '<cmd>Neotree toggle<CR>', {noremap = true, silent = true}) --| Toggle Neo-Tree
+vim.api.nvim_set_keymap('n', '<A-1>', '<cmd>BufferLineGoToBuffer 1<cr>', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', '<A-2>', '<cmd>BufferLineGoToBuffer 2<cr>', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', '<A-3>', '<cmd>BufferLineGoToBuffer 3<cr>', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', '<A-4>', '<cmd>BufferLineGoToBuffer 4<cr>', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', '<A-5>', '<cmd>BufferLineGoToBuffer 5<cr>', {noremap = true, silent = true}) --| Go to buffer by number
+vim.api.nvim_set_keymap('n', '<A-6>', '<cmd>BufferLineGoToBuffer 6<cr>', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', '<A-7>', '<cmd>BufferLineGoToBuffer 7<cr>', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', '<A-8>', '<cmd>BufferLineGoToBuffer 8<cr>', {noremap = true, silent = true}) --| 
+vim.api.nvim_set_keymap('n', '<A-9>', '<cmd>BufferLineGoToBuffer 9<cr>', {noremap = true, silent = true}) --|
+
+-- mini.files hotkeys --
+vim.api.nvim_set_keymap('n', '<Leader>n', '', {desc = 'Focus current file in file explorer', callback = function()
+		if not require("mini.files").close() then
+			require("mini.files").open(vim.api.nvim_buf_get_name(0))
+			require("mini.files").reveal_cwd()
+		end
+	end})
 
 -- Notify hotkeys --
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>', { noremap = true, silent = true }) --| Dismiss notifications
-
--- Portal hotkeys --
-vim.api.nvim_set_keymap("n", "<c-o>", "<cmd>Portal jumplist backward<cr>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<c-i>", "<cmd>Portal jumplist forward<cr>", {noremap = true, silent = true})
 
 -- Treesj hotkeys --
 vim.keymap.set('n', '<c-b>', function() require('treesj').toggle({ split = { recursive = true } }) end)

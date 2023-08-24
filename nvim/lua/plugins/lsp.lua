@@ -39,10 +39,10 @@ return {
         debug = false,
         use_saga_diagnostic_sign = true,
         -- diagnostic sign
-        error_sign = "",
-        warn_sign = "",
+        error_sign = "󰅙 ",
+        warn_sign = " ",
         hint_sign = "",
-        infor_sign = "",
+        infor_sign = " ",
         diagnostic_header_icon = "   ",
         -- code action title icon
         code_action_icon = "",
@@ -60,8 +60,8 @@ return {
           vsplit = "s",
           split = "i",
           quit = "q",
-          scroll_down = "<C-f>",
-          scroll_up = "<C-b>",
+          scroll_down = "<C-n>",
+          scroll_up = "<C-m>",
         },
         code_action_keys = {
           quit = "q",
@@ -72,7 +72,7 @@ return {
           exec = "<CR>",
         },
         definition_preview_icon = "  ",
-        border_style = "single",
+        border_style = "round",
         rename_prompt_prefix = "➤",
         rename_output_qflist = {
           enable = false,
@@ -154,14 +154,6 @@ return {
           formatting = {
             fields = { "kind", "abbr", "menu" },
             format = function(entry, vim_item)
-              -- Setup Highlight for Codeium --
-              if entry.source.name == "codeium" then
-                vim_item.kind = "  "
-                vim_item.menu = "    (Codeium)"
-                vim_item.kind_hl_group = "CmpItemKindSnippet"
-                return vim_item
-              end
-
               local kind = require("lspkind").cmp_format({
                 mode = "symbol_text",
                 maxwidth = 50,
@@ -221,7 +213,6 @@ return {
       -- (disable emojis and nerdfont)
       cmp.setup.filetype('go', {
         sources = cmp.config.sources({
-          { name = "codeium", priority = 9},
           { name = "neorg", priority = 8},
           { name = 'rg', priority = 7},
           { name = 'nvim_lsp', priority = 6},
@@ -249,8 +240,22 @@ return {
         })
       })
 
+      -- Set configuration for Go
+      -- (disable emojis and nerdfont)
+      cmp.setup.filetype('go', {
+        sources = cmp.config.sources({
+          { name = "codeium", priority = 9},
+          { name = "neorg", priority = 8},
+          { name = 'rg', priority = 7},
+          { name = 'nvim_lsp', priority = 6},
+          { name = 'luasnip', priority = 5},
+          { name = 'buffer', priority = 4},
+          { name = 'path', priority = 3},
+        })
+      })
+
       -- Setup Diagnostic Signs
-      local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+      local signs = { Error = "", Warn = "", Hint = "", Info = "" }
       for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

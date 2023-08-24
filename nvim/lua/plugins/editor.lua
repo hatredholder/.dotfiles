@@ -14,128 +14,60 @@
 
 
 return {
-  -- Neo-tree - file explorer  tree for  Neovim
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    config = function()
-      require("neo-tree").setup({
-        sources = {
-            "filesystem",
-            "buffers",
-            "git_status",
-            "diagnostics",
-        },
-        close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
-        popup_border_style = "rounded",
-        enable_git_status = true,
-        enable_diagnostics = true,
-        source_selector = {
-          winbar = true,
-          content_layout = "center",
-          sources = {
-            {
-              source = "filesystem",
-              display_name = "  File ",
-            },
-            {
-              source = "buffers",
-              display_name = " פּ Bufs",
-            },
-            {
-              source = "git_status",
-              display_name = " Git",
-            },
-            {
-              source = "diagnostics",
-              display_name = " 裂Diagnostics",
-            },
-          },
-        },
-        sort_case_insensitive = false, -- used when sorting files and directories in the tree
-        sort_function = nil , -- use a custom function for sorting files and directories in the tree 
-        default_component_configs = {
-          container = {
-            enable_character_fade = true
-          },
-          indent = {
-            indent_size = 2,
-            padding = 1, -- extra padding on left hand side
-            -- indent guides
-            with_markers = true,
-            indent_marker = "│",
-            last_indent_marker = "└",
-            highlight = "NeoTreeIndentMarker",
-            -- expander config, needed for nesting files
-            with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
-            expander_collapsed = "",
-            expander_expanded = "",
-            expander_highlight = "NeoTreeExpander",
-          },
-          icon = {
-            folder_closed = "",
-            folder_open = "",
-            folder_empty = "",
-            -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
-            -- then these will never be used.
-            default = "*",
-            highlight = "NeoTreeFileIcon"
-          },
-          modified = {
-            symbol = "",
-            highlight = "NvimTreeGitNew",
-          },
-          name = {
-            trailing_slash = false,
-            use_git_status_colors = true,
-            highlight = "NeoTreeFileName",
-          },
-          git_status = {
-            symbols = {
-              -- Change type
-              added     = "",
-              modified  = "",
-              deleted   = "✖",-- this can only be used in the git_status source
-              renamed   = "",-- this can only be used in the git_status source
-              -- Status type
-              untracked = "",
-              ignored   = "◌",
-              unstaged  = "",
-              staged    = "S",
-              conflict  = "",
-            }
-          },
-        },
-        window = {
-          position = "left",
-          width = 40,
-          mappings = {
-            ["<space>"] = "none",
-            ["/"] = "none",
-          },
-          mapping_options = {
-            noremap = true,
-            nowait = true,
-          },
-        },
-        nesting_rules = {},
-        filesystem = {
-          filtered_items = {
-            visible = false, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = false,
-            hide_gitignored = false,
-          },
-          follow_current_file = true, -- This will find and focus the file in the active buffer every
-                                       -- time the current file is changed while the tree is open.
-        },
-      })
-    end,
-    cmd = "Neotree",
-    branch = "v2.x",
+  -- Mini.files - file explorer for  Neovim
+   {
+    'echasnovski/mini.files',
+     init = function()
+            -- Add rounded corners.
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'MiniFilesWindowOpen',
+                callback = function(args)
+                    local win_id = args.data.win_id
+                    vim.api.nvim_win_set_config(win_id, { border = 'rounded' })
+                end,
+            })
+        end,
+    config = {
+      -- Module mappings created only inside explorer.
+      -- Use `''` (empty string) to not create one.
+      mappings = {
+        close       = 'q',
+        go_in       = 'l',
+        go_in_plus  = '<CR>',
+        go_out      = 'h',
+        go_out_plus = 'H',
+        reset       = '<BS>',
+        show_help   = 'g?',
+        synchronize = '<c-s>',
+        trim_left   = '<',
+        trim_right  = '>',
+      },
+
+      -- General options
+      options = {
+        -- Whether to use for editing directories
+        use_as_default_explorer = true,
+      },
+
+      -- Customization of explorer windows
+      windows = {
+        -- Maximum number of windows to show side by side
+        max_number = math.huge,
+        -- Whether to show preview of file/directory under cursor
+        preview = true,
+        -- Width of focused window
+        width_focus = 50,
+        -- Width of non-focused window
+        width_nofocus = 15,
+        -- Width of preview window
+        width_preview = 25,
+      },
+    }
   },
 
-  -- Neo-tree-diagnostics - 裂Diagnostics source for Neo-tree
+  -- Bufdelete - delete  Neovim  buffers without losing window layout 
   {
-    "mrbjarksen/neo-tree-diagnostics.nvim",
+    "famiu/bufdelete.nvim",
   },
 
   -- Autopairs - a powerful  autopair plugin for  Neovim
@@ -296,7 +228,7 @@ return {
     event = "VeryLazy",
   },
 
-  --  UI for Nvim-dap
+  --  UI for Nvim-dap
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
@@ -317,40 +249,242 @@ return {
     event = "VeryLazy",
   },
 
-  -- Leap - 󱕘 an  interface that makes on-screen  navigation  quicker
+   -- Flash.nvim - 󰆋 navigate your code with  search labels
   {
-    "ggandor/leap.nvim",
-    config = function()
-      require("leap").add_default_mappings()
-    end,
+    "folke/flash.nvim",
     event = "VeryLazy",
-  },
-
-  -- Leap-spooky - 󰊠 Actions at a distance 
-  {
-    "ggandor/leap-spooky.nvim",
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          -- default options: exact mode, multi window, all directions, with a backdrop
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "S",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter({
+              label = {
+                rainbow = {
+                  enabled = true,
+                },
+              },
+            })
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+    },
     config = function()
-        require('leap-spooky').setup {
-          affixes = {
-            -- These will generate mappings for all native text objects, like:
-            -- (ir|ar|iR|aR|im|am|iM|aM){obj}.
-            -- Special line objects will also be added, by repeating the affixes.
-            -- E.g. `yrr<leap>` and `ymm<leap>` will yank a line in the current
-            -- window.
-            -- You can also use 'rest' & 'move' as mnemonics.
-            remote   = { window = 'r', cross_window = 'R' },
-            magnetic = { window = 'm', cross_window = 'M' },
+      require('flash').setup(
+        {
+          -- labels = "abcdefghijklmnopqrstuvwxyz",
+          labels = "asdfghjklqwertyuiopzxcvbnm",
+          search = {
+            -- search/jump in all windows
+            multi_window = true,
+            -- search direction
+            forward = true,
+            -- when `false`, find only matches in the given direction
+            wrap = true,
+            -- Each mode will take ignorecase and smartcase into account.
+            -- * exact: exact match
+            -- * search: regular search
+            -- * fuzzy: fuzzy search
+            -- * fun(str): custom function that returns a pattern
+            --   For example, to only match at the beginning of a word:
+            --   mode = function(str)
+            --     return "\\<" .. str
+            --   end,
+            mode = "exact",
+            -- behave like `incsearch`
+            incremental = false,
+            -- Excluded filetypes and custom window filters
+            exclude = {
+              "notify",
+              "cmp_menu",
+              "noice",
+              "flash_prompt",
+              function(win)
+                -- exclude non-focusable windows
+                return not vim.api.nvim_win_get_config(win).focusable
+              end,
+            },
+            -- Optional trigger character that needs to be typed before
+            -- a jump label can be used. It's NOT recommended to set this,
+            -- unless you know what you're doing
+            trigger = "",
+            -- max pattern length. If the pattern length is equal to this
+            -- labels will no longer be skipped. When it exceeds this length
+            -- it will either end in a jump or terminate the search
+            max_length = nil, ---@type number?
+          },
+          jump = {
+            -- save location in the jumplist
+            jumplist = true,
+            -- jump position
+            pos = "start", ---@type "start" | "end" | "range"
+            -- add pattern to search history
+            history = false,
+            -- add pattern to search register
+            register = false,
+            -- clear highlight after jump
+            nohlsearch = false,
+            -- automatically jump when there is only one match
+            autojump = false,
+            -- You can force inclusive/exclusive jumps by setting the
+            -- `inclusive` option. By default it will be automatically
+            -- set based on the mode.
+            inclusive = nil, ---@type boolean?
+            -- jump position offset. Not used for range jumps.
+            -- 0: default
+            -- 1: when pos == "end" and pos < current position
+            offset = nil, ---@type number
+          },
+          label = {
+            -- allow uppercase labels
+            uppercase = true,
+            -- add a label for the first match in the current window.
+            -- you can always jump to the first match with `<CR>`
+            current = true,
+            -- show the label after the match
+            after = true, ---@type boolean|number[]
+            -- show the label before the match
+            before = false, ---@type boolean|number[]
+            -- position of the label extmark
+            style = "overlay", ---@type "eol" | "overlay" | "right_align" | "inline"
+            -- flash tries to re-use labels that were already assigned to a position,
+            -- when typing more characters. By default only lower-case labels are re-used.
+            reuse = "lowercase", ---@type "lowercase" | "all"
+            -- for the current window, label targets closer to the cursor first
+            distance = true,
+            -- minimum pattern length to show labels
+            -- Ignored for custom labelers.
+            min_pattern_length = 2,
+            -- Enable this to use rainbow colors to highlight labels
+            -- Can be useful for visualizing Treesitter ranges.
+            rainbow = {
+              enabled = false,
+              -- number between 1 and 9
+              shade = 5,
+            },
+            -- With `format`, you can change how the label is rendered.
+            -- Should return a list of `[text, highlight]` tuples.
+            format = function(opts)
+              return { { opts.match.label, opts.hl_group } }
+            end,
+          },
+          highlight = {
+            -- show a backdrop with hl FlashBackdrop
+            backdrop = true,
+            -- Highlight the search matches
+            matches = true,
+            -- extmark priority
+            priority = 5000,
+            groups = {
+              match = "FlashMatch",
+              current = "FlashCurrent",
+              backdrop = "FlashBackdrop",
+              label = "FlashLabel",
+            },
+          },
+          -- action to perform when picking a label.
+          -- defaults to the jumping logic depending on the mode.
+          action = nil,
+          -- initial pattern to use when opening flash
+          pattern = "",
+          -- When `true`, flash will try to continue the last search
+          continue = false,
+          -- You can override the default options for a specific mode.
+          -- Use it with `require("flash").jump({mode = "forward"})`
+          modes = {
+            -- options used when flash is activated through
+            -- a regular search with `/` or `?`
+            search = {
+              -- when `true`, flash will be activated during regular search by default.
+              -- You can always toggle when searching with `require("flash").toggle()`
+              enabled = false,
+              highlight = { backdrop = false },
+              jump = { history = true, register = true, nohlsearch = true },
+              search = {
+                -- `forward` will be automatically set to the search direction
+                -- `mode` is always set to `search`
+                -- `incremental` is set to `true` when `incsearch` is enabled
+              },
+            },
+            -- options used when flash is activated through
+            -- `f`, `F`, `t`, `T`, `;` and `,` motions
+            char = {
+              enabled = true,
+              -- by default all keymaps are enabled, but you can disable some of them,
+              -- by removing them from the list.
+              keys = { "f", "F", "t", "T", ";", "," },
+              search = { wrap = false },
+              highlight = { backdrop = true },
+              jump = { register = false },
+            },
+            -- options used for treesitter selections
+            -- `require("flash").treesitter()`
+            treesitter = {
+              labels = "abcdefghijklmnopqrstuvwxyz",
+              jump = { pos = "range" },
+              search = { incremental = false },
+              label = { before = true, after = true, style = "inline" },
+              highlight = {
+                backdrop = false,
+                matches = false,
+              },
+            },
+            treesitter_search = {
+              jump = { pos = "range" },
+              search = { multi_window = true, wrap = true, incremental = false },
+              remote_op = { restore = true },
+              label = { before = true, after = true, style = "inline" },
+            },
+            -- options used for remote flash
+            remote = {
+              remote_op = { restore = true, motion = true },
+            },
+          },
+          -- options for the floating window that shows the prompt,
+          -- for regular jumps
+          prompt = {
+            enabled = true,
+            prefix = { { "󱐋 ", "FlashPromptIcon" } },
+            win_config = {
+              relative = "editor",
+              width = 1, -- when <=1 it's a percentage of the editor width
+              height = 1,
+              row = -1, -- when negative it's an offset from the bottom
+              col = 0, -- when negative it's an offset from the right
+              zindex = 1000,
+            },
+          },
+          -- options for remote operator pending mode
+          remote_op = {
+            -- restore window views and cursor position
+            -- after doing a remote operation
+            restore = false,
+            -- For `jump.pos = "range"`, this setting is ignored.
+            -- `true`: always enter a new motion when doing a remote operation
+            -- `false`: use the window's cursor position and jump target
+            -- `nil`: act as `true` for remote windows, `false` for the current window
+            motion = false,
           },
         }
+      )
     end,
-    event = "VeryLazy",
-  },
-
-  -- Flit - Enhanced f/t motions for Leap 󱕘
-  {
-    "ggandor/flit.nvim",
-    config = true,
-    event = "VeryLazy",
   },
 
   -- Various-textobjs - two dozen new text objects
@@ -385,8 +519,8 @@ return {
             alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
             -- signs = false, -- configure signs for some keywords individually
           },
-          TODO = { icon = "✅", color = "#7fbbb3" },
-          NOTE = { icon = " ", color = "#E69875" },
+          TODO = { icon = " ", color = "#7fbbb3" },
+          NOTE = { icon = " ", color = "#E69875" },
         },
       })
     end,
@@ -449,7 +583,7 @@ return {
     event = "VeryLazy",
   },
 
-  -- Fold-preview - 👁️ preview folds in a ☁️ float window
+  -- Fold-preview - preview folds
   {
     "anuvyklack/fold-preview.nvim",
     dependencies = "anuvyklack/keymap-amend.nvim",
@@ -504,19 +638,6 @@ return {
     "Wansmer/treesj",
     config = function()
       require('treesj').setup({ use_default_keymaps = false, max_join_length = 720 })
-    end,
-    event = "VeryLazy",
-  },
-
-  -- Codeium - the  Modern  Coding 󰿗 Superpower
-  {
-    "jcdickinson/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function()
-        require("codeium").setup()
     end,
     event = "VeryLazy",
   },

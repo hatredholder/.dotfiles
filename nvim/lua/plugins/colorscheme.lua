@@ -12,7 +12,7 @@
 
 --]]
 
---  Everforest colorscheme
+--  Everforest colorscheme
 return {
   {
     "sainnhe/everforest",

@@ -212,6 +212,7 @@ return {
           },
         options = {
           always_show_bufferline = false,
+          numbers = "ordinal",
           offsets = {
             {
               filetype = "neo-tree",
@@ -435,7 +436,7 @@ return {
           find_command = {
             'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'
           },
-          prompt_prefix = " ",
+          prompt_prefix = " ",
           selection_caret = " ",
           entry_prefix = "  ",
           initial_mode = "insert",
@@ -487,7 +488,7 @@ return {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({
-        sign_priority = 100,
+        sign_priority = 10,
       })
       -- Setup gitsigns for petertriho/nvim-scrollbar
       require("scrollbar.handlers.gitsigns").setup()
@@ -502,9 +503,6 @@ return {
       local db = require("dashboard")
 
       db.default_banner = {
-      '',
-      '',
-      '',
       '',
       '',
       '',
@@ -536,43 +534,37 @@ return {
       db.preview_file_width = 70
       db.custom_center = {
         {
-          -- icon = " ",
-          icon = " ",
+          icon = " ",
           desc = "Find Files            ",
           action = "Telescope find_files",
           shortcut = " SPC d z ",
         },
         {
-          -- icon = " ",
-          icon = " ",
+          icon = " ",
           desc = "Search Text           ",
           action = "Telescope live_grep",
           shortcut = " SPC d f ",
         },
         {
-          -- icon = "羽",
-          icon = " ",
+          icon = " ",
           desc = "Recent Files          ",
           action = "Telescope oldfiles",
           shortcut = " SPC d l ",
         },
         {
-          -- icon = "ﭢ ",
-          icon = " ",
+          icon = " ",
           desc = "Load Session          ",
           action = "SessionManager! load_last_session",
           shortcut = " SPC d s ",
         },
         {
-          -- icon = " ",
-          icon = " ",
+          icon = " ",
           desc = "Open Config           ",
           action = "edit ~/.config/nvim/init.lua",
           shortcut = " SPC d c ",
         },
         {
-          -- icon = " ",
-          icon = " ",
+          icon = " ",
           desc = "Quit Neovim           ",
           action = "quitall",
           shortcut = " SPC d q ",
@@ -764,7 +756,7 @@ return {
           priority = 1,
           cursor = "",
           texthl = "CursorLineNr",
-          disabled_filetypes = {'neo-tree', "dashboard", "TelescopePrompt", "help",},
+          disabled_filetypes = {'neo-tree', "dashboard", "TelescopePrompt", "help", "noice"},
       })
     end,
     event = "VeryLazy"
@@ -855,6 +847,7 @@ return {
   -- Modicator -  cursor  line number mode  colorful indicator
   {
     "mawkler/modicator.nvim",
+    commit = "28042ea",
     init = function()
       vim.o.cursorline = true
       vim.o.number = true
@@ -867,8 +860,6 @@ return {
         -- Show warning if any required option is missing
         show_warnings = true,
         highlights = {
-          -- Default options for bold/italic. You can override these individually
-          -- for each mode if you'd like as seen below.
           defaults = {
             foreground = modicator.get_highlight_bg('Search'),
             -- background = modicator.get_highlight_bg('CursorLineNr'),
@@ -880,16 +871,16 @@ return {
           -- you would like.
           modes = {
             ['n'] = {
-              foreground = modicator.get_highlight_bg('Search'),
+              foreground = "#a7c080"
             },
             ['i']  = {
-              foreground = modicator.get_highlight_fg('ModeMsg'),
+              foreground = "#c6c0a9",
             },
             ['v']  = {
-              foreground = modicator.get_highlight_bg('IncSearch'),
+              foreground = "#DB7A7C",
             },
             ['V']  = {
-              foreground = modicator.get_highlight_bg('IncSearch'),
+              foreground = "#DB7A7C",
             },
             ['�'] = { -- This symbol is the ^V character
               foreground = modicator.get_highlight_fg('Type'),
@@ -901,10 +892,10 @@ return {
               foreground = modicator.get_highlight_fg('Keyword'),
             },
             ['R']  = {
-              foreground = modicator.get_highlight_fg('Title'),
+              foreground = modicator.get_highlight_fg('Constant'),
             },
             ['c']  = {
-              foreground = modicator.get_highlight_bg('Search'),
+              foreground = modicator.get_highlight_fg('Question'),
             },
           },
         },
@@ -915,30 +906,9 @@ return {
     event = { "BufReadPost", "BufNewFile" },
   },
 
-  -- Portal - improved location  list  navigation 
+  -- Whatthejump - improved location  list  navigation 
   {
-    "cbochs/portal.nvim",
-    config = function()
-      require("portal").setup({
-        escape = {
-          ["q"] = true,
-          ["<esc>"] = true,
-        },
-        window_options = {
-          relative = "cursor",
-          width = 80,
-          height = 5,
-          col = 3,
-          focusable = false,
-          border = "single",
-          noautocmd = true,
-        }
-      })
-    end,
-    dependencies = {
-      "cbochs/grapple.nvim",
-    },
-    event = "VeryLazy",
+    "lewis6991/whatthejump.nvim",
   },
 
   -- Incline - 🎈Floating statuslines
