@@ -1,6 +1,6 @@
 <h1 align="center"><i><u>~/.dotfiles</u></i></h1>
 
-<p align="center">:evergreen_tree: Your dotfiles are about how you personalize your own system. These are mine. :evergreen_tree: </p>
+<p align="center">🌲 Your dotfiles are about how you personalize your own system. These are mine. 🌲 </p>
 
 ## :eyes: Showcase
 
